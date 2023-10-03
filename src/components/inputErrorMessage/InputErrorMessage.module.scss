@@ -1,0 +1,22 @@
+@import '../../variables';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  line-height: 16px;
+  margin-top: 4px;
+}
+
+.message {
+  color: red;
+  font-weight: 500 !important;
+  font-size: 10px !important;
+  line-height: 16px !important;
+}
+
+.image {
+  width: 16px;
+  height: 16px;
+}

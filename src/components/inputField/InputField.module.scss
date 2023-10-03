@@ -1,0 +1,23 @@
+@import '../../variables';
+
+.inputField {
+  width: 100%;
+  height: 50px;
+  padding: 9px 12px;
+
+  border: solid;
+  border-radius: 8px;
+  border-width: 1px;
+  box-sizing: border-box;
+  border-color: $SOFT_BLACK;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: $SOFT_BLACK;
+  background-color: white;
+}
+
+::placeholder {
+  opacity: 1;
+  color: $CHARCOAL;
+}
