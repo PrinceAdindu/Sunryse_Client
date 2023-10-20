@@ -1,0 +1,19 @@
+@import '../../variables';
+
+.box {
+  width: 100% !important;
+}
+
+.linearProgress {
+  background-color: #e4e4e4 !important;
+  border-radius: 15px !important;
+}
+
+/* ProgressBar.module.scss */
+.progressBackground {
+  background-color: #e4e4e4; /* Set your background color */
+}
+
+.progressColor {
+  background-color: #ff5722; /* Set your progress color */
+}

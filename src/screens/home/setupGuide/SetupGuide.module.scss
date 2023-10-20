@@ -1,0 +1,33 @@
+@import '../../../variables';
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.container:hover {
+  cursor: pointer;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: $SOFT_BLACK;
+}
+
+.sectionText {
+  font-size: 14px;
+  color: $SOFT_BLACK;
+}
+
+.bottomAccordian {
+  border-radius: 0px 0px 10px 10px !important;
+}
+
+.unselectedAccordian {
+  background-color: $WHITE_GRAY !important;
+}
+
+.selectedAccordian {
+  background-color: white !important;
+}

@@ -1,0 +1,18 @@
+@import '../../variables';
+.screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(100% - $SIDE_NAV_WIDTH);
+  height: calc(100% - $NAV_HEIGHT);
+  margin: 0px 0px 0px $SIDE_NAV_WIDTH;
+  background: $WHITE_GRAY_DARK;
+  overflow-y: scroll;
+}
+
+.setupContainer {
+  width: 60%;
+  height: 100%;
+  margin: 50px 0px 100px 0px;
+}

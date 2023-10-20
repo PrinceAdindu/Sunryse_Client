@@ -1,0 +1,61 @@
+@import '../../../../variables';
+
+.unselectedAccordian {
+  background-color: $WHITE_GRAY !important;
+}
+
+.selectedAccordian {
+  background-color: white !important;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: $SOFT_BLACK;
+}
+
+.text {
+  font-size: 14px;
+  color: $SOFT_BLACK;
+}
+
+.bulletListHeader {
+  font-size: 14px;
+  color: $SOFT_BLACK;
+  margin-top: 10px;
+}
+
+.bulletListContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bulletList {
+  margin: 10px;
+  padding: 0px 0px 0px 30px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: $SOFT_BLACK;
+  list-style-type: circle;
+}
+
+.bulletList li {
+  margin-bottom: 5px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  margin-right: 25px;
+}
+
+.button {
+  background-color: $SOFT_BLACK;
+  color: white;
+  font-size: 12px;
+  width: 150px;
+  height: 25px;
+  margin-top: 10px;
+}

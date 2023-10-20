@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import logo from '../../assets/TerraLogoFull.png';
+import { useState, useEffect } from 'react';
 import InputBlock from '../../components/inputBlock/InputBlock';
 import StyledButton from '../../components/styledButton/StyledButton';
 import verifyInputs, { onRegister } from './registerHelper';
+import useToast from '../../hooks/useToast';
 
+import logo from '../../assets/TerraLogoFull.png';
 import styles from './Register.module.scss';
+import { Link } from 'react-router-dom';
 
-export const Register = () => {
+export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstname, setFirstname] = useState('');
@@ -17,7 +19,7 @@ export const Register = () => {
   const [firstnameError, setFirstnameError] = useState(false);
   const [lastnameError, setLastnameError] = useState(false);
 
-  const [isValid, setIsValid] = useState(false);
+  const toastInstance = useToast();
 
   async function submit() {
     const valid = await verifyInputs(
@@ -30,11 +32,14 @@ export const Register = () => {
       lastname,
       setLastnameError,
     );
-    setIsValid(valid);
-    if (valid) {
-      await onRegister(email, password, firstname, lastname);
-    }
+    if (valid)
+      await onRegister(email, password, firstname, lastname, toastInstance);
   }
+
+  useEffect(() => {
+    document.body.classList.add(styles.background);
+    return () => document.body.classList.remove(styles.background);
+  }, []);
 
   const Header = () => (
     <div className={styles.headerContainer}>
@@ -44,16 +49,35 @@ export const Register = () => {
     </div>
   );
 
-  const Footer = () => (
-    <span className={styles.footer}>
+  const Terms = () => (
+    <span className={styles.span}>
       By proceeding, you agree to the{' '}
-      <a className={styles.link} href="terrapractice.com" target="_blank">
+      <a
+        className={styles.link}
+        href="https://terrapractice.com"
+        target="_blank"
+        rel="noreferrer"
+      >
         Terms and Conditions
       </a>{' '}
       and{' '}
-      <a className={styles.link} href="terrapractice.com" target="_blank">
+      <a
+        className={styles.link}
+        href="https://terrapractice.com"
+        target="_blank"
+        rel="noreferrer"
+      >
         Privacy Policy.
       </a>
+    </span>
+  );
+
+  const LoginOption = () => (
+    <span className={styles.span}>
+      Already have a Terra ID?{' '}
+      <Link className={styles.link} to="/login">
+        Log in
+      </Link>
     </span>
   );
 
@@ -62,7 +86,7 @@ export const Register = () => {
       <div className={styles.card}>
         <Header />
         <InputBlock
-          id="email_input"
+          inputId="email_input"
           classname={styles.input}
           title="Email"
           errors={[
@@ -77,7 +101,7 @@ export const Register = () => {
           setValue={setEmail}
         />
         <InputBlock
-          id="password_input"
+          inputId="password_input"
           classname={styles.input}
           title="Password"
           description="Your password must be at least 8 characters."
@@ -95,14 +119,14 @@ export const Register = () => {
         />
         <div className={styles.nameContainer}>
           <InputBlock
-            id="firstname_input"
+            inputId="firstname_input"
             classname={styles.firstnameInput}
             title="First Name"
             description="Legal First Name"
             errors={[
               {
                 errorId: 'invalid_firstname',
-                text: 'Please make sure to enter a first name.',
+                text: 'Required',
                 visible: firstnameError,
                 setError: setFirstnameError,
               },
@@ -111,14 +135,14 @@ export const Register = () => {
             setValue={setFirstname}
           />
           <InputBlock
-            id="lastname_input"
+            inputId="lastname_input"
             classname={styles.input}
             title="Last Name"
             description="Legal Last Name"
             errors={[
               {
                 errorId: 'invalid_lastname',
-                text: 'Please make sure to enter a last name.',
+                text: 'Required',
                 visible: lastnameError,
                 setError: setLastnameError,
               },
@@ -131,10 +155,10 @@ export const Register = () => {
           className={styles.button}
           text="Create Terra ID"
           onClick={() => submit()}
-          disabled={!isValid}
         />
-        <Footer />
+        <Terms />
+        <LoginOption />
       </div>
     </div>
   );
-};
+}

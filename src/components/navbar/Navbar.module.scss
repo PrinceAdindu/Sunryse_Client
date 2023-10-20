@@ -1,0 +1,44 @@
+@import '../../variables';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: $NAV_HEIGHT;
+  z-index: 100;
+  background-color: $DARK_BLUE;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  width: 12%;
+  margin-left: 10px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.navOptionsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 75px;
+  margin-right: 25px;
+}
+
+.iconContainer {
+  width: 25px;
+}
+
+.icon {
+  color: white;
+}
+
+.icon:hover {
+  color: $WHITE_GRAY;
+  cursor: pointer;
+}

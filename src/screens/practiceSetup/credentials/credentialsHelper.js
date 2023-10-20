@@ -1,8 +1,8 @@
 export const CREDENTIAL_SITUATIONS = [
-    'I am licensed, my license information is below',
-    'I am pre-licensed or under supervision',
-    'I have no license',
-  ];
+  'I am licensed, my license information is below',
+  'I am pre-licensed or under supervision',
+  'I have no license',
+];
 
 export const MH_ROLES_CANADA = [
   'Art Therapist',
@@ -62,23 +62,23 @@ export const CREDENTIAL_TYPES = [
 ];
 
 export const MEMBERSHIP_INFO = [
-    'Organization, Membership ID/Number',
-    'Year (YYYY)',
-  ];
-  
-  export const LICENSE_INFO = ['License Issuer', 'License Number', 'Year (YYYY)'];
-  
-  export const CERTIFICATE_INFO = [
-    'Accrediting Institution',
-    'Certificate ID/Number',
-    'Year (YYYY)',
-  ];
-  
-  export const DEGREE_INFO = [
-    'Accrediting Institution',
-    'Diploma/Degree Type',
-    'Year (YYYY)',
-  ];
+  'Organization, Membership ID/Number',
+  'Year (YYYY)',
+];
+
+export const LICENSE_INFO = ['License Issuer', 'License Number', 'Year (YYYY)'];
+
+export const CERTIFICATE_INFO = [
+  'Accrediting Institution',
+  'Certificate ID/Number',
+  'Year (YYYY)',
+];
+
+export const DEGREE_INFO = [
+  'Accrediting Institution',
+  'Diploma/Degree Type',
+  'Year (YYYY)',
+];
 
 export const MONTHS = [
   '1',

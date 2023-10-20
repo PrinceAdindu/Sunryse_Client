@@ -1,13 +1,25 @@
-// export async function isEmailInUse(email) {
-//   const res = await axios.post('/signUp/available/email', {
-//     email,
-//   });
-//   const available = res.data;
-//   return !available;
-// }
+import axios from '../../api/axios';
 
-export async function onRegister(email, password, firstname, lastname) {
-  return;
+export async function onRegister(
+  email,
+  password,
+  firstname,
+  lastname,
+  toastInstance,
+) {
+  const data = { email, password, firstname, lastname };
+  try {
+    await axios.post('/register/therapist', data);
+  } catch (err) {
+    if (err?.response?.status === 409)
+      toastInstance.error('This email is already registered with a Terra ID.');
+    else if (err?.response?.status === 400)
+      toastInstance.error('Please fill in all the required information.');
+    else
+      toastInstance.error(
+        'There was an error creating your Terra ID, please try again.',
+      );
+  }
 }
 
 const regexTests = {
@@ -25,22 +37,18 @@ export default async function verifyInputs(
   setEmailError,
   password,
   setPasswordError,
+  firstname,
+  setFirstnameError,
+  lastname,
+  setLastnameError,
 ) {
-  resetAllErrors([setEmailError, setPasswordError]);
+  resetAllErrors([
+    setEmailError,
+    setPasswordError,
+    setFirstnameError,
+    setLastnameError,
+  ]);
   let valid = true;
-
-  // let emailInUse = false;
-  // try {
-  //   emailInUse = await isEmailInUse(email);
-  // } catch (error) {
-  //   setUnavailableEmailError(true);
-  //   valid = false;
-  // }
-
-  // if (emailInUse) {
-  //   setUnavailableEmailError(true);
-  //   valid = false;
-  // }
 
   if (!regexTests.EMAIL.test(email)) {
     setEmailError(true);
@@ -49,6 +57,16 @@ export default async function verifyInputs(
 
   if (password.length < 8) {
     setPasswordError(true);
+    valid = false;
+  }
+
+  if (firstname.length < 1) {
+    setFirstnameError(true);
+    valid = false;
+  }
+
+  if (lastname.length < 1) {
+    setLastnameError(true);
     valid = false;
   }
 
