@@ -96,7 +96,7 @@ export default function SideNavbar() {
   }
   return (
     showNav && (
-      <div className={styles.container}>
+      <div className={styles.sideNavcontainer}>
         <Home />
         <Sessions />
         <BusinessHours />

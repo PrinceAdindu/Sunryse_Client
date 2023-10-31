@@ -31,3 +31,45 @@
 .selectedAccordian {
   background-color: white !important;
 }
+
+.setupHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: $DARK_BLUE;
+  margin-bottom: 25px;
+  padding: 25px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.text {
+  font-size: 14px;
+  color: white;
+}
+
+.progressContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 15px 0px 0px 0px;
+}
+
+.progressBarText {
+  font-size: 14px;
+  color: white;
+}
+
+.progressBar {
+  width: 425px;
+  margin: 5px 0px 0px 15px;
+}

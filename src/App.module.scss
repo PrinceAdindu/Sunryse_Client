@@ -22,3 +22,12 @@
     background-color: $WHITE_GRAY_DARK;
   }
 }
+
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100%;
+}

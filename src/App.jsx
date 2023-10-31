@@ -8,7 +8,7 @@ import Register from './screens/register/Register';
 import ToastMessage from './components/toastMessage/ToastMessage';
 // import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 
-import './App.module.scss';
+import styles from './App.module.scss';
 import Setup from './screens/setup/Setup';
 import Navbar from './components/navbar/Navbar';
 import SideNavbar from './components/sideNavbar/SideNavbar';
@@ -17,15 +17,17 @@ function App() {
   return (
     <>
       <Navbar />
-      <SideNavbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/setup" element={<Setup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="unauthorized" element={<Unauthorized />} />
-        <Route path="*" element={<Missing />} />
-      </Routes>
+      <div className={styles.contentContainer}>
+        <SideNavbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/setup" element={<Setup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="unauthorized" element={<Unauthorized />} />
+          <Route path="*" element={<Missing />} />
+        </Routes>
+      </div>
       <ToastMessage />
     </>
   );

@@ -26,7 +26,7 @@ export default function Navbar() {
   }
   return (
     showNav && (
-      <div className={styles.container}>
+      <div className={styles.navBarContainer}>
         <img src={NavTerraLogo} className={styles.logo} />
         <div className={styles.navOptionsContainer}>
           <Notifications />

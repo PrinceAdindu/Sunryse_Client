@@ -1,6 +1,8 @@
 @import '../../variables';
 
-.container {
+.navBarContainer {
+  position: sticky;
+  top: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

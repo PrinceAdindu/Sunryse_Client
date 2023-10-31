@@ -3,18 +3,18 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MeetingVector from '../../../../assets/MeetingVector.png';
+import RevenueVector from '../../../../assets/RevenueVector.png';
 
-import styles from './SetupMarketing.module.scss';
+import styles from './SetupRevenue.module.scss';
 import StyledButton from '../../../../components/styledButton/StyledButton';
 
-SetupMarketing.propTypes = {
+SetupRevenue.propTypes = {
   expanded: PropTypes.arrayOf(PropTypes.string).isRequired,
   expand: PropTypes.func.isRequired,
   incProgress: PropTypes.func.isRequired,
 };
 
-export default function SetupMarketing({ expanded, expand, incProgress }) {
+export default function SetupRevenue({ expanded, expand, incProgress }) {
   function openSchedule() {
     window.open(
       'https://calendly.com/tanrajdhillon/terra-marketing-call',
@@ -23,20 +23,18 @@ export default function SetupMarketing({ expanded, expand, incProgress }) {
   }
   return (
     <Accordion
-      className={`${styles.topAccordian} 
-        ${
-          expanded.includes('step2')
-            ? styles.selectedAccord
-            : styles.unselectedAccordian
-        }
-      `}
-      expanded={expanded.includes('step2')}
+      className={
+        expanded.includes('step3')
+          ? styles.selectedAccord
+          : styles.unselectedAccordian
+      }
+      expanded={expanded.includes('step3')}
       disableGutters
-      onChange={() => expand('step2')}
-      id="step2"
+      onChange={() => expand('step3')}
+      id="step3"
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <p className={styles.title}>Marketing</p>
+        <p className={styles.title}>Revenue</p>
       </AccordionSummary>
       <AccordionDetails>
         <p className={styles.text}>
@@ -51,11 +49,11 @@ export default function SetupMarketing({ expanded, expand, incProgress }) {
             <li>Build a client pricing strategy</li>
             <li>Gather more information for your website</li>
           </ul>
-          <img className={styles.image} src={MeetingVector} />
+          <img className={styles.image} src={RevenueVector} />
         </div>
         <StyledButton
           className={styles.button}
-          text="Schedule time"
+          text="Schedule a time"
           onClick={() => openSchedule()}
         />
       </AccordionDetails>

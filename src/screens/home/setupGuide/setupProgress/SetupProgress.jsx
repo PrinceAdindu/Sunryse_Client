@@ -10,9 +10,10 @@ import styles from './SetupProgress.module.scss';
 SetupProgress.propTypes = {
   expanded: PropTypes.arrayOf(PropTypes.string).isRequired,
   expand: PropTypes.func.isRequired,
+  progress: PropTypes.number.isRequired,
 };
 
-export default function SetupProgress({ expanded, expand }) {
+export default function SetupProgress({ expanded, expand, progress }) {
   return (
     <Accordion
       className={`${styles.topAccordian} ${
@@ -33,9 +34,9 @@ export default function SetupProgress({ expanded, expand }) {
           Use this personalized setup guide to get your practice up and runnnig.
         </p>
         <div className={styles.progressContainer}>
-          <p className={styles.progressBarText}>0 out of 10 tasks completed</p>
+          <p className={styles.progressBarText}>0 out of 3 tasks completed</p>
           <div className={styles.progressBar}>
-            <ProgressBar progress={50} />
+            <ProgressBar progress={progress} />
           </div>
         </div>
       </AccordionDetails>
