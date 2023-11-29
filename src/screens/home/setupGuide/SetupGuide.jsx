@@ -32,7 +32,7 @@ export default function SetupGuide() {
   };
 
   const SetupHeader = () => (
-    <div className={styles.setupHeader}>
+    <div className={styles.setupHeaderContainer}>
       <p className={styles.title}>Setup Guide</p>
       <p className={styles.text}>
         Use this personalized setup guide to get your practice up and runnnig.
@@ -51,22 +51,24 @@ export default function SetupGuide() {
   return (
     <>
       <SetupHeader />
-      <SetupMarketing
-        expanded={expanded}
-        expand={expand}
-        incProgress={incProgress}
-      />
-      <SetupBusinessHours
-        expanded={expanded}
-        expand={expand}
-        incProgress={incProgress}
-      />
-      <SetupRevenue
-        expanded={expanded}
-        expand={expand}
-        incProgress={incProgress}
-      />
-      <Launch expanded={expanded} expand={expand} progress={progress} />
+      <div className={styles.setupAccordianContainer}>
+        <SetupMarketing
+          expanded={expanded}
+          expand={expand}
+          incProgress={incProgress}
+        />
+        <SetupBusinessHours
+          expanded={expanded}
+          expand={expand}
+          incProgress={incProgress}
+        />
+        <SetupRevenue
+          expanded={expanded}
+          expand={expand}
+          incProgress={incProgress}
+        />
+        <Launch expanded={expanded} expand={expand} progress={progress} />
+      </div>
     </>
   );
 }

@@ -6,13 +6,12 @@ export default async function saveBusinessHours(
 ) {
   const data = { timeZone, schedule };
   try {
-    await axios.post('/therapist/hours', data);
+    await axios.post('/clinic/hours', data);
+    toast.success('Your new business hours have been saved.');
   } catch (error) {
-    if (error?.response?.status === 400)
-      toast.error('There was an error saving your hours, please try again;');
-    else
+    if (error?.response?.status === 400 || error?.response?.status === 500)
       toast.error(
-        'There was an error creating your Terra ID, please try again.',
+        'There was an error saving your hours, please try again later.',
       );
   }
 }

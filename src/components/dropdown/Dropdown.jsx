@@ -13,6 +13,7 @@ Dropdown.propTypes = {
     }).isRequired,
   ),
   onChange: PropTypes.func.isRequired,
+  indicator: PropTypes.bool,
   classNames: PropTypes.string,
 };
 
@@ -21,15 +22,20 @@ export default function Dropdown({
   value,
   options,
   onChange,
+  indicator = false,
   classNames = '',
 }) {
+  const selectComponents = indicator
+    ? { IndicatorSeparator: () => null }
+    : {
+        DropdownIndicator: () => null,
+        IndicatorSeparator: () => null,
+      };
+
   return (
     <Select
       className={`${styles.customSelect} ${classNames}`}
-      components={{
-        DropdownIndicator: () => null,
-        IndicatorSeparator: () => null,
-      }}
+      components={selectComponents}
       id={id}
       value={options.find((option) => option.value === value) ?? ''}
       options={options}

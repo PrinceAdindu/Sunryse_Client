@@ -9,11 +9,11 @@ export async function onRegister(
 ) {
   const data = { email, password, firstname, lastname };
   try {
-    await axios.post('/register/therapist', data);
-  } catch (err) {
-    if (err?.response?.status === 409)
+    await axios.post('/register/clinic', data);
+  } catch (error) {
+    if (error?.response?.status === 409)
       toastInstance.error('This email is already registered with a Terra ID.');
-    else if (err?.response?.status === 400)
+    else if (error?.response?.status === 400)
       toastInstance.error('Please fill in all the required information.');
     else
       toastInstance.error(

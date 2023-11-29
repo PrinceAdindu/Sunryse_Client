@@ -26,7 +26,7 @@ export default function SetupMarketing({ expanded, expand, incProgress }) {
       className={`${styles.topAccordian} 
         ${
           expanded.includes('step2')
-            ? styles.selectedAccord
+            ? styles.selectedAccordian
             : styles.unselectedAccordian
         }
       `}

@@ -31,8 +31,8 @@ const useAxiosPrivate = () => {
             const newAccessToken = await refresh();
             prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
             return axiosPrivate(prevRequest); // Retry request
-          } catch (err) {
-            navigate('/login', { state: { from: location } });
+          } catch (error) {
+            return Promise.reject(error); // Propogates error to be caught at source
           }
         }
         return Promise.reject(error); // Propogates error to be caught at source
@@ -43,7 +43,7 @@ const useAxiosPrivate = () => {
       axiosPrivate.interceptors.request.eject(requestIntercept);
       axiosPrivate.interceptors.response.eject(responseIntercept);
     };
-  }, [auth]);
+  }, [auth, location, navigate, refresh]);
 
   return axiosPrivate;
 };

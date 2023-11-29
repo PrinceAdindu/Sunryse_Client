@@ -6,7 +6,7 @@ import useToast from '../../hooks/useToast';
 
 import logo from '../../assets/TerraLogoFull.png';
 import styles from './Register.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [email, setEmail] = useState('');
@@ -20,6 +20,7 @@ export default function Register() {
   const [lastnameError, setLastnameError] = useState(false);
 
   const toastInstance = useToast();
+  const navigate = useNavigate();
 
   async function submit() {
     const valid = await verifyInputs(
@@ -34,6 +35,7 @@ export default function Register() {
     );
     if (valid)
       await onRegister(email, password, firstname, lastname, toastInstance);
+    navigate('/login');
   }
 
   useEffect(() => {

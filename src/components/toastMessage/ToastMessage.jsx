@@ -37,7 +37,7 @@ export default function ToastMessage() {
   return (
     <Snackbar
       open={isOpen}
-      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       autoHideDuration={2000}
       onClose={handleClose}
     >

@@ -1,4 +1,5 @@
 @import '../../variables';
+
 .screen {
   display: flex;
   flex-direction: column;
@@ -7,11 +8,10 @@
   width: 100%;
   min-height: 100%;
   background: $WHITE_GRAY_DARK;
-  padding: 50px 50px 50px 50px;
+  padding: 50px;
   box-sizing: border-box;
 }
 
 .setupContainer {
   width: 80%;
-  // height: 100%;
 }

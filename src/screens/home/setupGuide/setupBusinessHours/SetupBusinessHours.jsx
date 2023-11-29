@@ -23,7 +23,7 @@ export default function SetupBusinessHours({ expanded, expand, incProgress }) {
   const [schedule, setSchedule] = useState([
     {
       day: 'sunday',
-      on: true,
+      on: false,
       times: [{ start: '09:00', end: '17:00', error: false }],
     },
     {
@@ -53,7 +53,7 @@ export default function SetupBusinessHours({ expanded, expand, incProgress }) {
     },
     {
       day: 'saturday',
-      on: true,
+      on: false,
       times: [{ start: '09:00', end: '17:00', error: false }],
     },
   ]);
@@ -96,6 +96,7 @@ export default function SetupBusinessHours({ expanded, expand, incProgress }) {
       options={timeZoneOptions}
       value={timeZone}
       onChange={setTimeZone}
+      indicator={true}
     />
   );
 
