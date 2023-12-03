@@ -119,13 +119,13 @@ export default function SetupBusinessHours({ expanded, expand, incProgress }) {
         <div className={styles.details}>
           <TimeZonePicker />
           <WeeklyHours schedule={schedule} setSchedule={setSchedule} />
-          <StyledButton
-            className={styles.button}
-            text="Save"
-            onClick={() => save()}
-            disabled={checkForErrors() ? true : false}
-          />
         </div>
+        <StyledButton
+          className={styles.button}
+          text="Save"
+          onClick={() => save()}
+          disabled={checkForErrors() ? true : false}
+        />
       </AccordionDetails>
     </Accordion>
   );

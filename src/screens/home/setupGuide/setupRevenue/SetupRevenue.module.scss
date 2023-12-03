@@ -14,27 +14,32 @@
   color: $SOFT_BLACK;
 }
 
+.subTitle {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: $SOFT_BLACK;
+}
+
 .text {
   font-size: 14px;
   color: $SOFT_BLACK;
 }
 
-.bulletListHeader {
-  font-size: 14px;
-  color: $SOFT_BLACK;
-  margin-top: 10px;
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .bulletListContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .bulletList {
-  margin: 10px;
-  padding: 0px 0px 0px 30px;
   box-sizing: border-box;
   font-size: 14px;
   color: $SOFT_BLACK;
@@ -46,16 +51,20 @@
 }
 
 .image {
-  width: 125px;
-  height: 125px;
+  width: 150px;
+  height: 150px;
   margin-right: 25px;
 }
 
 .button {
-  background-color: $SOFT_BLACK;
-  color: white;
-  font-size: 12px;
-  width: 150px;
-  height: 25px;
-  margin-top: 10px;
+  background-color: $GREEN !important;
+  color: white !important;
+  font-size: 14px !important;
+  width: 135px !important;
+  height: 35px !important;
+  margin-top: 10px !important;
+}
+
+.button:hover {
+  background-color: $HOVER_GREEN !important;
 }

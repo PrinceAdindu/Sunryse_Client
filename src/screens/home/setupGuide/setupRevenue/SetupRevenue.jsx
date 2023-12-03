@@ -3,10 +3,14 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import useToast from '../../../../hooks/useToast';
+import createAccountLinkUrl from './SetupRevenue';
+import StyledButton from '../../../../components/styledButton/StyledButton';
 import RevenueVector from '../../../../assets/RevenueVector.png';
 
 import styles from './SetupRevenue.module.scss';
-import StyledButton from '../../../../components/styledButton/StyledButton';
 
 SetupRevenue.propTypes = {
   expanded: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -15,11 +19,12 @@ SetupRevenue.propTypes = {
 };
 
 export default function SetupRevenue({ expanded, expand, incProgress }) {
-  function openSchedule() {
-    window.open(
-      'https://calendly.com/tanrajdhillon/terra-marketing-call',
-      '_blank',
-    );
+  const axios = useAxiosPrivate();
+  const toast = useToast();
+
+  async function stripeAccountLinkRedirect() {
+    const url = await createAccountLinkUrl(axios, toast);
+    window.open(url);
   }
   return (
     <Accordion
@@ -37,24 +42,24 @@ export default function SetupRevenue({ expanded, expand, incProgress }) {
         <p className={styles.title}>Revenue</p>
       </AccordionSummary>
       <AccordionDetails>
-        <p className={styles.text}>
-          In order to setup your brand and online presence, schedule a call with
-          one of Terra’s clinical branding experts.
-        </p>
-        <p className={styles.bulletListHeader}>During the call they will:</p>
-        <div className={styles.bulletListContainer}>
-          <ul className={styles.bulletList}>
-            <li>Discover your unique value proposition</li>
-            <li>Identify your ideal client</li>
-            <li>Build a client pricing strategy</li>
-            <li>Gather more information for your website</li>
-          </ul>
+        <div className={styles.details}>
+          <div className={styles.bulletListContainer}>
+            <p className={styles.subTitle}>
+              Setup your business banking details
+            </p>
+            <p className={styles.text}>This will enable you to:</p>
+            <ul className={styles.bulletList}>
+              <li>Collect client payments from your website</li>
+              <li>Create invoices for your insurance filings</li>
+              <li>View and analyze your revenue history</li>
+            </ul>
+          </div>
           <img className={styles.image} src={RevenueVector} />
         </div>
         <StyledButton
           className={styles.button}
-          text="Schedule a time"
-          onClick={() => openSchedule()}
+          text="Begin Setup"
+          onClick={() => stripeAccountLinkRedirect()}
         />
       </AccordionDetails>
     </Accordion>

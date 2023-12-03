@@ -39,23 +39,24 @@ export default function SetupMarketing({ expanded, expand, incProgress }) {
         <p className={styles.title}>Marketing</p>
       </AccordionSummary>
       <AccordionDetails>
-        <p className={styles.text}>
-          In order to setup your brand and online presence, schedule a call with
-          one of Terra’s clinical branding experts.
-        </p>
-        <p className={styles.bulletListHeader}>During the call they will:</p>
-        <div className={styles.bulletListContainer}>
-          <ul className={styles.bulletList}>
-            <li>Discover your unique value proposition</li>
-            <li>Identify your ideal client</li>
-            <li>Build a client pricing strategy</li>
-            <li>Gather more information for your website</li>
-          </ul>
+        <div className={styles.details}>
+          <div className={styles.bulletListContiainer}>
+            <p className={styles.subTitle}>
+              Schedule a call with one of Terra’s Clinical-Branding experts
+            </p>
+            <p className={styles.text}>During the call they will:</p>
+            <ul className={styles.bulletList}>
+              <li>Identify your unqiue value</li>
+              <li>Identify your ideal client and pricing strategy</li>
+              <li>Gather more information for your custom website</li>
+              <li>Explain Terra's marketing approach to bring you clients</li>
+            </ul>
+          </div>
           <img className={styles.image} src={MeetingVector} />
         </div>
         <StyledButton
           className={styles.button}
-          text="Schedule time"
+          text="Schedule Time"
           onClick={() => openSchedule()}
         />
       </AccordionDetails>
