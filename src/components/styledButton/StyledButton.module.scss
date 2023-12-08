@@ -3,8 +3,8 @@
 .button {
   border-style: none;
   border-radius: 7px;
-  width: 135px;
   height: 35px;
+  padding: 10px;
 
   font-weight: 600;
   font-size: 14px;
@@ -25,21 +25,3 @@
   background-color: $WHITE_GRAY;
   color: $DARK_GRAY;
 }
-
-// @media screen and (min-width: $MIN_LARGE_WIDTH) {
-//   .styledButton {
-//     width: 150px;
-//     height: 40px;
-//     font-size: 18px;
-//     line-height: 36px;
-//   }
-// }
-
-// @media screen and (min-width: $MIN_EXTRA_LARGE_WIDTH) {
-//   .styledButton {
-//     width: 180px;
-//     height: 45px;
-//     font-size: 20px;
-//     line-height: 36px;
-//   }
-// }

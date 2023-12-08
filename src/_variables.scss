@@ -10,8 +10,32 @@ $WHITE_GRAY_DARK: #f1f1f1;
 $CHARCOAL: #5e5e5e;
 $SOFT_BLACK: #303030;
 $BLUE_GREEN_GRAD: linear-gradient(180deg, #052c35 0%, #bbecd2 100%);
+$BLUE_GREEN_GRAD2: linear-gradient(90deg, #bbecd2 0%, #052c35 100%);
+$BLUE_GREEN_GRAD3: linear-gradient(90deg, #052c35 0%, #bbecd2 120%);
 $ERROR_RED: #c5514f;
+$RAINBOW_PASTEL_GRAD: linear-gradient(
+  to right,
+  rgb(200, 190, 255) 0%,
+  rgb(222, 168, 248) 10%,
+  rgb(168, 222, 258) 30%,
+  rgb(189, 250, 205) 42%,
+  rgb(243, 250, 189) 58%,
+  rgb(250, 227, 189) 70%,
+  rgb(248, 172, 171) 95%,
+  rgb(254, 170, 212) 100%
+);
+$BOX_SHADOW: rgba(78, 35, 117, 0.15);
 
 $MIN_LARGE_TABLET_WIDTH: 765px;
-$SIDE_NAV_WIDTH: 14%;
+$SIDE_NAV_WIDTH: 20%;
 $NAV_HEIGHT: 75px;
+
+$LARGE_DESKTOP: 1560px;
+
+// Cool Colors
+// #7D84B2
+// #E8871E
+// #3891A6
+// #F2545B
+// #7B3E19
+// #F87060

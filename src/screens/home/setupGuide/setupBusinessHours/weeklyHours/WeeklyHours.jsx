@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import AddIcon from '@mui/icons-material/Add';
 import Checkbox from '@mui/material/Checkbox';
+
 import StartEndTimes from './startEndTimes/StartEndTimes';
+import { daysOfWeek } from '../businessHoursHelper';
 
 import styles from './WeeklyHours.module.scss';
-import { daysOfWeek } from '../businessHoursHelper';
 
 WeeklyHours.propTypes = {
   schedule: PropTypes.arrayOf(

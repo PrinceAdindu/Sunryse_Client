@@ -1,7 +1,7 @@
 export default async function createAccountLinkUrl(axios, toast) {
   try {
     const res = await axios.post('/clinic/stripe');
-    const url = res.data.accountLink;
+    const url = res.data.accountLink.url;
     return url;
   } catch (error) {
     if (error?.response?.status === 500)

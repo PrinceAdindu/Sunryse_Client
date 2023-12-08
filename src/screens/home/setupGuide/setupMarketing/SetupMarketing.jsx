@@ -1,48 +1,76 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { PopupWidget } from 'react-calendly';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import Checkbox from '@mui/material/Checkbox';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import StyledButton from '../../../../components/styledButton/StyledButton';
 import MeetingVector from '../../../../assets/MeetingVector.png';
 
 import styles from './SetupMarketing.module.scss';
-import StyledButton from '../../../../components/styledButton/StyledButton';
 
 SetupMarketing.propTypes = {
   expanded: PropTypes.arrayOf(PropTypes.string).isRequired,
   expand: PropTypes.func.isRequired,
-  incProgress: PropTypes.func.isRequired,
+  onStepCheck: PropTypes.func.isRequired,
 };
 
-export default function SetupMarketing({ expanded, expand, incProgress }) {
+export default function SetupMarketing({ expanded, expand, onStepCheck }) {
+  const [calendlyOpen, setCalendlyOpen] = useState(false);
+
+  const isChecked = localStorage.getItem('setupGuideMarketingCheck');
+
   function openSchedule() {
-    window.open(
-      'https://calendly.com/tanrajdhillon/terra-marketing-call',
-      '_blank',
+    // window.open(
+    //   'https://calendly.com/tanrajdhillon/terra-marketing-call',
+    //   '_blank',
+    // );
+    setCalendlyOpen(true);
+  }
+
+  function CalendlyPopup() {
+    return (
+      <div className={styles.calendlyPopup}>
+        <iframe
+          src="https://calendly.com/tanrajdhillon/terra-marketing-call"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+        ></iframe>
+      </div>
     );
   }
+
   return (
     <Accordion
-      className={`${styles.topAccordian} 
-        ${
-          expanded.includes('step2')
-            ? styles.selectedAccordian
-            : styles.unselectedAccordian
-        }
-      `}
+      className={
+        expanded.includes('step2')
+          ? styles.selectedAccord
+          : styles.unselectedAccordian
+      }
       expanded={expanded.includes('step2')}
       disableGutters
       onChange={() => expand('step2')}
       id="step2"
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <p className={styles.title}>Marketing</p>
+        <div className={styles.summary}>
+          <Checkbox
+            checked={isChecked === 'true'}
+            onChange={() => onStepCheck('setupGuideMarketingCheck')}
+          />
+          <p className={styles.title}>Book your branding session</p>
+        </div>
       </AccordionSummary>
       <AccordionDetails>
         <div className={styles.details}>
           <div className={styles.bulletListContiainer}>
             <p className={styles.subTitle}>
-              Schedule a call with one of Terra’s Clinical-Branding experts
+              Book your session with a Clinical-Branding and Website-Design
+              expert.
             </p>
             <p className={styles.text}>During the call they will:</p>
             <ul className={styles.bulletList}>
@@ -56,7 +84,7 @@ export default function SetupMarketing({ expanded, expand, incProgress }) {
         </div>
         <StyledButton
           className={styles.button}
-          text="Schedule Time"
+          text="Book branding session"
           onClick={() => openSchedule()}
         />
       </AccordionDetails>

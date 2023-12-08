@@ -1,17 +1,40 @@
 import { useState } from 'react';
+
+import SetupProfile from './setupProfile/SetupProfile';
 import SetupMarketing from './setupMarketing/SetupMarketing';
-import SetupRevenue from './setupRevenue/SetupRevenue';
 import SetupBusinessHours from './setupBusinessHours/SetupBusinessHours';
-import Launch from './launch/Launch';
+import SetupProducts from './setupProducts/SetupProducts';
+import SetupRevenue from './setupRevenue/SetupRevenue';
 import ProgressBar from '../../../components/progressBar/ProgressBar';
 
 import styles from './SetupGuide.module.scss';
 
 export default function SetupGuide() {
   const [expanded, setExpanded] = useState([]);
-  const [progress, setProgress] = useState(0);
 
-  const tasksCompleted = Math.floor(progress / 33);
+  const progress = localStorage.getItem('setupGuideProgress') || 0;
+  const tasksCompleted = Math.floor(progress / 20);
+
+  const incProgress = () => {
+    const curr = parseInt(progress) + 20;
+    localStorage.setItem('setupGuideProgress', curr.toString());
+  };
+
+  const decProgress = () => {
+    const curr = progress - 20;
+    localStorage.setItem('setupGuideProgress', curr.toString());
+  };
+
+  const onStepCheck = (stepId) => {
+    const isChecked = localStorage.getItem(stepId);
+    if (isChecked === 'true') {
+      localStorage.setItem(stepId, 'false');
+      decProgress();
+    } else {
+      localStorage.setItem(stepId, 'true');
+      incProgress();
+    }
+  };
 
   const expand = (step) => {
     setExpanded((prevExpanded) => {
@@ -23,28 +46,30 @@ export default function SetupGuide() {
     });
   };
 
-  const incProgress = () => {
-    if (progress === 66) {
-      setProgress(100);
-    } else {
-      setProgress(progress + 33);
-    }
-  };
-
   const SetupHeader = () => (
     <div className={styles.setupHeaderContainer}>
-      <p className={styles.title}>Setup Guide</p>
+      <p className={styles.title}>Setup guide</p>
       <p className={styles.text}>
-        Use this personalized setup guide to get your practice up and runnnig.
+        Use this personalized setup guide to get your practice up and running.
       </p>
       <div className={styles.progressContainer}>
         <p className={styles.progressBarText}>
-          {tasksCompleted} out of 3 tasks completed
+          {tasksCompleted} out of 5 tasks completed
         </p>
         <div className={styles.progressBar}>
-          <ProgressBar progress={progress} />
+          <ProgressBar progress={parseInt(progress)} />
         </div>
       </div>
+    </div>
+  );
+
+  const SetupLaunch = () => (
+    <div className={styles.setupLaunchContainer}>
+      <p className={styles.launchTitle}>Ready to launch</p>
+      <p className={styles.launchText}>
+        Your new practice will launch after your branding session! Prepare for
+        launch by watching these coaching videos.
+      </p>
     </div>
   );
 
@@ -52,23 +77,33 @@ export default function SetupGuide() {
     <>
       <SetupHeader />
       <div className={styles.setupAccordianContainer}>
+        <SetupProfile
+          expanded={expanded}
+          expand={expand}
+          onStepCheck={onStepCheck}
+        />
         <SetupMarketing
           expanded={expanded}
           expand={expand}
-          incProgress={incProgress}
+          onStepCheck={onStepCheck}
         />
         <SetupBusinessHours
           expanded={expanded}
           expand={expand}
-          incProgress={incProgress}
+          onStepCheck={onStepCheck}
+        />
+        <SetupProducts
+          expanded={expanded}
+          expand={expand}
+          onStepCheck={onStepCheck}
         />
         <SetupRevenue
           expanded={expanded}
           expand={expand}
-          incProgress={incProgress}
+          onStepCheck={onStepCheck}
         />
-        <Launch expanded={expanded} expand={expand} progress={progress} />
       </div>
+      {tasksCompleted === 5 && <SetupLaunch />}
     </>
   );
 }

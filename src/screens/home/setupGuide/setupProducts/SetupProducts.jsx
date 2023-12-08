@@ -5,65 +5,55 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Checkbox from '@mui/material/Checkbox';
 
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-import useToast from '../../../../hooks/useToast';
-import createAccountLinkUrl from './setupRevenueHelper';
 import StyledButton from '../../../../components/styledButton/StyledButton';
-import RevenueVector from '../../../../assets/RevenueVector.png';
 
-import styles from './SetupRevenue.module.scss';
+import MeetingVector from '../../../../assets/MeetingVector.png';
+import styles from './SetupProducts.module.scss';
 
-SetupRevenue.propTypes = {
+SetupProducts.propTypes = {
   expanded: PropTypes.arrayOf(PropTypes.string).isRequired,
   expand: PropTypes.func.isRequired,
   onStepCheck: PropTypes.func.isRequired,
 };
 
-export default function SetupRevenue({ expanded, expand, onStepCheck }) {
-  const isChecked = localStorage.getItem('setupGuideRevenueCheck');
+export default function SetupProducts({ expanded, expand, onStepCheck }) {
+  const isChecked = localStorage.getItem('setupProductsCheck');
 
-  const axios = useAxiosPrivate();
-  const toast = useToast();
-
-  async function stripeAccountLinkRedirect() {
-    const url = await createAccountLinkUrl(axios, toast);
-    window.open(url, '_blank');
-  }
   return (
     <Accordion
       className={
-        expanded.includes('step5')
+        expanded.includes('step4')
           ? styles.selectedAccord
           : styles.unselectedAccordian
       }
-      expanded={expanded.includes('step5')}
+      expanded={expanded.includes('step4')}
       disableGutters
-      onChange={() => expand('step5')}
-      id="step5"
+      onChange={() => expand('step4')}
+      id="step4"
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <div className={styles.summary}>
           <Checkbox
             checked={isChecked === 'true'}
-            onChange={() => onStepCheck('setupGuideRevenueCheck')}
+            onChange={() => onStepCheck('setupProductsCheck')}
           />
-          <p className={styles.title}>Set up Terra Payemnts </p>
+          <p className={styles.title}>Create your first bookable session</p>
         </div>
       </AccordionSummary>
       <AccordionDetails>
         <div className={styles.details}>
           <div className={styles.detailsContent}>
             <p className={styles.subTitle}>
-              Terra Payments is almost ready to go. You just need to provide a
-              few details to start getting paid by your clients.
+              Write a description, add availability, and set pricing for the
+              sessions you plan to offer.
             </p>
             <StyledButton
               className={styles.button}
-              text="Go to Terra Payments"
-              onClick={() => stripeAccountLinkRedirect()}
+              text="Create a session"
+              onClick={() => {}}
             />
           </div>
-          <img className={styles.image} src={RevenueVector} />
+          <img className={styles.image} src={MeetingVector} />
         </div>
       </AccordionDetails>
     </Accordion>

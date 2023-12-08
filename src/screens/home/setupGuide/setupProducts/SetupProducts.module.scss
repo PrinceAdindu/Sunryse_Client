@@ -33,17 +33,6 @@
   line-height: 25px;
 }
 
-// .text {
-//   font-size: 14px;
-//   color: $SOFT_BLACK;
-// }
-
-// .details {
-//   width: 100%;
-//   padding: 0px 20px 0px 20px;
-//   box-sizing: border-box;
-// }
-
 .details {
   display: flex;
   flex-direction: row;
@@ -65,14 +54,8 @@
   margin-top: -50px;
 }
 
-.dropdown {
-  width: 250px !important;
-  margin-bottom: 15px !important;
-}
-
 .button {
   background-color: $DARK_BLUE !important;
-  height: 35px !important;
   margin: 10px 0px 0px 0px !important;
 }
 

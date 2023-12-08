@@ -11,6 +11,37 @@
   border-radius: 10px;
   box-sizing: border-box;
   background-color: $DARK_BLUE;
+  -webkit-box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
+  -moz-box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
+  box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
+}
+
+.setupLaunchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 25px;
+  padding: 25px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background: $BLUE_GREEN_GRAD3;
+  -webkit-box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
+  -moz-box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
+  box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
+}
+
+.launchTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.launchText {
+  font-size: 14px;
+  color: white;
 }
 
 .setupAccordianContainer {
@@ -18,8 +49,8 @@
 }
 
 .title {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   color: white;
   margin-bottom: 15px;
 }
@@ -34,6 +65,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
   margin: 15px 0px 0px 0px;
 }
 
@@ -43,6 +75,6 @@
 }
 
 .progressBar {
-  width: 425px;
+  width: 30%;
   margin: 5px 0px 0px 15px;
 }
