@@ -6,18 +6,57 @@
   padding: 9px 12px;
 
   border: solid;
-  border-radius: 8px;
-  border-width: 1px;
+  border-radius: 5px;
+  border-width: 1.5px;
   box-sizing: border-box;
-  border-color: $SOFT_BLACK;
+  border-color: $MEDIUM_GRAY;
 
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   color: $SOFT_BLACK;
   background-color: white;
+  outline: none;
+}
+
+.smallInput {
+  height: 40px !important;
 }
 
 ::placeholder {
   opacity: 1;
+  color: $MEDIUM_GRAY;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 20px;
+  line-height: 24px;
+}
+
+.title {
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: $SOFT_BLACK;
+}
+
+.description {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
   color: $CHARCOAL;
 }

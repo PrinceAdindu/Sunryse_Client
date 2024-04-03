@@ -1,15 +1,18 @@
 import { useState, useEffect, useCallback } from 'react';
-import InputBlock from '../../components/inputBlock/InputBlock';
-import StyledButton from '../../components/styledButton/StyledButton';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import LoadingHOC from '../../components/loading/LoadingHOC';
+import InputField from '../../components/inputField/InputField';
+import StyledButton from '../../components/styledButton/StyledButton';
+
 import { onLogin } from './loginHelper';
 import useToast from '../../hooks/useToast';
 import useAuth from '../../hooks/useAuth';
 
-import logo from '../../assets/TerraLogoFull.png';
+import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+
 import styles from './Login.module.scss';
 
-export default function Login() {
+function Login({ loading, setLoading }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,7 +22,9 @@ export default function Login() {
   const location = useLocation();
 
   const submit = useCallback(async () => {
+    setLoading(true);
     await onLogin(email, password, toastInstance, setAuth, navigate, location);
+    setLoading(false);
   }, [email, location, navigate, password, setAuth, toastInstance]);
 
   useEffect(() => {
@@ -43,7 +48,7 @@ export default function Login() {
 
   const RegisterOption = () => (
     <span className={styles.span}>
-      New to Terra?{' '}
+      New to Sunryse?{' '}
       <Link className={styles.link} to="/register">
         Get started
       </Link>
@@ -66,17 +71,15 @@ export default function Login() {
 
   return (
     <div className={styles.screen}>
-      <div className={styles.card}>
+      <div id="Login" className={styles.card}>
         <Header />
-        <InputBlock
-          inputId="email_input"
+        <InputField
           classname={styles.input}
           title="Email"
           value={email}
           setValue={setEmail}
         />
-        <InputBlock
-          inputId="password_input"
+        <InputField
           classname={styles.input}
           title="Password"
           type="password"
@@ -94,3 +97,15 @@ export default function Login() {
     </div>
   );
 }
+
+const loaderStyles = {
+  color: 'white',
+};
+const containerStyles = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+};
+
+export default LoadingHOC(Login, 'Login', false, loaderStyles, containerStyles);

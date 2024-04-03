@@ -6,15 +6,12 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  min-height: 100%;
-  background: $WHITE_GRAY_DARK;
+  min-height: calc(100vh - $NAV_HEIGHT);
+  background: $WHITE_GRAY;
   padding: 50px;
   box-sizing: border-box;
 }
 
 .setupContainer {
-  // @media screen and (min-width: $LARGE_DESKTOP) {
-  //   width: 60%;
-  // }
-  width: 70%;
+  width: 80%;
 }

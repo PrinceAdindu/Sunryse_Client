@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { PopupWidget } from 'react-calendly';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Checkbox from '@mui/material/Checkbox';
+import CheckBox from '../../../../components/checkbox/Checkbox';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import StyledButton from '../../../../components/styledButton/StyledButton';
-import MeetingVector from '../../../../assets/MeetingVector.png';
 
+import OneOnOneImage from '../../../../assets/OneOnOneImage.jpeg';
 import styles from './SetupMarketing.module.scss';
 
 SetupMarketing.propTypes = {
@@ -58,35 +57,34 @@ export default function SetupMarketing({ expanded, expand, onStepCheck }) {
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <div className={styles.summary}>
-          <Checkbox
+          <CheckBox
             checked={isChecked === 'true'}
             onChange={() => onStepCheck('setupGuideMarketingCheck')}
           />
-          <p className={styles.title}>Book your branding session</p>
+          <p className={styles.title}>Personal Marketing Session</p>
         </div>
       </AccordionSummary>
       <AccordionDetails>
         <div className={styles.details}>
           <div className={styles.bulletListContiainer}>
             <p className={styles.subTitle}>
-              Book your session with a Clinical-Branding and Website-Design
-              expert.
+              Book a session with our Clinical-Branding and Website-Design
+              experts.
             </p>
             <p className={styles.text}>During the call they will:</p>
             <ul className={styles.bulletList}>
-              <li>Identify your unqiue value</li>
-              <li>Identify your ideal client and pricing strategy</li>
+              <li>Identify your your unqiue value</li>
               <li>Gather more information for your custom website</li>
               <li>Explain Terra's marketing approach to bring you clients</li>
             </ul>
+            <StyledButton
+              className={styles.button}
+              text="Book Branding Session"
+              onClick={() => openSchedule()}
+            />
           </div>
-          <img className={styles.image} src={MeetingVector} />
+          <img className={styles.image} src={OneOnOneImage} />
         </div>
-        <StyledButton
-          className={styles.button}
-          text="Book branding session"
-          onClick={() => openSchedule()}
-        />
       </AccordionDetails>
     </Accordion>
   );

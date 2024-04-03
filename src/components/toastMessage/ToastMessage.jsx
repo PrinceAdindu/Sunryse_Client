@@ -40,6 +40,7 @@ export default function ToastMessage() {
       anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       autoHideDuration={2000}
       onClose={handleClose}
+      sx={{ marginBottom: '5%' }}
     >
       <Alert
         onClose={handleClose}

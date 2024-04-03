@@ -1,18 +1,33 @@
-$DARK_BLUE: #052c35;
-$BLUE: #bbecd2;
-$LINK_BLUE: #005bd3;
-$GREEN: #96bd2b;
-$HOVER_GREEN: #87aa27;
-$DARK_GRAY: #8c9195;
-$GRAY: #e4e4e4;
-$WHITE_GRAY: #f7f7f7;
-$WHITE_GRAY_DARK: #f1f1f1;
-$CHARCOAL: #5e5e5e;
-$SOFT_BLACK: #303030;
-$BLUE_GREEN_GRAD: linear-gradient(180deg, #052c35 0%, #bbecd2 100%);
-$BLUE_GREEN_GRAD2: linear-gradient(90deg, #bbecd2 0%, #052c35 100%);
-$BLUE_GREEN_GRAD3: linear-gradient(90deg, #052c35 0%, #bbecd2 120%);
+$DARK_BLUE: #062c35;
+$BLUE_GREEN: #297373;
+$DARK_BLUE_GREEN: #266969;
+$LIGHT_BLUE: #b5d6d6;
+$PINK: #ff7073;
+$DARK_PINK: #ff5c5f;
+$YELLOW: #edb230;
 $ERROR_RED: #c5514f;
+$SOFT_BLACK: #303030;
+$CHARCOAL: #5e5e5e;
+$DARK_GRAY: #8c9195;
+$MEDIUM_GRAY: #b1b1b1;
+$GRAY: #e4e4e4;
+$WHITE_GRAY_DARK: #f1f1f1;
+$WHITE_GRAY: #f7f7f7;
+$PINK_GRAD: linear-gradient(
+  90deg,
+  hsla(120, 46%, 92%, 1) 0%,
+  hsla(147, 95%, 8%, 1) 100%
+);
+$BLUE_GREEN_GRAD: linear-gradient(
+  180deg,
+  hsla(180, 47%, 31%, 1) 0%,
+  hsla(191, 80%, 12%, 1) 100%
+);
+$BLUE_GRAD: linear-gradient(
+  180deg,
+  hsla(191, 80%, 12%, 1) 0%,
+  hsla(180, 29%, 77%, 1) 100%
+);
 $RAINBOW_PASTEL_GRAD: linear-gradient(
   to right,
   rgb(200, 190, 255) 0%,
@@ -24,12 +39,12 @@ $RAINBOW_PASTEL_GRAD: linear-gradient(
   rgb(248, 172, 171) 95%,
   rgb(254, 170, 212) 100%
 );
-$BOX_SHADOW: rgba(78, 35, 117, 0.15);
+$BOX_SHADOW: 0px 3px 8px rgba(0, 0, 0, 0.24);
 
-$MIN_LARGE_TABLET_WIDTH: 765px;
-$SIDE_NAV_WIDTH: 20%;
 $NAV_HEIGHT: 75px;
+$SIDE_NAV_WIDTH: 20%;
 
+$LARGE_TABLET_WIDTH: 765px;
 $LARGE_DESKTOP: 1560px;
 
 // Cool Colors
@@ -39,3 +54,27 @@ $LARGE_DESKTOP: 1560px;
 // #F2545B
 // #7B3E19
 // #F87060
+
+// 0a1834
+// #1A3B83
+// #e8ebf3
+// #047CC0
+// #27C6A0
+// #15AA4B
+
+// V1
+// $DARK_BLUE: #052c35;
+// $BLUE: #bbecd2;
+// $YELLOW: #005bd3;
+// $DARK_GREEN: #96bd2b;
+// $HOVER_GREEN: #87aa27;
+// $BLUE_GREEN_GRAD: linear-gradient(180deg, #052c35 0%, #bbecd2 100%);
+$BLUE_GREEN_GRAD2: linear-gradient(90deg, #bbecd2 0%, #052c35 100%);
+$BLUE_GREEN_GRAD3: linear-gradient(90deg, #052c35 0%, #bbecd2 120%);
+
+// V2
+// $DARK_GREEN: #012712;
+// $MEDIUM_GREEN: #055829;
+// $PINK: #03632d;
+// $YELLOW: #edb230;
+// $WHITE_GREEN: #e1f4e1;

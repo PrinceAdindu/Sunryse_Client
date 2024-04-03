@@ -3,8 +3,8 @@ import { useState } from 'react';
 import SetupProfile from './setupProfile/SetupProfile';
 import SetupMarketing from './setupMarketing/SetupMarketing';
 import SetupBusinessHours from './setupBusinessHours/SetupBusinessHours';
-import SetupProducts from './setupProducts/SetupProducts';
-import SetupRevenue from './setupRevenue/SetupRevenue';
+import SetupServices from './setupServices/SetupServices';
+import SetupFinances from './setupFinances/SetupFinances';
 import ProgressBar from '../../../components/progressBar/ProgressBar';
 
 import styles from './SetupGuide.module.scss';
@@ -48,13 +48,10 @@ export default function SetupGuide() {
 
   const SetupHeader = () => (
     <div className={styles.setupHeaderContainer}>
-      <p className={styles.title}>Setup guide</p>
-      <p className={styles.text}>
-        Use this personalized setup guide to get your practice up and running.
-      </p>
+      <p className={styles.title}>Setup Guide</p>
       <div className={styles.progressContainer}>
         <p className={styles.progressBarText}>
-          {tasksCompleted} out of 5 tasks completed
+          {tasksCompleted} out of 5 tasks complete
         </p>
         <div className={styles.progressBar}>
           <ProgressBar progress={parseInt(progress)} />
@@ -67,8 +64,7 @@ export default function SetupGuide() {
     <div className={styles.setupLaunchContainer}>
       <p className={styles.launchTitle}>Ready to launch</p>
       <p className={styles.launchText}>
-        Your new practice will launch after your branding session! Prepare for
-        launch by watching these coaching videos.
+        Your new practice will launch after your branding session on May 2nd
       </p>
     </div>
   );
@@ -76,6 +72,7 @@ export default function SetupGuide() {
   return (
     <>
       <SetupHeader />
+      {tasksCompleted === 5 && <SetupLaunch />}
       <div className={styles.setupAccordianContainer}>
         <SetupProfile
           expanded={expanded}
@@ -92,18 +89,17 @@ export default function SetupGuide() {
           expand={expand}
           onStepCheck={onStepCheck}
         />
-        <SetupProducts
+        <SetupServices
           expanded={expanded}
           expand={expand}
           onStepCheck={onStepCheck}
         />
-        <SetupRevenue
+        <SetupFinances
           expanded={expanded}
           expand={expand}
           onStepCheck={onStepCheck}
         />
       </div>
-      {tasksCompleted === 5 && <SetupLaunch />}
     </>
   );
 }

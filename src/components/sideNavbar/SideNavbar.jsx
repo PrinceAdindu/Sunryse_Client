@@ -1,107 +1,186 @@
-import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import ChairIcon from '@mui/icons-material/Chair';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import PaymentIcon from '@mui/icons-material/Payment';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import SettingsIcon from '@mui/icons-material/Settings';
+import SellIcon from '@mui/icons-material/Sell';
+import CampaignIcon from '@mui/icons-material/Campaign';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import NavTerraLogo from '../../assets/TerraLogoLong.png';
+import SunryseLogo from '../../assets/NewSunryseLogoTallNameFill.png';
+import { SIDE_NAV_OPTIONS, getCurrentTab } from './sideNavbarHelper';
 
 import styles from './SideNavbar.module.scss';
-import { useState } from 'react';
+import config from '../../config';
 
 export default function SideNavbar() {
-  const [option, setOption] = useState(localStorage.getItem('sideNavOption'));
+  const navigate = useNavigate();
   const location = useLocation();
 
-  const noNavRoutes = ['/login', '/register'];
-  const showNav = !noNavRoutes.includes(location.pathname);
+  const [tab, setTab] = useState(getCurrentTab(location.pathname));
 
-  const SIDE_NAV_OPTIONS = {
-    HOME: 'Home',
-    SESSIONS: 'Sessions',
-    BUSINESS_HOURS: 'Business Hours',
-    REVENUE: 'Revenue',
-    SUPPORT: 'Support',
-  };
+  useEffect(() => {
+    const currentTab = getCurrentTab(location.pathname);
+    setTab(currentTab);
+  }, [location.pathname]);
 
-  function select(selectedOption) {
-    localStorage.setItem('sideNavOption', selectedOption);
-    setOption(selectedOption);
-    console.log(selectedOption);
+  const showNav = !config.externalRoutes.includes(location.pathname);
+
+  function select(selectedTab) {
+    navigate(selectedTab.url);
   }
 
   function Home() {
+    const selected = tab === SIDE_NAV_OPTIONS.HOME;
     return (
       <div
-        className={`${styles.iconContainer} ${styles.homeIconContainer} ${
-          option === SIDE_NAV_OPTIONS.HOME && styles.selected
-        }`}
+        className={`${styles.iconContainer} ${selected && styles.selected}`}
         onClick={() => select(SIDE_NAV_OPTIONS.HOME)}
       >
-        <HomeIcon fontSize="small" className={styles.icon} />{' '}
-        <p className={styles.iconText}>{SIDE_NAV_OPTIONS.HOME}</p>
+        <HomeIcon
+          fontSize="small"
+          className={selected ? styles.iconSelected : styles.icon}
+        />{' '}
+        <p className={selected ? styles.iconTextSelected : styles.iconText}>
+          {SIDE_NAV_OPTIONS.HOME.label}
+        </p>
       </div>
     );
   }
-  function Sessions() {
+  function Bookings() {
+    const selected = tab === SIDE_NAV_OPTIONS.BOOKINGS;
     return (
       <div
-        className={`${styles.iconContainer} ${
-          option === SIDE_NAV_OPTIONS.SESSIONS && styles.selected
-        }`}
-        onClick={() => select(SIDE_NAV_OPTIONS.SESSIONS)}
+        className={`${styles.iconContainer} ${selected && styles.selected}`}
+        onClick={() => select(SIDE_NAV_OPTIONS.BOOKINGS)}
       >
-        <ChairIcon fontSize="small" className={styles.icon} />{' '}
-        <p className={styles.iconText}>{SIDE_NAV_OPTIONS.SESSIONS}</p>
+        <ChairIcon
+          fontSize="small"
+          className={selected ? styles.iconSelected : styles.icon}
+        />{' '}
+        <p className={selected ? styles.iconTextSelected : styles.iconText}>
+          {SIDE_NAV_OPTIONS.BOOKINGS.label}
+        </p>
       </div>
     );
   }
   function BusinessHours() {
+    const selected = tab === SIDE_NAV_OPTIONS.BUSINESS_HOURS;
     return (
       <div
-        className={`${styles.iconContainer} ${
-          option === SIDE_NAV_OPTIONS.BUSINESS_HOURS && styles.selected
-        }`}
+        className={`${styles.iconContainer} ${selected && styles.selected}`}
         onClick={() => select(SIDE_NAV_OPTIONS.BUSINESS_HOURS)}
       >
-        <CalendarMonthIcon fontSize="small" className={styles.icon} />{' '}
-        <p className={styles.iconText}>{SIDE_NAV_OPTIONS.BUSINESS_HOURS}</p>
+        <CalendarMonthIcon
+          fontSize="small"
+          className={selected ? styles.iconSelected : styles.icon}
+        />{' '}
+        <p className={selected ? styles.iconTextSelected : styles.iconText}>
+          {SIDE_NAV_OPTIONS.BUSINESS_HOURS.label}
+        </p>
       </div>
     );
   }
-  function Revenue() {
+  function Services() {
+    const selected = tab === SIDE_NAV_OPTIONS.SERVICES;
     return (
       <div
-        className={`${styles.iconContainer} ${
-          option === SIDE_NAV_OPTIONS.REVENUE && styles.selected
-        }`}
-        onClick={() => select(SIDE_NAV_OPTIONS.REVENUE)}
+        className={`${styles.iconContainer} ${selected && styles.selected}`}
+        onClick={() => select(SIDE_NAV_OPTIONS.SERVICES)}
       >
-        <PaymentIcon fontSize="small" className={styles.icon} />{' '}
-        <p className={styles.iconText}>{SIDE_NAV_OPTIONS.REVENUE}</p>
+        <SellIcon
+          fontSize="small"
+          className={selected ? styles.iconSelected : styles.icon}
+        />{' '}
+        <p className={selected ? styles.iconTextSelected : styles.iconText}>
+          {SIDE_NAV_OPTIONS.SERVICES.label}
+        </p>
+      </div>
+    );
+  }
+  function Finances() {
+    const selected = tab === SIDE_NAV_OPTIONS.FINANCES;
+    return (
+      <div
+        className={`${styles.iconContainer} ${selected && styles.selected}`}
+        onClick={() => select(SIDE_NAV_OPTIONS.FINANCES)}
+      >
+        <AccountBalanceIcon
+          fontSize="small"
+          className={selected ? styles.iconSelected : styles.icon}
+        />{' '}
+        <p className={selected ? styles.iconTextSelected : styles.iconText}>
+          {SIDE_NAV_OPTIONS.FINANCES.label}
+        </p>
+      </div>
+    );
+  }
+  function Marketing() {
+    const selected = tab === SIDE_NAV_OPTIONS.MARKETING;
+    return (
+      <div
+        className={`${styles.iconContainer} ${selected && styles.selected}`}
+        onClick={() => select(SIDE_NAV_OPTIONS.MARKETING)}
+      >
+        <CampaignIcon
+          fontSize="medium"
+          className={selected ? styles.iconSelected : styles.icon}
+        />{' '}
+        <p className={selected ? styles.iconTextSelected : styles.iconText}>
+          {SIDE_NAV_OPTIONS.MARKETING.label}
+        </p>
       </div>
     );
   }
   function Support() {
+    const selected = tab === SIDE_NAV_OPTIONS.SUPPORT;
     return (
       <div
-        className={`${styles.iconContainer} ${
-          option === SIDE_NAV_OPTIONS.SUPPORT && styles.selected
-        }`}
+        className={`${styles.iconContainer} ${selected && styles.selected}`}
         onClick={() => select(SIDE_NAV_OPTIONS.SUPPORT)}
       >
-        <FavoriteBorderIcon fontSize="small" className={styles.icon} />{' '}
-        <p className={styles.iconText}>{SIDE_NAV_OPTIONS.SUPPORT}</p>
+        <FavoriteBorderIcon
+          fontSize="small"
+          className={selected ? styles.iconSelected : styles.icon}
+        />{' '}
+        <p className={selected ? styles.iconTextSelected : styles.iconText}>
+          {SIDE_NAV_OPTIONS.SUPPORT.label}
+        </p>
+      </div>
+    );
+  }
+  function Settings() {
+    const selected = tab === SIDE_NAV_OPTIONS.SETTINGS;
+    return (
+      <div
+        className={`${styles.iconContainer} ${selected && styles.selected}`}
+        onClick={() => select(SIDE_NAV_OPTIONS.SETTINGS)}
+      >
+        <SettingsIcon
+          fontSize="small"
+          className={selected ? styles.iconSelected : styles.icon}
+        />{' '}
+        <p className={selected ? styles.iconTextSelected : styles.iconText}>
+          {SIDE_NAV_OPTIONS.SETTINGS.label}
+        </p>
       </div>
     );
   }
   return (
     showNav && (
       <div className={styles.sideNavcontainer}>
+        <img src={SunryseLogo} className={styles.logoImage} />
         <Home />
-        <Sessions />
+        <Bookings />
         <BusinessHours />
-        <Revenue />
+        <Services />
+        <Finances />
+        <Marketing />
         <Support />
+        <Settings />
       </div>
     )
   );

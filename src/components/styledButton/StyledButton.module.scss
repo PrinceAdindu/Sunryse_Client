@@ -2,22 +2,23 @@
 
 .button {
   border-style: none;
-  border-radius: 7px;
+  border-radius: 4px;
   height: 35px;
+  min-width: 125px;
   padding: 10px;
 
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
   text-transform: none;
 }
 
 .styled {
-  background-color: $GREEN;
+  background-color: $BLUE_GREEN;
   color: white;
 }
 
 .styled:hover {
-  background-color: $HOVER_GREEN;
+  background-color: $DARK_BLUE_GREEN;
   cursor: pointer;
 }
 

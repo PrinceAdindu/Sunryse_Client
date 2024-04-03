@@ -1,7 +1,7 @@
 @import '../../../../variables';
 
 .unselectedAccordian {
-  background-color: $WHITE_GRAY !important;
+  background-color: white !important;
 }
 
 .unselectedAccordian:hover {
@@ -20,8 +20,8 @@
 }
 
 .title {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: $SOFT_BLACK;
 }
 
@@ -65,18 +65,15 @@
 }
 
 .image {
-  width: 150px;
-  height: 150px;
-  margin-right: 5%;
+  width: 250px;
+  height: 180px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
 }
 
 .button {
-  background-color: $DARK_BLUE !important;
-  margin: 10px 0px 0px 43px !important;
-}
-
-.button:hover {
-  background-color: black !important;
+  margin: 10px 0px 0px 0px !important;
 }
 
 .calendlyPopup {

@@ -1,14 +1,16 @@
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import NotificationsIcon from '@mui/icons-material/NotificationsNone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import NavTerraLogo from '../../assets/TerraLogoLong.png';
-import logout from './navbarHelpers';
+import logout, { getClinicName } from './navbarHelpers';
 
 import styles from './Navbar.module.scss';
 import useToast from '../../hooks/useToast';
 
 export default function Navbar() {
+  const [clinicName, setClinicName] = useState('');
+
   const location = useLocation();
   const navigate = useNavigate();
   const axios = useAxiosPrivate();
@@ -16,6 +18,17 @@ export default function Navbar() {
 
   const noNavRoutes = ['/login', '/register'];
   const showNav = !noNavRoutes.includes(location.pathname);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (showNav) {
+        const name = await getClinicName(axios, toast);
+        setClinicName(name);
+      }
+    };
+
+    fetchData();
+  }, [showNav]);
 
   function Notifications() {
     return (
@@ -37,7 +50,7 @@ export default function Navbar() {
   return (
     showNav && (
       <div className={styles.navBarContainer}>
-        <img src={NavTerraLogo} className={styles.logo} />
+        <p className={styles.clinicName}>{clinicName}</p>
         <div className={styles.navOptionsContainer}>
           <Notifications />
           <Account />

@@ -21,6 +21,7 @@ InputBlock.propTypes = {
   setValue: PropTypes.func.isRequired,
   type: PropTypes.string,
   description: PropTypes.string,
+  size: PropTypes.string,
 };
 
 export default function InputBlock({
@@ -39,6 +40,7 @@ export default function InputBlock({
   setValue,
   type = 'text',
   description = '',
+  size = 'md',
 }) {
   const hideErrors = () => {
     errors.forEach((error) => {
@@ -80,6 +82,7 @@ export default function InputBlock({
           }}
           type={type}
           value={value}
+          size={size}
         />
       </div>
       {description && <div className={styles.description}>{description}</div>}

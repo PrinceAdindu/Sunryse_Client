@@ -8,7 +8,9 @@ export async function onLogin(
   navigate,
   location,
 ) {
-  const data = { email, password };
+  const sanitizedEmail = email.toLowerCase();
+  console.log(sanitizedEmail);
+  const data = { email: sanitizedEmail, password };
   let to = '/home';
   const from = location.state?.from?.pathname;
 

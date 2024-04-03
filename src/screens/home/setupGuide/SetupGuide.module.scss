@@ -10,38 +10,10 @@
   padding: 25px;
   border-radius: 10px;
   box-sizing: border-box;
-  background-color: $DARK_BLUE;
-  -webkit-box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
-  -moz-box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
-  box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
-}
-
-.setupLaunchContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 25px;
-  padding: 25px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  background: $BLUE_GREEN_GRAD3;
-  -webkit-box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
-  -moz-box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
-  box-shadow: 0px 5px 10px 2px $BOX_SHADOW;
-}
-
-.launchTitle {
-  font-size: 16px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 15px;
-}
-
-.launchText {
-  font-size: 14px;
-  color: white;
+  background-color: white;
+  -webkit-box-shadow: $BOX_SHADOW;
+  -moz-box-shadow: $BOX_SHADOW;
+  box-shadow: $BOX_SHADOW;
 }
 
 .setupAccordianContainer {
@@ -51,30 +23,58 @@
 .title {
   font-size: 16px;
   font-weight: 700;
-  color: white;
+  color: $SOFT_BLACK;
   margin-bottom: 15px;
 }
 
 .text {
   font-size: 14px;
-  color: white;
+  color: $SOFT_BLACK;
 }
 
 .progressContainer {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  margin: 15px 0px 0px 0px;
 }
 
 .progressBarText {
   font-size: 14px;
-  color: white;
+  color: $SOFT_BLACK;
 }
 
 .progressBar {
-  width: 30%;
-  margin: 5px 0px 0px 15px;
+  width: 70%;
+  margin: 7px 0px 0px 15px;
+}
+
+.setupLaunchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin: 25px 0px 25px 0px;
+  padding: 25px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background: $LIGHT_BLUE;
+  -webkit-box-shadow: $BOX_SHADOW;
+  -moz-box-shadow: $BOX_SHADOW;
+  box-shadow: $BOX_SHADOW;
+}
+
+.launchTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: $SOFT_BLACK;
+  margin-bottom: 15px;
+}
+
+.launchText {
+  font-size: 14px;
+  font-weight: 500;
+  color: $SOFT_BLACK;
 }

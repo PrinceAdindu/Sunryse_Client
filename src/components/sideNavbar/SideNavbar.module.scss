@@ -2,17 +2,24 @@
 
 .sideNavcontainer {
   position: sticky;
-  top: 75px;
+  top: 0px;
   left: 0px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   width: $SIDE_NAV_WIDTH;
-  height: calc(100vh - 75px);
+  height: 100vh;
   z-index: 100;
-  background-color: $GRAY;
+  background-color: $DARK_BLUE;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.logoImage {
+  width: 135px;
+  height: 150px;
+  margin: 10px 0px 10px 0px;
+  align-self: center;
 }
 
 .iconContainer {
@@ -20,33 +27,46 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 90%;
+  width: 85%;
   margin: 10px 15px 0px 15px;
-  padding: 5px 0px 5px 10px;
+  padding: 10px;
   border-radius: 10px;
   box-sizing: border-box;
 }
 
 .iconContainer:hover {
-  background-color: $WHITE_GRAY_DARK;
+  background-color: white;
   cursor: pointer;
-}
-
-.homeIconContainer {
-  margin-top: 15px !important;
+  .icon {
+    color: $DARK_BLUE;
+  }
+  .iconText {
+    color: $DARK_BLUE;
+  }
 }
 
 .icon {
-  color: $SOFT_BLACK;
+  color: white;
+}
+
+.iconSelected {
+  color: $DARK_BLUE;
 }
 
 .iconText {
-  font-size: 12px;
-  color: $SOFT_BLACK;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   margin-left: 10px;
+  color: white;
+}
+
+.iconTextSelected {
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 10px;
+  color: $DARK_BLUE;
 }
 
 .selected {
-  background-color: $WHITE_GRAY_DARK;
+  background-color: white;
 }

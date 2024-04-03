@@ -1,13 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Checkbox from '@mui/material/Checkbox';
+import CheckBox from '../../../../components/checkbox/Checkbox';
 
 import StyledButton from '../../../../components/styledButton/StyledButton';
 
-import MeetingVector from '../../../../assets/MeetingVector.png';
+import ProfileSetupImage from '../../../../assets/ProfileSetupImage2.png';
 import styles from './SetupProfile.module.scss';
 
 SetupProfile.propTypes = {
@@ -18,6 +19,8 @@ SetupProfile.propTypes = {
 
 export default function SetupProfile({ expanded, expand, onStepCheck }) {
   const isChecked = localStorage.getItem('setupProfileCheck');
+
+  const navigate = useNavigate();
 
   return (
     <Accordion
@@ -33,27 +36,29 @@ export default function SetupProfile({ expanded, expand, onStepCheck }) {
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <div className={styles.summary}>
-          <Checkbox
+          <CheckBox
             checked={isChecked === 'true'}
             onChange={() => onStepCheck('setupProfileCheck')}
           />
-          <p className={styles.title}>Name your practice</p>
+          <p className={styles.title}>Practice Name And Details</p>
         </div>
       </AccordionSummary>
       <AccordionDetails>
         <div className={styles.details}>
           <div className={styles.detailsContent}>
             <p className={styles.subTitle}>
-              Your practice is currently untitled. The name will appear on your
-              website and whenever a client searches for you.
+              Name your practice and add your qualification details. You can
+              always edit these later on.
             </p>
             <StyledButton
               className={styles.button}
-              text="Name my practice"
-              onClick={() => {}}
+              text="Name My Practice"
+              onClick={() => {
+                navigate('/settings');
+              }}
             />
           </div>
-          <img className={styles.image} src={MeetingVector} />
+          <img className={styles.image} src={ProfileSetupImage} />
         </div>
       </AccordionDetails>
     </Accordion>

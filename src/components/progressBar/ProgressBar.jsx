@@ -15,6 +15,7 @@ export default function ProgressBar({ progress }) {
         className={styles.linearProgress}
         variant="determinate"
         value={progress}
+        color="inherit"
       />
     </Box>
   );

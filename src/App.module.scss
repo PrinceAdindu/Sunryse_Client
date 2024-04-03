@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;550;600;650;700;900&display=swap');
 @import './variables';
 
 * {
@@ -18,15 +18,25 @@
   }
 
   body {
-    background-color: $WHITE_GRAY_DARK;
+    background-color: white;
   }
 }
 
-.contentContainer {
+.app {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
+  // background-color: $WHITE_GRAY;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
 }
