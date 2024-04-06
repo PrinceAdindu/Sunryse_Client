@@ -9,11 +9,11 @@ import Dropdown from '../../../components/dropdown/Dropdown';
 import WeeklyHours from '../../businessHours/weeklyHours/WeeklyHours';
 import StyledButton from '../../../components/styledButton/StyledButton';
 
+import { NEW_SERVICE_FORM_RULES } from './newServiceFormRules';
 import { DEFAULT_SCHEDULE } from '../../businessHours/businessHoursHelper';
 import { createService, sanitizeData, validateData } from './newServiceHelper';
 
 import styles from './NewService.module.scss';
-import { NEW_SERVICE_FORM_RULES } from './newServiceFormRules';
 
 export default function NewService() {
   const [formData, setFormData] = useState({

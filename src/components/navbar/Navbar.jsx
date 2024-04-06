@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import NotificationsIcon from '@mui/icons-material/NotificationsNone';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LockIcon from '@mui/icons-material/Lock';
 import logout, { getClinicName } from './navbarHelpers';
 
 import styles from './Navbar.module.scss';
@@ -37,10 +37,10 @@ export default function Navbar() {
       </div>
     );
   }
-  function Account() {
+  function Logout() {
     return (
       <div className={styles.iconContainer}>
-        <AccountCircleIcon
+        <LockIcon
           className={styles.icon}
           onClick={() => logout(axios, navigate, toast)}
         />{' '}
@@ -53,7 +53,7 @@ export default function Navbar() {
         <p className={styles.clinicName}>{clinicName}</p>
         <div className={styles.navOptionsContainer}>
           <Notifications />
-          <Account />
+          <Logout />
         </div>
       </div>
     )

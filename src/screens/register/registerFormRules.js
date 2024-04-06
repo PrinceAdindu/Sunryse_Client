@@ -5,6 +5,7 @@ export const REGISTER_FORM_RULES = {
     type: 'string',
     required: true,
     checks: [
+      (formData) => FORM_RULES_FUNCS.requiredCheck(formData.email),
       (formData) =>
         FORM_RULES_FUNCS.regexCheck(
           formData.email,
@@ -17,7 +18,7 @@ export const REGISTER_FORM_RULES = {
     required: true,
     checks: [
       (formData) => FORM_RULES_FUNCS.requiredCheck(formData.passwordConf),
-      (formData) => FORM_RULES_FUNCS.minLengthCheck(formData.availability, 8),
+      (formData) => FORM_RULES_FUNCS.minLengthCheck(formData.passwordConf, 8),
     ],
   },
   passwordConf: {
@@ -25,9 +26,9 @@ export const REGISTER_FORM_RULES = {
     required: true,
     checks: [
       (formData) => FORM_RULES_FUNCS.requiredCheck(formData.passwordConf),
+      (formData) => FORM_RULES_FUNCS.minLengthCheck(formData.passwordConf, 8),
       (formData) =>
-        FORM_RULES_FUNCS.equals(formData.passwordConf, formData.password),
-      (formData) => FORM_RULES_FUNCS.minLengthCheck(formData.availability, 8),
+        FORM_RULES_FUNCS.equalsCheck(formData.passwordConf, formData.password),
     ],
   },
 };

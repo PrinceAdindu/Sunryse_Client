@@ -2,17 +2,17 @@ import axios from '../../api/axios';
 import { checkFormData } from '../../utilities/formChecks';
 import { REGISTER_FORM_RULES } from './registerFormRules';
 
-export async function onRegister(email, password, toastInstance) {
-  const data = { email, password };
+export async function onRegister(formData, toast, navigate) {
   try {
-    await axios.post('/register/clinic', data);
+    await axios.post('/register/clinic', { data: formData });
+    navigate('/login');
   } catch (error) {
     if (error?.response?.status === 409)
-      toastInstance.error('This email is already registered with a Terra ID.');
+      toast.error('This email is already registered with a Terra ID.');
     else if (error?.response?.status === 400)
-      toastInstance.error('Please fill in all the required information.');
+      toast.error('Please fill in all the required information.');
     else
-      toastInstance.error(
+      toast.error(
         'There was an error creating your Terra ID, please try again.',
       );
   }

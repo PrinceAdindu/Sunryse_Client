@@ -13,10 +13,10 @@ export async function saveBusinessHours(axios, toast, timeZone, schedule) {
 
 export async function getBusinessHours(axios, toast) {
   try {
-    const properties = ['schedule', 'timeZone'];
+    const fields = ['schedule', 'timeZone'];
     const res = await axios.get('/clinic', {
       params: {
-        properties,
+        fields,
       },
     });
     return res.data;

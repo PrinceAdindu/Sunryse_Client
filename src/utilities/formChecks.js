@@ -88,12 +88,12 @@ const equalsCheck = (value, amount) => {
 };
 
 const regexCheck = (value, regex) => {
-  if (!regex.test(value)) {
+  if (regex.test(value)) {
     return { passed: true, message: 'Passed' };
   } else {
     return {
       passed: false,
-      message: `Minimum length of ${value} not reached`,
+      message: `Not a valid email address`,
     };
   }
 };

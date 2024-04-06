@@ -47,13 +47,23 @@ function Services({ setLoading }) {
 
   const onEdit = async (serviceData) => {
     setLoading(true);
-    await updateService(axios, toast, serviceData);
+    await updateService(serviceData, axios, toast);
+    setLoading(false);
+  };
+
+  const onStatusChange = async (serviceId, status) => {
+    setLoading(true);
+    const serviceToUpdate = currentServices.find((s) => {
+      return s.id === serviceId;
+    });
+    const updatedServiceData = { ...serviceToUpdate, status: status };
+    await updateService(updatedServiceData, axios, toast);
     setLoading(false);
   };
 
   const onDelete = async (id) => {
     setLoading(true);
-    await deleteService(axios, toast, id);
+    await deleteService(id, axios, toast);
     setLoading(false);
   };
 
@@ -69,7 +79,7 @@ function Services({ setLoading }) {
             onEdit={onEdit}
             onDelete={onDelete}
             status={true}
-            onStatusChange={onEdit}
+            onStatusChange={onStatusChange}
           />
           <StyledButton
             className={styles.button}

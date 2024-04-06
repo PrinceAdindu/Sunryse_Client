@@ -11,10 +11,10 @@ export default async function logout(axios, navigate, toast) {
 
 export async function getClinicName(axios, toast) {
   try {
-    const properties = ['clinicName'];
+    const fields = ['clinicName'];
     const res = await axios.get('/clinic', {
       params: {
-        properties,
+        fields,
       },
     });
 

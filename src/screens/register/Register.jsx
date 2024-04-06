@@ -24,15 +24,13 @@ export default function Register() {
     passwordConf: '',
   });
 
-  const axios = useAxiosPrivate();
   const toast = useToast();
   const navigate = useNavigate();
 
   async function submit() {
-    const valid = await validateData(formData, setErrors);
+    const valid = validateData(formData, setErrors);
     if (valid) {
-      await onRegister(formData, axios, toast);
-      navigate('/login');
+      await onRegister(formData, toast, navigate);
     }
   }
 
@@ -115,7 +113,7 @@ export default function Register() {
           description="Your password must be at least 8 characters."
           type="password"
           value={formData.password}
-          setValue={(value) => updateForm('email', value)}
+          setValue={(value) => updateForm('password', value)}
           error={errors.password}
           resetError={() => updateErrors('password', '')}
         />
