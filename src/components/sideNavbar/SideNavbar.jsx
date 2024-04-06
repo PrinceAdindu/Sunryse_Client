@@ -29,158 +29,74 @@ export default function SideNavbar() {
 
   const showNav = !config.externalRoutes.includes(location.pathname);
 
-  function select(selectedTab) {
-    navigate(selectedTab.url);
-  }
+  const SideNavs = () => {
+    const sideBarDatas = [
+      {
+        link: SIDE_NAV_OPTIONS.HOME,
+        Icon: HomeIcon,
+      },
+      {
+        link: SIDE_NAV_OPTIONS.BOOKINGS,
+        Icon: ChairIcon,
+      },
+      {
+        link: SIDE_NAV_OPTIONS.BUSINESS_HOURS,
+        Icon: CalendarMonthIcon,
+      },
+      {
+        link: SIDE_NAV_OPTIONS.SERVICES,
+        Icon: SellIcon,
+      },
+      {
+        link: SIDE_NAV_OPTIONS.FINANCES,
+        Icon: AccountBalanceIcon,
+      },
+      {
+        link: SIDE_NAV_OPTIONS.MARKETING,
+        Icon: CampaignIcon,
+        IconProps: {
+          fontSize: 'medium',
+        },
+      },
+      {
+        link: SIDE_NAV_OPTIONS.SUPPORT,
+        Icon: FavoriteBorderIcon,
+      },
+      {
+        link: SIDE_NAV_OPTIONS.SETTINGS,
+        Icon: SettingsIcon,
+      },
+    ];
 
-  function Home() {
-    const selected = tab === SIDE_NAV_OPTIONS.HOME;
-    return (
-      <div
-        className={`${styles.iconContainer} ${selected && styles.selected}`}
-        onClick={() => select(SIDE_NAV_OPTIONS.HOME)}
-      >
-        <HomeIcon
-          fontSize="small"
-          className={selected ? styles.iconSelected : styles.icon}
-        />{' '}
-        <p className={selected ? styles.iconTextSelected : styles.iconText}>
-          {SIDE_NAV_OPTIONS.HOME.label}
-        </p>
-      </div>
-    );
-  }
-  function Bookings() {
-    const selected = tab === SIDE_NAV_OPTIONS.BOOKINGS;
-    return (
-      <div
-        className={`${styles.iconContainer} ${selected && styles.selected}`}
-        onClick={() => select(SIDE_NAV_OPTIONS.BOOKINGS)}
-      >
-        <ChairIcon
-          fontSize="small"
-          className={selected ? styles.iconSelected : styles.icon}
-        />{' '}
-        <p className={selected ? styles.iconTextSelected : styles.iconText}>
-          {SIDE_NAV_OPTIONS.BOOKINGS.label}
-        </p>
-      </div>
-    );
-  }
-  function BusinessHours() {
-    const selected = tab === SIDE_NAV_OPTIONS.BUSINESS_HOURS;
-    return (
-      <div
-        className={`${styles.iconContainer} ${selected && styles.selected}`}
-        onClick={() => select(SIDE_NAV_OPTIONS.BUSINESS_HOURS)}
-      >
-        <CalendarMonthIcon
-          fontSize="small"
-          className={selected ? styles.iconSelected : styles.icon}
-        />{' '}
-        <p className={selected ? styles.iconTextSelected : styles.iconText}>
-          {SIDE_NAV_OPTIONS.BUSINESS_HOURS.label}
-        </p>
-      </div>
-    );
-  }
-  function Services() {
-    const selected = tab === SIDE_NAV_OPTIONS.SERVICES;
-    return (
-      <div
-        className={`${styles.iconContainer} ${selected && styles.selected}`}
-        onClick={() => select(SIDE_NAV_OPTIONS.SERVICES)}
-      >
-        <SellIcon
-          fontSize="small"
-          className={selected ? styles.iconSelected : styles.icon}
-        />{' '}
-        <p className={selected ? styles.iconTextSelected : styles.iconText}>
-          {SIDE_NAV_OPTIONS.SERVICES.label}
-        </p>
-      </div>
-    );
-  }
-  function Finances() {
-    const selected = tab === SIDE_NAV_OPTIONS.FINANCES;
-    return (
-      <div
-        className={`${styles.iconContainer} ${selected && styles.selected}`}
-        onClick={() => select(SIDE_NAV_OPTIONS.FINANCES)}
-      >
-        <AccountBalanceIcon
-          fontSize="small"
-          className={selected ? styles.iconSelected : styles.icon}
-        />{' '}
-        <p className={selected ? styles.iconTextSelected : styles.iconText}>
-          {SIDE_NAV_OPTIONS.FINANCES.label}
-        </p>
-      </div>
-    );
-  }
-  function Marketing() {
-    const selected = tab === SIDE_NAV_OPTIONS.MARKETING;
-    return (
-      <div
-        className={`${styles.iconContainer} ${selected && styles.selected}`}
-        onClick={() => select(SIDE_NAV_OPTIONS.MARKETING)}
-      >
-        <CampaignIcon
-          fontSize="medium"
-          className={selected ? styles.iconSelected : styles.icon}
-        />{' '}
-        <p className={selected ? styles.iconTextSelected : styles.iconText}>
-          {SIDE_NAV_OPTIONS.MARKETING.label}
-        </p>
-      </div>
-    );
-  }
-  function Support() {
-    const selected = tab === SIDE_NAV_OPTIONS.SUPPORT;
-    return (
-      <div
-        className={`${styles.iconContainer} ${selected && styles.selected}`}
-        onClick={() => select(SIDE_NAV_OPTIONS.SUPPORT)}
-      >
-        <FavoriteBorderIcon
-          fontSize="small"
-          className={selected ? styles.iconSelected : styles.icon}
-        />{' '}
-        <p className={selected ? styles.iconTextSelected : styles.iconText}>
-          {SIDE_NAV_OPTIONS.SUPPORT.label}
-        </p>
-      </div>
-    );
-  }
-  function Settings() {
-    const selected = tab === SIDE_NAV_OPTIONS.SETTINGS;
-    return (
-      <div
-        className={`${styles.iconContainer} ${selected && styles.selected}`}
-        onClick={() => select(SIDE_NAV_OPTIONS.SETTINGS)}
-      >
-        <SettingsIcon
-          fontSize="small"
-          className={selected ? styles.iconSelected : styles.icon}
-        />{' '}
-        <p className={selected ? styles.iconTextSelected : styles.iconText}>
-          {SIDE_NAV_OPTIONS.SETTINGS.label}
-        </p>
-      </div>
-    );
-  }
+    return sideBarDatas.map((sideBar) => {
+      const {
+        Icon,
+        link: { url, label },
+      } = sideBar;
+      const selected = tab.url === url;
+      return (
+        <div
+          className={`${styles.iconContainer} ${selected && styles.selected}`}
+          onClick={() => navigate(url)}
+        >
+          <Icon
+            fontSize='small'
+            {...(sideBar.IconProps && sideBar.IconProps)}
+            className={selected ? styles.iconSelected : styles.icon}
+          />
+          <p className={selected ? styles.iconTextSelected : styles.iconText}>
+            {label}
+          </p>
+        </div>
+      );
+    });
+  };
+
   return (
     showNav && (
       <div className={styles.sideNavcontainer}>
         <img src={SunryseLogo} className={styles.logoImage} />
-        <Home />
-        <Bookings />
-        <BusinessHours />
-        <Services />
-        <Finances />
-        <Marketing />
-        <Support />
-        <Settings />
+        <SideNavs />
       </div>
     )
   );
