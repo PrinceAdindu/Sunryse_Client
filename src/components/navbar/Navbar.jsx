@@ -16,7 +16,7 @@ export default function Navbar() {
   const axios = useAxiosPrivate();
   const toast = useToast();
 
-  const noNavRoutes = ['/login', '/register'];
+  const noNavRoutes = ['/login', '/register', '/verify-otp'];
   const showNav = !noNavRoutes.includes(location.pathname);
 
   useEffect(() => {
