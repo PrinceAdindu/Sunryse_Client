@@ -48,23 +48,21 @@ function Services({ setLoading }) {
   const onEdit = async (serviceData) => {
     setLoading(true);
     await updateService(serviceData, axios, toast);
-    setLoading(false);
+    fetchData();
   };
 
   const onStatusChange = async (serviceId, status) => {
     setLoading(true);
-    const serviceToUpdate = currentServices.find((s) => {
-      return s.id === serviceId;
-    });
+    const serviceToUpdate = currentServices.find((s) => s.id === serviceId);
     const updatedServiceData = { ...serviceToUpdate, status: status };
     await updateService(updatedServiceData, axios, toast);
-    setLoading(false);
+    fetchData();
   };
 
   const onDelete = async (id) => {
     setLoading(true);
     await deleteService(id, axios, toast);
-    setLoading(false);
+    fetchData();
   };
 
   return (

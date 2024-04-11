@@ -37,18 +37,20 @@ export default function StyledTable({
   onDelete = () => {},
 }) {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [serviceIdToDelete, setServiceIdToDelete] = useState('');
 
   const handleClose = () => {
     setOpenDeleteModal(false);
   };
 
-  const handleOpen = () => {
+  const handleOpen = (id) => {
+    setServiceIdToDelete(id);
     setOpenDeleteModal(true);
   };
 
   const handleDelete = () => {
     handleClose();
-    onDelete();
+    onDelete(serviceIdToDelete);
   };
 
   const Headers = () => (
@@ -81,7 +83,7 @@ export default function StyledTable({
             <CustomSwitch
               checked={row['status']}
               onChange={(event) => {
-                onStatusChange({ id: row['id'], status: event.target.checked });
+                onStatusChange(row['id'], event.target.checked);
               }}
             />
           </TableCell>
@@ -97,7 +99,7 @@ export default function StyledTable({
               <DeleteIcon
                 className={styles.icon}
                 fontSize="small"
-                onClick={() => handleOpen()}
+                onClick={() => handleOpen(row['id'])}
               />
             </div>
           </TableCell>

@@ -18,7 +18,6 @@ export async function getCurrentServices(axios, toast) {
         fields,
       },
     });
-    console.log(res.data);
     return res.data.services;
   } catch (error) {
     if (error?.response?.status === 400 || error?.response?.status === 500)
@@ -39,34 +38,30 @@ export async function deleteService(id, axios, toast) {
 }
 
 export function sanitizeServices(services) {
-  console.log('RAW', services);
-  const filteredData = services.map((service) => {
+  const filteredData = services.map((sv) => {
     // Create an object row for each service with keys from TABLE_HEADERS
     const dataObject = {};
-    dataObject['id'] = service['id'];
+    dataObject['id'] = sv['id'];
     TABLE_HEADERS.forEach((header) => {
       if (header.value === 'availabilityType') {
         const availabilityLabel = getLabelFromValue(
-          services['availabilityType'],
+          sv['availabilityType'],
           NEW_SERVICE_FORM_RULES.availabilityType.options,
         );
         dataObject['availabilityType'] = availabilityLabel;
       } else {
-        dataObject[header.value] = service[header.value];
+        dataObject[header.value] = sv[header.value];
       }
     });
-    dataObject['status'] = service['status'];
+    dataObject['status'] = sv['status'];
     return dataObject;
   });
-  console.log('FILTERED', filteredData);
   return filteredData;
 }
 
 // Options: [{value: any, label: string}]
 function getLabelFromValue(value, options) {
-  console.log(value, options);
   const selectedOption = options.find((op) => op.value === value);
-  console.log(selectedOption);
   return selectedOption?.label;
 }
 

@@ -8,7 +8,7 @@ InputField.propTypes = {
   classname: PropTypes.string,
   placeholder: PropTypes.string,
   title: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
   setValue: PropTypes.func.isRequired,
   error: PropTypes.string,
   resetError: PropTypes.func,
@@ -41,6 +41,18 @@ export default function InputField({
     </div>
   );
 
+  const setInputValue = (newValue) => {
+    let sanitizedValue = newValue;
+    if (newValue !== '') {
+      sanitizedValue =
+        type === 'text' || type === 'password'
+          ? newValue.toString()
+          : parseInt(newValue);
+    }
+    setValue(sanitizedValue);
+    resetError();
+  };
+
   return (
     <div className={`${styles.container} ${classname}`}>
       <Header />
@@ -48,10 +60,7 @@ export default function InputField({
         className={`${styles.inputField} ${size === 'sm' && styles.smallInput}`}
         placeholder={placeholder}
         type={type}
-        onChange={(e) => {
-          setValue(e.target.value);
-          resetError();
-        }}
+        onChange={(e) => setInputValue(e.target.value)}
         value={value}
         maxLength={maxLength}
         min={minValue}

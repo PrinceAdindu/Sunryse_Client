@@ -1,9 +1,11 @@
 import { checkFormData } from '../../../utilities/formChecks';
 import { NEW_SERVICE_FORM_RULES } from './newServiceFormRules';
 
-export async function createService(axios, toast, data) {
+export async function createService(data, axios, toast, navigate) {
+  console.log(data);
   try {
     const res = await axios.post('/clinic/service', { data: data });
+    navigate('/services');
     return res.data;
   } catch (error) {
     if (error?.response?.status === 400 || error?.response?.status === 500)
@@ -15,7 +17,7 @@ export async function createService(axios, toast, data) {
 export function sanitizeData(formData) {
   const sanitizedFormData = { ...formData };
   if (formData.availabilityType !== 'custom') {
-    sanitizedFormData.availability = [];
+    sanitizedFormData.customAvailability = '';
   }
   if (formData.policy !== 'notice') {
     sanitizedFormData.notice = '';

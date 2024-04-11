@@ -77,18 +77,20 @@ export const NEW_SERVICE_FORM_RULES = {
       { value: 'none', label: 'None' },
     ],
   },
-  availability: {
+  customAvailability: {
     type: 'array',
     required: false,
     checks: [
       (formData) =>
         FORM_RULES_FUNCS.requiredCheck(
-          formData.availability,
+          formData.customAvailability,
           formData.availabilityType,
           'custom',
         ),
-      (formData) => FORM_RULES_FUNCS.minLengthCheck(formData.availability, 1),
-      (formData) => FORM_RULES_FUNCS.availabiltyCheck(formData.availability),
+      (formData) =>
+        FORM_RULES_FUNCS.minLengthCheck(formData.customAvailability, 1),
+      (formData) =>
+        FORM_RULES_FUNCS.availabiltyCheck(formData.customAvailability),
     ],
   },
   policy: {
