@@ -46,7 +46,7 @@ export default function OTPInput({
   };
 
   const handlePaste = (index, event) => {
-    let activeInput = index;
+    let activeInput;
     let otp = [...otpValues];
     const pastedData = event.clipboardData
       .getData('text/plain')
@@ -54,9 +54,10 @@ export default function OTPInput({
       .split('');
     pastedData.forEach((num, i) => {
       otp[index + i] = num;
-      activeInput++;
     });
-    focusInput(activeInput - 1);
+    // Prevents activeInput from exceeding input limit.
+    activeInput = Math.min(index + pastedData.length, numInputs - 1);
+    focusInput(activeInput);
     setOtpValues(otp);
     // send to its parent component
     setValue(otp.join(''));
