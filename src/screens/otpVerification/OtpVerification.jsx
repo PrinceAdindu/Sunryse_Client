@@ -3,6 +3,7 @@ import logo from '../../assets/NewSunryseLogoWideNameFill.png';
 import styles from './Verification.module.scss';
 import StyledButton from '../../components/styledButton/StyledButton';
 import OTPInput from '../../components/otpInput/OtpInput';
+
 export default function OtpVerification() {
   const [otp, setOtp] = useState('');
 
@@ -22,13 +23,10 @@ export default function OtpVerification() {
         <Header />
         <div className={styles.formContainer}>
           <div className={styles.inputContainer}>
-            <OTPInput
-              getOTPValue={(value) => setOtp(() => value)}
-              numInputs={6}
-            />
+            <OTPInput setValue={(value) => setOtp(() => value)} numInputs={6} />
           </div>
           <StyledButton
-            className={styles.button}
+            className={`${styles.button} ${styles.hover}`}
             text="Submit"
             onClick={() => {}}
             // disabled={otp.length < 6}

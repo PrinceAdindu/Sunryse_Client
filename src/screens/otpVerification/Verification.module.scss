@@ -29,7 +29,7 @@
 .title {
   color: $SOFT_BLACK;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
   margin: 25px 0px 0px 20px;
 }
 
@@ -55,8 +55,7 @@
   background-color: $PINK !important;
   cursor: pointer;
 }
-
-.button:hover {
+.hover:hover {
   background-color: $DARK_PINK !important;
 }
 .p {

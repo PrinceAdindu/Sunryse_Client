@@ -1,6 +1,17 @@
+import PropTypes from 'prop-types';
 import React, { useRef, useState, useEffect } from 'react';
 import styles from './OtpInput.module.scss';
-const OTPInput = ({ numInputs = 6, getOTPValue = () => {}, otpInputStyle }) => {
+
+OTPInput.propTypes = {
+  numInputs: PropTypes.number,
+  setValue: PropTypes.func.isRequired,
+  otpInputStyle: PropTypes.string,
+};
+export default function OTPInput({
+  numInputs = 6,
+  setValue = () => {},
+  otpInputStyle = ' ',
+}) {
   const [otpValues, setOtpValues] = useState(Array(numInputs).fill(''));
   const inputRefs = useRef([]);
 
@@ -31,7 +42,7 @@ const OTPInput = ({ numInputs = 6, getOTPValue = () => {}, otpInputStyle }) => {
     newOtpValues[index] = value;
 
     setOtpValues(newOtpValues);
-    getOTPValue(newOtpValues.join(''));
+    setValue(newOtpValues.join(''));
   };
 
   const handlePaste = (index, event) => {
@@ -41,16 +52,14 @@ const OTPInput = ({ numInputs = 6, getOTPValue = () => {}, otpInputStyle }) => {
       .getData('text/plain')
       .slice(0, numInputs - index)
       .split('');
-    for (let i = 0; i < numInputs; ++i) {
-      if (i >= index && pastedData.length > 0) {
-        otp[i] = pastedData.shift() ?? '';
-        activeInput++;
-      }
-    }
+    pastedData.forEach((num, i) => {
+      otp[index + i] = num;
+      activeInput++;
+    });
     focusInput(activeInput - 1);
     setOtpValues(otp);
     // send to its parent component
-    getOTPValue(otp.join(''));
+    setValue(otp.join(''));
   };
 
   const focusInput = (index) => {
@@ -62,7 +71,7 @@ const OTPInput = ({ numInputs = 6, getOTPValue = () => {}, otpInputStyle }) => {
     <>
       {otpValues.map((value, index) => (
         <input
-          className={`${styles.input} ${otpInputStyle && otpInputStyle}`}
+          className={`${styles.input} ${otpInputStyle}`}
           key={index}
           type="text"
           maxLength={1}
@@ -76,6 +85,4 @@ const OTPInput = ({ numInputs = 6, getOTPValue = () => {}, otpInputStyle }) => {
       ))}
     </>
   );
-};
-
-export default OTPInput;
+}
