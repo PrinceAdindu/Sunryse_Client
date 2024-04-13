@@ -50,7 +50,7 @@ function App() {
           <Route path="/services/new" element={<NewService />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/verify-otp" element={<OtpVerification />} />
+          <Route path="/login/otp" element={<OtpVerification />} />
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="*" element={<Missing />} />
         </Routes>

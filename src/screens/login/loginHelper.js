@@ -12,7 +12,7 @@ export async function onLogin(
   console.log(sanitizedEmail);
   const data = { email: sanitizedEmail, password };
   //let to = '/home';
-  let to = '/verify-otp';
+  let to = '/login/otp';
   const from = location.state?.from?.pathname;
 
   // Incase they came from login
