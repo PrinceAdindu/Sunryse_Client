@@ -1,3 +1,12 @@
+import HomeIcon from '@mui/icons-material/Home';
+import ChairIcon from '@mui/icons-material/Chair';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import SettingsIcon from '@mui/icons-material/Settings';
+import SellIcon from '@mui/icons-material/Sell';
+import CampaignIcon from '@mui/icons-material/Campaign';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+
 export const SIDE_NAV_OPTIONS = {
   HOME: { url: '/home', label: 'Home' },
   BOOKINGS: { url: '/bookings', label: 'Bookings' },
@@ -30,3 +39,41 @@ export function getCurrentTab(currUrl) {
 
   return SIDE_NAV_OPTIONS.HOME;
 }
+
+export const SIDE_NAV_DATA = [
+  {
+    link: SIDE_NAV_OPTIONS.HOME,
+    Icon: HomeIcon,
+  },
+  {
+    link: SIDE_NAV_OPTIONS.BOOKINGS,
+    Icon: ChairIcon,
+  },
+  {
+    link: SIDE_NAV_OPTIONS.BUSINESS_HOURS,
+    Icon: CalendarMonthIcon,
+  },
+  {
+    link: SIDE_NAV_OPTIONS.SERVICES,
+    Icon: SellIcon,
+  },
+  {
+    link: SIDE_NAV_OPTIONS.FINANCES,
+    Icon: AccountBalanceIcon,
+  },
+  {
+    link: SIDE_NAV_OPTIONS.MARKETING,
+    Icon: CampaignIcon,
+    IconProps: {
+      fontSize: 'medium',
+    },
+  },
+  {
+    link: SIDE_NAV_OPTIONS.SUPPORT,
+    Icon: FavoriteBorderIcon,
+  },
+  {
+    link: SIDE_NAV_OPTIONS.SETTINGS,
+    Icon: SettingsIcon,
+  },
+];
