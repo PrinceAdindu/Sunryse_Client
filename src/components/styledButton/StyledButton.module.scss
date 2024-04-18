@@ -22,7 +22,8 @@
   cursor: pointer;
 }
 
-.disabled {
+.disabled[disabled] {
   background-color: $WHITE_GRAY;
   color: $DARK_GRAY;
+  cursor: not-allowed;
 }

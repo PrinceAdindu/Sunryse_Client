@@ -71,7 +71,7 @@ export default function OTPInput({
   };
 
   return (
-    <>
+    <div className={styles.flexItems}>
       {otpValues.map((value, index) => (
         <input
           className={`${styles.input} ${otpInputStyle}`}
@@ -86,6 +86,6 @@ export default function OTPInput({
           ref={(ref) => (inputRefs.current[index] = ref)}
         />
       ))}
-    </>
+    </div>
   );
 }
