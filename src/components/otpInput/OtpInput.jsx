@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import styles from './OtpInput.module.scss';
 
 OTPInput.propTypes = {
@@ -71,7 +71,7 @@ export default function OTPInput({
   };
 
   return (
-    <div className={styles.flexItems}>
+    <div className={styles.container}>
       {otpValues.map((value, index) => (
         <input
           className={`${styles.input} ${otpInputStyle}`}
