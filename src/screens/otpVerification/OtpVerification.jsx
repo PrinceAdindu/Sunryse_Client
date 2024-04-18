@@ -16,20 +16,17 @@ export default function OtpVerification() {
       </p>
     </div>
   );
-
   return (
     <div className={styles.screen}>
       <div className={styles.card}>
         <Header />
         <div className={styles.formContainer}>
-          <div className={styles.inputContainer}>
-            <OTPInput setValue={(value) => setOtp(() => value)} numInputs={6} />
-          </div>
+          <OTPInput setValue={(value) => setOtp(() => value)} numInputs={6} />
           <StyledButton
             className={`${styles.button} ${styles.hover}`}
             text="Submit"
             onClick={() => {}}
-            // disabled={otp.length < 6}
+            disabled={otp.length < 6}
           />
           <p className={styles.p}>
             {/*
