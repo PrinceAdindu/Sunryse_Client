@@ -7,6 +7,7 @@ import logout, { getClinicName } from './navbarHelpers';
 
 import styles from './Navbar.module.scss';
 import useToast from '../../hooks/useToast';
+import config from '../../config';
 
 export default function Navbar() {
   const [clinicName, setClinicName] = useState('');
@@ -16,8 +17,7 @@ export default function Navbar() {
   const axios = useAxiosPrivate();
   const toast = useToast();
 
-  const noNavRoutes = ['/login', '/register'];
-  const showNav = !noNavRoutes.includes(location.pathname);
+  const showNav = !config.externalRoutes.includes(location.pathname);
 
   useEffect(() => {
     const fetchData = async () => {

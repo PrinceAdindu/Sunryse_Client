@@ -19,6 +19,7 @@ import config from './config';
 
 import styles from './App.module.scss';
 import NewService from './screens/services/newService/NewService';
+import OtpVerification from './screens/otpVerification/OtpVerification';
 
 function App() {
   const refresh = useRefreshToken();
@@ -49,6 +50,7 @@ function App() {
           <Route path="/services/new" element={<NewService />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login/otp" element={<OtpVerification />} />
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="*" element={<Missing />} />
         </Routes>
