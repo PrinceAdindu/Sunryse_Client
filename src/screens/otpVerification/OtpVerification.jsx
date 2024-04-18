@@ -36,7 +36,8 @@ export default function OtpVerification() {
             TODO
                 OTP resend functionality
             */}
-            Did not receive code ?<b> Resend Again</b>{' '}
+            Did not receive code ?
+            <span className={styles.resendText}> Resend </span>
           </p>
         </div>
       </div>
