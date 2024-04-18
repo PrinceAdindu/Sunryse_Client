@@ -62,7 +62,12 @@
   text-align: center;
   margin: 30px 0px;
   font-size: 12px;
-  b {
-    color: $PINK;
-  }
+}
+.resendText {
+  color: $PINK;
+}
+
+.resendText:hover {
+  cursor: pointer;
+  color: $DARK_PINK;
 }

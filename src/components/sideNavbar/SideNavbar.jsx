@@ -27,6 +27,7 @@ export default function SideNavbar() {
       const selected = tab.url === url;
       return (
         <div
+          key={label}
           className={`${styles.iconContainer} ${selected && styles.selected}`}
           onClick={() => navigate(url)}
         >

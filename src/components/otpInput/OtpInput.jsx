@@ -61,6 +61,8 @@ export default function OTPInput({
     setOtpValues(otp);
     // send to its parent component
     setValue(otp.join(''));
+
+    event.preventDefault();
   };
 
   const focusInput = (index) => {
