@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import logo from '../../assets/NewSunryseLogoWideNameFill.png';
-import styles from './Verification.module.scss';
 import StyledButton from '../../components/styledButton/StyledButton';
 import OTPInput from '../../components/otpInput/OtpInput';
+
+import styles from './OtpVerification.module.scss';
 
 export default function OtpVerification() {
   const [otp, setOtp] = useState('');
@@ -23,12 +24,12 @@ export default function OtpVerification() {
         <div className={styles.formContainer}>
           <OTPInput setValue={(value) => setOtp(() => value)} numInputs={6} />
           <StyledButton
-            className={`${styles.button} ${styles.hover}`}
+            className={styles.button}
             text="Submit"
             onClick={() => {}}
             disabled={otp.length < 6}
           />
-          <p className={styles.p}>
+          <p className={styles.text}>
             {/*
             TODO
                 OTP resend functionality
