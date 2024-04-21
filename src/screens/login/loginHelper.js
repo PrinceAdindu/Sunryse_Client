@@ -22,7 +22,7 @@ export async function onLogin(
     const res = await axios.post('/login', data);
     const accessToken = res?.data?.accessToken;
     setAuth({ accessToken });
-    navigate(to, { replace: true });
+    navigate(to, { state: { from: '/login' }, replace: true });
   } catch (error) {
     if (error?.response?.status === 400)
       toastInstance.error('Your email or password is incorrect');
