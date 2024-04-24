@@ -38,9 +38,17 @@
   font-size: 14px;
   margin: 10px 0px 10px 20px;
 }
+
 .formContainer {
   width: 80%;
   margin: 60px auto 0px auto;
+}
+
+.disabledButton {
+  width: 100% !important;
+  height: 38px;
+  margin-top: 30px !important;
+  font-size: 15px !important;
 }
 .button {
   width: 100% !important;
@@ -48,7 +56,10 @@
   margin-top: 30px !important;
   font-size: 15px !important;
   background-color: $PINK !important;
+}
+.button:hover {
   cursor: pointer;
+  background-color: $DARK_PINK !important;
 }
 
 .text {
@@ -59,10 +70,9 @@
   font-weight: 500;
 }
 .resendText {
-  color: $PINK;
+  color: $DARK_PINK;
 }
-
 .resendText:hover {
   cursor: pointer;
-  color: $DARK_PINK;
+  text-decoration: underline;
 }

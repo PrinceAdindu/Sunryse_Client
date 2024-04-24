@@ -8,6 +8,8 @@ import styles from './OtpVerification.module.scss';
 export default function OtpVerification() {
   const [otp, setOtp] = useState('');
 
+  const isDisabled = otp.length < 6;
+
   const Header = () => (
     <div>
       <img className={styles.logo} src={logo} />
@@ -24,17 +26,17 @@ export default function OtpVerification() {
         <div className={styles.formContainer}>
           <OTPInput setValue={(value) => setOtp(() => value)} numInputs={6} />
           <StyledButton
-            className={styles.button}
+            className={isDisabled ? styles.disabledButton : styles.button}
             text="Submit"
             onClick={() => {}}
-            disabled={otp.length < 6}
+            disabled={isDisabled}
           />
           <p className={styles.text}>
             {/*
             TODO
                 OTP resend functionality
             */}
-            Did not receive code ?
+            Did not receive code?
             <span className={styles.resendText}> Resend </span>
           </p>
         </div>
