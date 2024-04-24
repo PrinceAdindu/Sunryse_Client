@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.conatiner {
+.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,7 +11,7 @@
   text-align: center;
   border: 2px solid $LIGHT_GRAY;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: white;
   color: $SOFT_BLACK;
 }
 .input:focus {

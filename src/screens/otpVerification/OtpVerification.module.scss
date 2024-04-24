@@ -42,27 +42,35 @@
   width: 80%;
   margin: 60px auto 0px auto;
 }
+
+.disabledButton {
+  width: 100% !important;
+  height: 38px;
+  margin-top: 30px !important;
+  font-size: 15px !important;
+}
 .button {
   width: 100% !important;
   height: 38px;
   margin-top: 30px !important;
   font-size: 15px !important;
   background-color: $PINK !important;
-  cursor: pointer;
 }
-.hover:hover {
+.button:hover {
+  cursor: pointer;
   background-color: $DARK_PINK !important;
 }
-.p {
+
+.text {
   text-align: center;
   margin: 30px 0px;
   font-size: 14px;
 }
 .resendText {
-  color: $PINK;
+  color: $DARK_PINK;
 }
 
 .resendText:hover {
   cursor: pointer;
-  color: $DARK_PINK;
+  text-decoration: underline;
 }
