@@ -38,6 +38,7 @@
   font-size: 14px;
   margin: 10px 0px 10px 20px;
 }
+
 .formContainer {
   width: 80%;
   margin: 60px auto 0px auto;
@@ -65,11 +66,12 @@
   text-align: center;
   margin: 30px 0px;
   font-size: 14px;
+  color: $CHARCOAL;
+  font-weight: 500;
 }
 .resendText {
   color: $DARK_PINK;
 }
-
 .resendText:hover {
   cursor: pointer;
   text-decoration: underline;
