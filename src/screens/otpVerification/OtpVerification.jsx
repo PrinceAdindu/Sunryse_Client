@@ -1,15 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/NewSunryseLogoWideNameFill.png';
 import StyledButton from '../../components/styledButton/StyledButton';
 import OTPInput from '../../components/otpInput/OtpInput';
 
+import useToast from '../../hooks/useToast';
+import { authenticateUser, sendOTP } from './otpVerificationHelper';
 import styles from './OtpVerification.module.scss';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function OtpVerification() {
   const [otp, setOtp] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
+  const toast = useToast();
+  const email = location?.state?.email || '';
+
+  const isDisabled = otp.length < 6;
+
+  useEffect(() => {
+    const sendOtpOnMount = async () => {
+      await sendOTP(email, toast);
+    };
+    sendOtpOnMount();
+  }, []);
+
+  async function submit() {
+    await authenticateUser(otp, toast, location, navigate);
+  }
+
+  async function resendOtp() {
+    await sendOTP(email, toast);
+  }
   const Header = () => (
     <div>
       <img className={styles.logo} src={logo} />
@@ -19,18 +40,6 @@ export default function OtpVerification() {
       </p>
     </div>
   );
-
-  //Only for testing redirecting routes will be replaced when the API finshed;
-
-  function onsubmit() {
-    let to = '/home';
-    const from = location.state?.from;
-    // Incase they came from login
-    if (from && from === '/login') to = '/home';
-
-    if (from && from === '/verify') to = '/resetPassword';
-    navigate(to, { replace: true });
-  }
   return (
     <div className={styles.screen}>
       <div className={styles.card}>
@@ -38,18 +47,17 @@ export default function OtpVerification() {
         <div className={styles.formContainer}>
           <OTPInput setValue={(value) => setOtp(() => value)} numInputs={6} />
           <StyledButton
-            className={styles.button}
+            className={isDisabled ? styles.disabledButton : styles.button}
             text="Submit"
-            onClick={onsubmit}
-            disabled={otp.length < 6}
+            onClick={() => submit()}
+            disabled={isDisabled}
           />
           <p className={styles.text}>
-            {/*
-            TODO
-                OTP resend functionality
-            */}
-            Did not receive code ?
-            <span className={styles.resendText}> Resend </span>
+            Did not receive code?
+            <span className={styles.resendText} onClick={() => resendOtp()}>
+              {' '}
+              Resend{' '}
+            </span>
           </p>
         </div>
       </div>

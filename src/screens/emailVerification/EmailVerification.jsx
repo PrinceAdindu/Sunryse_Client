@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import styles from './EmailVerification.module.scss';
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
-import InputField from '../../components/inputField/InputField';
-import StyledButton from '../../components/styledButton/StyledButton';
-import { sendOtpToEmail } from './EmailVerifierhelper';
-import useToast from '../../hooks/useToast';
+import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import StyledButton from '../../components/styledButton/StyledButton';
+import InputField from '../../components/inputField/InputField';
+import useToast from '../../hooks/useToast';
+import { validateEmail, verifyEmail } from './emailVerifierhelper';
+import styles from './EmailVerification.module.scss';
 
 export default function EmailVerification() {
   const [email, setEmail] = useState('');
-  const [success, setSuccess] = useState(false);
   const toastInstance = useToast();
   const navigate = useNavigate();
+  const isValidEmail = validateEmail(email);
 
   const Header = () => (
     <div className={styles.headerContainer}>
@@ -23,18 +23,8 @@ export default function EmailVerification() {
     </div>
   );
 
-  // Automatically Redirect to OTP Screen page on success
-  useEffect(() => {
-    function shouldNavigate() {
-      if (success) {
-        navigate('/login/otp', { state: { from: '/verify' }, replace: true });
-      }
-    }
-    shouldNavigate();
-  }, [success]);
-
   const submit = useCallback(async () => {
-    await sendOtpToEmail({ email, toastInstance, setSuccess });
+    await verifyEmail({ email, toastInstance, navigate });
   }, [email, toastInstance]);
 
   return (
@@ -47,13 +37,15 @@ export default function EmailVerification() {
           type="text"
           value={email}
           setValue={setEmail}
-          description=""
           minValue={8}
         />
         <StyledButton
-          className={styles.button}
-          text="Submit"
+          className={`${styles.button} ${
+            isValidEmail ? styles.notdisabledBtn : styles.disabledBtn
+          }`}
+          text="Next"
           onClick={submit}
+          disabled={!isValidEmail}
         />
       </div>
     </div>

@@ -1,23 +1,31 @@
+import axios from '../../api/axios';
+
 function validateEmail(email) {
-  const validRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const validRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
   return validRegex.test(email);
 }
 
-function sendOtpToEmail(args) {
-  const { email, toastInstance, setSuccess } = args;
-  if (validateEmail(email)) {
-    // TODO:
-    // intergating to the backend.
-    toastInstance.success(
-      'Please check your email addrees for 6 digit OTP code.',
-    );
-    setSuccess(true);
+async function verifyEmail(args) {
+  const { email, toastInstance, navigate } = args;
+  const valid = validateEmail(email);
+  if (valid) {
+    try {
+      const response = await axios.post('/resetPassword/email', {
+        data: { email },
+      });
+      if (response.data?.isEmailFound)
+        navigate('/otp', {
+          state: { from: '/resetPassword/email', email },
+          replace: true,
+        });
+      else toastInstance.error('Email was not found');
+    } catch (error) {
+      toastInstance.error('Please try again');
+    }
   } else {
-    toastInstance.error('Please provide a valid Email address');
-    setSuccess(false);
+    toastInstance.error('Invalid email');
   }
 }
 
-export { sendOtpToEmail, validateEmail };
+export { verifyEmail, validateEmail };

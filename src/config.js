@@ -3,9 +3,9 @@ const config = {
   externalRoutes: [
     '/login',
     '/register',
-    '/login/otp',
+    '/otp',
     '/resetPassword',
-    '/verify',
+    '/resetPassword/email',
   ],
 };
 

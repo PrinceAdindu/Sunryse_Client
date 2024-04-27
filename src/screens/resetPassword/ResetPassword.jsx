@@ -1,46 +1,42 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useToast from '../../hooks/useToast';
-import styles from './ResetPassword.module.scss';
-import InputField from '../../components/inputField/InputField';
+import { useState } from 'react';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import InputField from '../../components/inputField/InputField';
 import StyledButton from '../../components/styledButton/StyledButton';
-import { CONFIRM_PASSWORD, MIN_LENGTH, PASSWORD } from './resetPasswordHelper';
-export default function ResetPassword() {
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const toastInstance = useToast();
+import useToast from '../../hooks/useToast';
+import { onPasswordReset, validateData } from './resetPasswordHelper';
+import styles from './ResetPassword.module.scss';
 
+export default function ResetPassword() {
+  const location = useLocation();
+  const toastInstance = useToast();
   const navigate = useNavigate();
 
-  const getPasswordValidationClass = (typeOfPassword) => {
-    switch (typeOfPassword) {
-      case PASSWORD:
-        // Password.length is used to not display any class before user start typing.
-        return password.length
-          ? password.length >= MIN_LENGTH
-            ? styles.pass
-            : styles.fail
-          : '';
-      case CONFIRM_PASSWORD:
-        return confirmPassword.length
-          ? confirmPassword === password
-            ? styles.pass
-            : styles.fail
-          : '';
-      default:
-        return '';
-    }
+  const [formData, setFormData] = useState({
+    password: '',
+    passwordConf: '',
+    email: location?.state?.email || '',
+  });
+  const [errors, setErrors] = useState({
+    email: '',
+    password: '',
+    passwordConf: '',
+  });
+
+  const updateForm = (field, value) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [field]: value,
+    }));
   };
 
-  // const submit = () => {
-  //   if (confirmPassword != password) {
-  //     toastInstance.error('password should match');
-  //     return;
-  //   } else {
-  //     navigate('/login');
-  //   }
-  // };
+  const updateErrors = (field, value) => {
+    setErrors((prevState) => ({
+      ...prevState,
+      [field]: value,
+    }));
+  };
+
   const Header = () => (
     <div className={styles.headerContainer}>
       <img className={styles.logo} src={logo} />
@@ -49,35 +45,38 @@ export default function ResetPassword() {
     </div>
   );
 
+  async function submit() {
+    const valid = validateData(formData, setErrors);
+    if (valid) {
+      await onPasswordReset(formData, toastInstance, navigate);
+    }
+  }
   return (
     <div className={styles.screen}>
       <div className={styles.card}>
         <Header />
         <InputField
-          classname={`${styles.input} ${getPasswordValidationClass(PASSWORD)}`}
+          inputId="password_input"
+          classname={styles.input}
           title="Password"
           type="password"
-          value={password}
-          setValue={setPassword}
           description="Your password must be at least 8 characters"
-          minValue={MIN_LENGTH}
+          value={formData.password}
+          setValue={(value) => updateForm('password', value)}
+          error={errors.password}
+          resetError={() => updateErrors('password', '')}
         />
         <InputField
-          classname={`${styles.input} ${getPasswordValidationClass(
-            CONFIRM_PASSWORD,
-          )}`}
+          inputId="password_conf_input"
+          classname={styles.input}
           title="Confirm password"
           type="password"
-          value={confirmPassword}
-          minValue={MIN_LENGTH}
-          setValue={setConfirmPassword}
+          value={formData.passwordConf}
+          setValue={(value) => updateForm('passwordConf', value)}
+          error={errors.passwordConf}
+          resetError={() => updateErrors('passwordConf', '')}
         />
-        <StyledButton
-          className={styles.button}
-          text="Reset"
-          disabled={!(confirmPassword === password && password.length)}
-          // onClick={submit}
-        />
+        <StyledButton className={styles.button} text="Reset" onClick={submit} />
       </div>
     </div>
   );
