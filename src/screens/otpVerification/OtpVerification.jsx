@@ -60,10 +60,7 @@ export default function OtpVerification() {
               {' '}
               Resend{' '}
             </span>
-
-            onClick={() => {}}
-            disabled={isDisabled}
-          />
+          /p>
         </div>
       </div>
     </div>
