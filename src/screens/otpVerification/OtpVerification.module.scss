@@ -50,6 +50,10 @@
   background-color: $PINK !important;
   cursor: pointer;
 }
+.disabledButton {
+  @extend .button;
+  background-color: $WHITE_GRAY !important;
+}
 
 .text {
   text-align: center;
