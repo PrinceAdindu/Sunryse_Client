@@ -17,6 +17,7 @@ export default function OtpVerification() {
 
   const isDisabled = otp.length < 6;
 
+
   useEffect(() => {
     const sendOtpOnMount = async () => {
       await sendOTP(email, toast);
@@ -31,6 +32,7 @@ export default function OtpVerification() {
   async function resendOtp() {
     await sendOTP(email, toast);
   }
+
   const Header = () => (
     <div>
       <img className={styles.logo} src={logo} />
@@ -58,7 +60,10 @@ export default function OtpVerification() {
               {' '}
               Resend{' '}
             </span>
-          </p>
+
+            onClick={() => {}}
+            disabled={isDisabled}
+          />
         </div>
       </div>
     </div>
