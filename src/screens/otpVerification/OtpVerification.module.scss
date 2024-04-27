@@ -61,10 +61,6 @@
   cursor: pointer;
   background-color: $DARK_PINK !important;
 }
-.disabledButton {
-  @extend .button;
-  background-color: $WHITE_GRAY !important;
-}
 
 .text {
   text-align: center;
