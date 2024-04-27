@@ -60,7 +60,7 @@ export default function OtpVerification() {
               {' '}
               Resend{' '}
             </span>
-          /p>
+          </p>
         </div>
       </div>
     </div>
