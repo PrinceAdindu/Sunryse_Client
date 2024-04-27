@@ -7,7 +7,7 @@ function validateEmail(email) {
 }
 
 async function verifyEmail(args) {
-  const { email, toastInstance, navigate } = args;
+  const { email, toastInstance, navigate, setEmailError } = args;
   const valid = validateEmail(email);
   if (valid) {
     try {
@@ -24,7 +24,7 @@ async function verifyEmail(args) {
       toastInstance.error('Please try again');
     }
   } else {
-    toastInstance.error('Invalid email');
+    setEmailError('Email format is incorrect.');
   }
 }
 
