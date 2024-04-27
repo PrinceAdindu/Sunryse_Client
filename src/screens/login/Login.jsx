@@ -58,14 +58,9 @@ function Login({ loading, setLoading }) {
   const Help = () => (
     <span className={styles.span}>
       Forgot your email or password?{' '}
-      <a
-        className={styles.link}
-        href="https://terrapractice.com"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <Link to="/resetPassword/email" className={styles.link}>
         Reset
-      </a>
+      </Link>
     </span>
   );
 
