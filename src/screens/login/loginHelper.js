@@ -10,19 +10,14 @@ export async function onLogin(
 ) {
   const sanitizedEmail = email.toLowerCase();
   const data = { email: sanitizedEmail, password };
-  //let to = '/home';
-  let to = '/login/otp';
-  const from = location.state?.from?.pathname;
-
-  // Incase they came from login
-  if (from && from !== '/login') {
-    to = location.state?.from?.pathname;
-  }
   try {
     const res = await axios.post('/login', data);
     const accessToken = res?.data?.accessToken;
     setAuth({ accessToken });
-    navigate(to, { replace: true });
+    navigate('/otp', {
+      state: { from: '/login', email: sanitizedEmail },
+      replace: true,
+    });
   } catch (error) {
     if (error?.response?.status === 400)
       toastInstance.error('Your email or password is incorrect');

@@ -3,13 +3,17 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Login from './screens/login/Login';
 import Register from './screens/register/Register';
+import ResetPassword from './screens/resetPassword/ResetPassword';
+import OtpVerification from './screens/otpVerification/OtpVerification';
+import EmailVerification from './screens/emailVerification/EmailVerification';
+import Unauthorized from './screens/Unauthorized';
+import Missing from './screens/Missing';
 import Home from './screens/home/Home';
 import BusinessHours from './screens/businessHours/BusinessHours';
 import Bookings from './screens/bookings/Bookings';
 import Finances from './screens/finances/Finances';
 import Services from './screens/services/Services';
-import Unauthorized from './screens/Unauthorized';
-import Missing from './screens/Missing';
+import NewService from './screens/services/newService/NewService';
 import Navbar from './components/navbar/Navbar';
 import SideNavbar from './components/sideNavbar/SideNavbar';
 import ToastMessage from './components/toastMessage/ToastMessage';
@@ -18,8 +22,6 @@ import useRefreshToken from './hooks/useRefreshToken';
 import config from './config';
 
 import styles from './App.module.scss';
-import NewService from './screens/services/newService/NewService';
-import OtpVerification from './screens/otpVerification/OtpVerification';
 
 function App() {
   const refresh = useRefreshToken();
@@ -42,15 +44,17 @@ function App() {
       <div className={styles.contentContainer}>
         <Navbar />
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/otp" element={<OtpVerification />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route path="/resetPassword/email" element={<EmailVerification />} />
           <Route path="/home/*" element={<Home />} />
           <Route path="/hours/*" element={<BusinessHours />} />
           <Route path="/bookings/*" element={<Bookings />} />
           <Route path="/finances/*" element={<Finances />} />
           <Route path="/services/*" element={<Services />} />
           <Route path="/services/new" element={<NewService />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login/otp" element={<OtpVerification />} />
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="*" element={<Missing />} />
         </Routes>

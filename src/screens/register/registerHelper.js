@@ -4,7 +4,7 @@ import { REGISTER_FORM_RULES } from './registerFormRules';
 
 export async function onRegister(formData, toast, navigate) {
   try {
-    await axios.post('/register/clinic', { data: formData });
+    await axios.post('/register', { data: formData });
     navigate('/login');
   } catch (error) {
     if (error?.response?.status === 409)
