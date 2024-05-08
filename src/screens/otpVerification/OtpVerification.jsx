@@ -1,36 +1,52 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import StyledButton from '../../components/styledButton/StyledButton';
 import OTPInput from '../../components/otpInput/OtpInput';
+import LoadingHOC from '../../components/loading/LoadingHOC';
 
 import useToast from '../../hooks/useToast';
-import { authenticateUser, sendOTP } from './otpVerificationHelper';
+import { verifyOtp, sendOtp } from './otpVerificationHelper';
+
+import logo from '../../assets/NewSunryseLogoWideNameFill.png';
 import styles from './OtpVerification.module.scss';
 
-export default function OtpVerification() {
-  const [otp, setOtp] = useState('');
-  const location = useLocation();
+OtpVerification.propTypes = {
+  setLoading: PropTypes.func.isRequired,
+};
+
+export function OtpVerification({ setLoading }) {
+  const [otpCode, setOtpCode] = useState('');
+
   const navigate = useNavigate();
   const toast = useToast();
-  const email = location?.state?.email || '';
 
-  const isDisabled = otp.length < 6;
+  const isDisabled = otpCode.length < 6;
+  const { from, email, callback } = useSelector((state) => state.otp);
 
   useEffect(() => {
     const sendOtpOnMount = async () => {
-      await sendOTP(email, toast);
+      setLoading(true);
+      if (!email) {
+        const revertTo = from || '/login';
+        navigate(revertTo);
+      }
+      await sendOtp(email, toast);
+      setLoading(false);
     };
     sendOtpOnMount();
   }, []);
 
   async function submit() {
-    await authenticateUser(otp, toast, location, navigate);
+    await verifyOtp(email, otpCode, callback, toast);
   }
 
   async function resendOtp() {
-    await sendOTP(email, toast);
+    await sendOtp(email, toast);
   }
+
   const Header = () => (
     <div>
       <img className={styles.logo} src={logo} />
@@ -40,12 +56,16 @@ export default function OtpVerification() {
       </p>
     </div>
   );
+
   return (
     <div className={styles.screen}>
-      <div className={styles.card}>
+      <div id="Otp" className={styles.card}>
         <Header />
         <div className={styles.formContainer}>
-          <OTPInput setValue={(value) => setOtp(() => value)} numInputs={6} />
+          <OTPInput
+            setValue={(value) => setOtpCode(() => value)}
+            numInputs={6}
+          />
           <StyledButton
             className={isDisabled ? styles.disabledButton : styles.button}
             text="Submit"
@@ -64,3 +84,21 @@ export default function OtpVerification() {
     </div>
   );
 }
+
+const loaderStyles = {
+  color: 'white',
+};
+const containerStyles = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+};
+
+export default LoadingHOC(
+  OtpVerification,
+  'Otp',
+  false,
+  loaderStyles,
+  containerStyles,
+);

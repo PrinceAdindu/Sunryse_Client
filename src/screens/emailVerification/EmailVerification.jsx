@@ -1,15 +1,20 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+
 import StyledButton from '../../components/styledButton/StyledButton';
 import InputField from '../../components/inputField/InputField';
+
 import useToast from '../../hooks/useToast';
-import { validateEmail, verifyEmail } from './emailVerifierhelper';
+import useOtp from '../../hooks/useOtp';
+import { validateEmail, verifyEmail } from './emailVerificationHelper';
+
+import logo from '../../assets/NewSunryseLogoWideNameFill.png';
 import styles from './EmailVerification.module.scss';
 
 export default function EmailVerification() {
   const [email, setEmail] = useState('');
   const toastInstance = useToast();
+  const otpInstance = useOtp();
   const navigate = useNavigate();
   const isValidEmail = validateEmail(email);
 
@@ -24,7 +29,7 @@ export default function EmailVerification() {
   );
 
   const submit = useCallback(async () => {
-    await verifyEmail({ email, toastInstance, navigate });
+    await verifyEmail(email, otpInstance, navigate, toastInstance);
   }, [email, toastInstance]);
 
   return (

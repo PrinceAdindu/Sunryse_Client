@@ -5,6 +5,7 @@ import { REGISTER_FORM_RULES } from './registerFormRules';
 export async function onRegister(formData, toast, navigate) {
   try {
     await axios.post('/register', { data: formData });
+    toast.success('Your account has been created, please login');
     navigate('/login');
   } catch (error) {
     if (error?.response?.status === 409)

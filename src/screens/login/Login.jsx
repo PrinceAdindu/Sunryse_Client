@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LoadingHOC from '../../components/loading/LoadingHOC';
@@ -7,23 +8,36 @@ import StyledButton from '../../components/styledButton/StyledButton';
 import { onLogin } from './loginHelper';
 import useToast from '../../hooks/useToast';
 import useAuth from '../../hooks/useAuth';
+import useOtp from '../../hooks/useOtp';
 
 import logo from '../../assets/NewSunryseLogoWideNameFill.png';
-
 import styles from './Login.module.scss';
 
-function Login({ loading, setLoading }) {
+Login.propTypes = {
+  setLoading: PropTypes.func.isRequired,
+};
+
+function Login({ setLoading }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const { setAuth } = useAuth();
-  const toastInstance = useToast();
   const navigate = useNavigate();
   const location = useLocation();
+  const toastInstance = useToast();
+  const otpInstance = useOtp();
 
   const submit = useCallback(async () => {
     setLoading(true);
-    await onLogin(email, password, toastInstance, setAuth, navigate, location);
+    await onLogin(
+      email,
+      password,
+      setAuth,
+      navigate,
+      location,
+      otpInstance,
+      toastInstance,
+    );
     setLoading(false);
   }, [email, location, navigate, password, setAuth, toastInstance]);
 

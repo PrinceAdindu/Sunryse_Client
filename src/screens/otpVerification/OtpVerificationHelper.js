@@ -1,32 +1,30 @@
-export async function sendOTP(email, toast) {
-  /*
- TODO
- API for sending OTP User
- */
-  console.log('otp sent to', email);
+import axios from '../../api/axios';
+
+export async function sendOtp(email, toast) {
+  try {
+    await axios.post('/otp', { data: { email: email } });
+  } catch (error) {
+    toast.error(
+      'There was an error sending the one time password, please try again.',
+    );
+  }
 }
 
-export async function authenticateUser(otp, toast, location, navigate) {
-  /*
-  TODO
-  Check user Input otp and generated otp is a match.
-  check whether otp is expired or not
-  if expired, Let user know to resend again 
-  if passed all redirect them to the desired route
-  */
-
-  // This below code will be replaced when the backend API finshed.
-
-  if (location?.state?.from === '/resetPassword/email') {
-    console.log('user redirected to resetPassword');
-    return navigate('/resetPassword', {
-      state: { from: '/otp', email: location?.state?.email },
-    });
-  }
-  if (location?.state?.from === '/login') {
-    console.log('user redirected to home');
-    return navigate('/home', {
-      state: { from: '/otp', email: location?.state?.email },
-    });
+export async function verifyOtp(email, code, callback, toast) {
+  try {
+    const data = { email, code };
+    const res = await axios.post('/otp/verify', { data });
+    const isVerified = res.data.isVerified;
+    if (isVerified) {
+      callback();
+    }
+  } catch (error) {
+    console.log(error);
+    if (error?.response?.status === 401)
+      toast.error('Verification code is incorrect');
+    else
+      toast.error(
+        'There was an error validating the verification code, please try again.',
+      );
   }
 }
