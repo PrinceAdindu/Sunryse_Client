@@ -21,22 +21,3 @@
     background-color: white;
   }
 }
-
-.app {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  min-height: 100vh;
-  // background-color: $WHITE_GRAY;
-}
-
-.contentContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  min-height: 100vh;
-}

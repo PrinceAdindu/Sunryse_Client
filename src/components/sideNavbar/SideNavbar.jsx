@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import SunryseLogo from '../../assets/NewSunryseLogoTallNameFill.png';
 import { getCurrentTab, SIDE_NAV_DATA } from './sideNavbarHelper';
 import styles from './SideNavbar.module.scss';
-import config from '../../config';
 
 export default function SideNavbar() {
   const navigate = useNavigate();
@@ -15,8 +14,6 @@ export default function SideNavbar() {
     const currentTab = getCurrentTab(location.pathname);
     setTab(currentTab);
   }, [location.pathname]);
-
-  const showNav = !config.externalRoutes.includes(location.pathname);
 
   const SideNavOptions = () =>
     SIDE_NAV_DATA.map((sideBar) => {
@@ -44,11 +41,9 @@ export default function SideNavbar() {
     });
 
   return (
-    showNav && (
-      <div className={styles.sideNavcontainer}>
-        <img src={SunryseLogo} className={styles.logoImage} />
-        <SideNavOptions />
-      </div>
-    )
+    <div className={styles.sideNavcontainer}>
+      <img src={SunryseLogo} className={styles.logoImage} />
+      <SideNavOptions />
+    </div>
   );
 }
