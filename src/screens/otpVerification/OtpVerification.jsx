@@ -26,6 +26,7 @@ export function OtpVerification({ setLoading }) {
   const isDisabled = otpCode.length < 6;
   const { from, email, callback } = useSelector((state) => state.otp);
 
+
   useEffect(() => {
     const sendOtpOnMount = async () => {
       setLoading(true);

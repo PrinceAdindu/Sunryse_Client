@@ -6,17 +6,17 @@ import InputField from '../../components/inputField/InputField';
 
 import useToast from '../../hooks/useToast';
 import useOtp from '../../hooks/useOtp';
-import { validateEmail, verifyEmail } from './emailVerificationHelper';
+import { verifyEmail } from './emailVerificationHelper';
 
 import logo from '../../assets/NewSunryseLogoWideNameFill.png';
 import styles from './EmailVerification.module.scss';
 
 export default function EmailVerification() {
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const toastInstance = useToast();
   const otpInstance = useOtp();
   const navigate = useNavigate();
-  const isValidEmail = validateEmail(email);
 
   const Header = () => (
     <div className={styles.headerContainer}>
@@ -29,7 +29,13 @@ export default function EmailVerification() {
   );
 
   const submit = useCallback(async () => {
-    await verifyEmail(email, otpInstance, navigate, toastInstance);
+    await verifyEmail(
+      email,
+      setEmailError,
+      otpInstance,
+      navigate,
+      toastInstance,
+    );
   }, [email, toastInstance]);
 
   return (
@@ -41,17 +47,12 @@ export default function EmailVerification() {
           title="Email"
           type="text"
           value={email}
+          error={emailError}
+          resetError={() => setEmailError('')}
           setValue={setEmail}
           minValue={8}
         />
-        <StyledButton
-          className={`${styles.button} ${
-            isValidEmail ? styles.notdisabledBtn : styles.disabledBtn
-          }`}
-          text="Next"
-          onClick={submit}
-          disabled={!isValidEmail}
-        />
+        <StyledButton className={styles.button} text="Next" onClick={submit} />
       </div>
     </div>
   );

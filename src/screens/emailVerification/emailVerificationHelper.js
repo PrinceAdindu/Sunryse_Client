@@ -5,7 +5,13 @@ function validateEmail(email) {
   return validRegex.test(email);
 }
 
-async function verifyEmail(email, otpInstance, navigate, toastInstance) {
+async function verifyEmail(
+  email,
+  setEmailError,
+  otpInstance,
+  navigate,
+  toastInstance,
+) {
   const valid = validateEmail(email);
   if (valid) {
     otpInstance.store('/resetPassword/email');
@@ -23,7 +29,7 @@ async function verifyEmail(email, otpInstance, navigate, toastInstance) {
       navigate('/login');
     }
   } else {
-    toastInstance.error('Invalid email');
+    setEmailError('Email is invalid');
   }
 }
 
