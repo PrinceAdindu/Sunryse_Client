@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import InputField from '../../components/inputField/InputField';
 import StyledButton from '../../components/styledButton/StyledButton';
+import LoadingHOC from '../../components/loading/LoadingHOC';
 
-import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import useToast from '../../hooks/useToast';
 import { validateData, onRegister } from './registerHelper';
 
@@ -11,7 +12,11 @@ import logo from '../../assets/NewSunryseLogoWideNameFill.png';
 
 import styles from './Register.module.scss';
 
-export default function Register() {
+Register.propTypes = {
+  setLoading: PropTypes.func.isRequired,
+};
+
+function Register({ setLoading }) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -30,7 +35,9 @@ export default function Register() {
   async function submit() {
     const valid = validateData(formData, setErrors);
     if (valid) {
+      setLoading(true);
       await onRegister(formData, toast, navigate);
+      setLoading(false);
     }
   }
 
@@ -127,40 +134,6 @@ export default function Register() {
           error={errors.passwordConf}
           resetError={() => updateErrors('passwordConf', '')}
         />
-        {/* <div className={styles.nameContainer}>
-          <InputBlock
-            inputId="firstname_input"
-            classname={styles.firstnameInput}
-            title="First Name"
-            description="Legal First Name"
-            errors={[
-              {
-                errorId: 'invalid_firstname',
-                text: 'Required',
-                visible: firstnameError,
-                setError: setFirstnameError,
-              },
-            ]}
-            value={firstname}
-            setValue={setFirstname}
-          />
-          <InputBlock
-            inputId="lastname_input"
-            classname={styles.input}
-            title="Last Name"
-            description="Legal Last Name"
-            errors={[
-              {
-                errorId: 'invalid_lastname',
-                text: 'Required',
-                visible: lastnameError,
-                setError: setLastnameError,
-              },
-            ]}
-            value={lastname}
-            setValue={setLastname}
-          />
-        </div> */}
         <StyledButton
           className={styles.button}
           text="Create Terra ID"
@@ -172,3 +145,21 @@ export default function Register() {
     </div>
   );
 }
+
+const loaderStyles = {
+  color: 'white',
+};
+const containerStyles = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+};
+
+export default LoadingHOC(
+  Register,
+  'Register',
+  false,
+  loaderStyles,
+  containerStyles,
+);

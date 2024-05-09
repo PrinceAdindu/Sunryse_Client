@@ -9,9 +9,13 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(to right, #659790, #f8bebd);
+  background-image: url(../../assets/SunryseBackgroundImage.png);
 }
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 500px;
   padding: 25px 50px 25px 50px;
   box-sizing: border-box;
@@ -21,9 +25,9 @@
 }
 
 .logo {
-  margin: 0px 0px 0px -20px;
-  width: 225px;
+  width: 215px;
   height: 80px;
+  margin: 0px 0px 0px -20px;
 }
 
 .title {
@@ -60,6 +64,13 @@
 .button:hover {
   cursor: pointer;
   background-color: $DARK_PINK !important;
+}
+.disabledButton {
+  width: 100% !important;
+  height: 38px;
+  margin-top: 30px !important;
+  font-size: 15px !important;
+  cursor: pointer;
 }
 
 .text {

@@ -1,11 +1,10 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 import useAuth from './useAuth';
 
 const useRefreshToken = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
 
   async function refresh() {
     try {
@@ -16,7 +15,7 @@ const useRefreshToken = () => {
       }
       return res?.data?.accessToken;
     } catch (error) {
-      navigate('/login', { state: { from: location } }); // Refresh token expired - login required
+      navigate('/login'); // Refresh token expired - login required
       throw error;
     }
   }

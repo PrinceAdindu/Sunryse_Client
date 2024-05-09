@@ -1,26 +1,34 @@
-import { useState } from 'react';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import InputField from '../../components/inputField/InputField';
 import StyledButton from '../../components/styledButton/StyledButton';
+
 import useToast from '../../hooks/useToast';
 import { onPasswordReset, validateData } from './resetPasswordHelper';
-import styles from './ResetPassword.module.scss';
 
-export default function ResetPassword() {
-  const location = useLocation();
-  const toastInstance = useToast();
+import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import styles from './ResetPassword.module.scss';
+import LoadingHOC from '../../components/loading/LoadingHOC';
+
+function ResetPassword() {
   const navigate = useNavigate();
+  const toastInstance = useToast();
 
   const [formData, setFormData] = useState({
     password: '',
     passwordConf: '',
-    email: location?.state?.email || '',
   });
   const [errors, setErrors] = useState({
-    email: '',
     password: '',
     passwordConf: '',
+  });
+
+  const { email } = useSelector((state) => state.otp);
+
+  useEffect(() => {
+    if (!email) navigate('/login');
   });
 
   const updateForm = (field, value) => {
@@ -37,23 +45,24 @@ export default function ResetPassword() {
     }));
   };
 
+  async function submit() {
+    const valid = validateData(formData, setErrors);
+    if (valid) {
+      await onPasswordReset(formData, email, navigate, toastInstance);
+    }
+  }
+
   const Header = () => (
     <div className={styles.headerContainer}>
       <img className={styles.logo} src={logo} />
-      <p className={styles.title}>Reset your Password</p>
+      <p className={styles.title}>Reset your password</p>
       <p className={styles.subtitle}>Please Enter a new password</p>
     </div>
   );
 
-  async function submit() {
-    const valid = validateData(formData, setErrors);
-    if (valid) {
-      await onPasswordReset(formData, toastInstance, navigate);
-    }
-  }
   return (
     <div className={styles.screen}>
-      <div className={styles.card}>
+      <div id="ResetPassword" className={styles.card}>
         <Header />
         <InputField
           inputId="password_input"
@@ -81,3 +90,21 @@ export default function ResetPassword() {
     </div>
   );
 }
+
+const loaderStyles = {
+  color: 'white',
+};
+const containerStyles = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+};
+
+export default LoadingHOC(
+  ResetPassword,
+  'ResetPassword',
+  false,
+  loaderStyles,
+  containerStyles,
+);

@@ -42,7 +42,7 @@ export default function OTPInput({
     newOtpValues[index] = value;
 
     setOtpValues(newOtpValues);
-    setValue(newOtpValues.join(''));
+    setValue(parseInt(newOtpValues.join('')));
   };
 
   const handlePaste = (index, event) => {
@@ -60,7 +60,7 @@ export default function OTPInput({
     focusInput(activeInput);
     setOtpValues(otp);
     // send to its parent component
-    setValue(otp.join(''));
+    setValue(parseInt(otp.join('')));
 
     event.preventDefault();
   };
@@ -76,8 +76,9 @@ export default function OTPInput({
         <input
           className={`${styles.input} ${otpInputStyle}`}
           key={index}
-          type="text"
+          type="number"
           maxLength={1}
+          max={9}
           value={value}
           onPaste={(event) => handlePaste(index, event)}
           onFocus={(event) => event.target.select()}

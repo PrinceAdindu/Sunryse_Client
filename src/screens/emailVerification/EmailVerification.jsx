@@ -1,30 +1,41 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+
 import StyledButton from '../../components/styledButton/StyledButton';
 import InputField from '../../components/inputField/InputField';
+
 import useToast from '../../hooks/useToast';
-import { verifyEmail } from './emailVerifierhelper';
+import useOtp from '../../hooks/useOtp';
+import { verifyEmail } from './emailVerificationHelper';
+
+import logo from '../../assets/NewSunryseLogoWideNameFill.png';
 import styles from './EmailVerification.module.scss';
 
 export default function EmailVerification() {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const toastInstance = useToast();
+  const otpInstance = useOtp();
   const navigate = useNavigate();
 
   const Header = () => (
     <div className={styles.headerContainer}>
       <img className={styles.logo} src={logo} />
-      <p className={styles.title}>Forgot your password ?</p>
+      <p className={styles.title}>Reset your password</p>
       <p className={styles.subtitle}>
-        Enter your Email Address to Reset Your password
+        Enter the email address for your account
       </p>
     </div>
   );
 
   const submit = useCallback(async () => {
-    await verifyEmail({ email, toastInstance, navigate, setEmailError });
+    await verifyEmail(
+      email,
+      setEmailError,
+      otpInstance,
+      navigate,
+      toastInstance,
+    );
   }, [email, toastInstance]);
 
   return (

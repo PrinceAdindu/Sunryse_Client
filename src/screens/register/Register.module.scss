@@ -7,7 +7,7 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background: $BLUE_GRAD;
+  background-image: url(../../assets/SunryseBackgroundImage.png);
 }
 
 .card {
@@ -31,9 +31,9 @@
 }
 
 .logo {
-  margin: 0px 0px 0px -20px;
-  width: 225px;
+  width: 215px;
   height: 80px;
+  margin: 0px 0px 0px -20px;
 }
 
 .title {
