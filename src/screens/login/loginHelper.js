@@ -32,7 +32,6 @@ export async function onLogin(
     else if (error?.response?.status === 401)
       toastInstance.error('Unable to login, please refresh and retry');
     else {
-      console.log(error);
       toastInstance.error(
         'There was an error on our end, please notify support',
       );

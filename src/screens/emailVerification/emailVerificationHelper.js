@@ -14,16 +14,19 @@ async function verifyEmail(
 ) {
   const valid = validateEmail(email);
   if (valid) {
-    otpInstance.storeFrom('/resetPassword/email');
-    otpInstance.storeEmail(email);
-    otpInstance.storeCallback(() => navigate('/resetPassword'));
     try {
       const res = await axios.post('/resetPassword/email', {
         data: { email },
       });
       const isEmailFound = res.data.isEmailFound;
-      if (isEmailFound) navigate('/otp');
-      else toastInstance.error('Email was not found');
+      if (isEmailFound) {
+        otpInstance.storeFrom('/resetPassword/email');
+        otpInstance.storeEmail(email);
+        otpInstance.storeCallback(() => navigate('/resetPassword'));
+        navigate('/otp');
+      } else {
+        setEmailError('Email is not associated with an account');
+      }
     } catch (error) {
       toastInstance.error('There was an error on our end, please try again');
       navigate('/login');
