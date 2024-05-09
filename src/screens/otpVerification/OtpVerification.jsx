@@ -26,15 +26,15 @@ export function OtpVerification({ setLoading }) {
   const isDisabled = otpCode.length < 6;
   const { from, email, callback } = useSelector((state) => state.otp);
 
-
   useEffect(() => {
     const sendOtpOnMount = async () => {
       setLoading(true);
       if (!email) {
         const revertTo = from || '/login';
         navigate(revertTo);
+      } else {
+        await sendOtp(email, toast);
       }
-      await sendOtp(email, toast);
       setLoading(false);
     };
     sendOtpOnMount();
@@ -51,9 +51,9 @@ export function OtpVerification({ setLoading }) {
   const Header = () => (
     <div>
       <img className={styles.logo} src={logo} />
-      <p className={styles.title}>One-Time Password</p>
+      <p className={styles.title}>Verification Code</p>
       <p className={styles.subtitle}>
-        Please enter the One-Time Password sent to your email
+        Please enter the verification code sent to your email
       </p>
     </div>
   );

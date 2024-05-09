@@ -76,13 +76,13 @@ const minValueCheck = (value, amount) => {
   }
 };
 
-const equalsCheck = (value, amount) => {
-  if (value === amount) {
-    return { passed: true, message: 'Passed' };
+const equalsCheck = (value, requiredValue) => {
+  if (value === requiredValue) {
+    return { passed: true, message: 'Passed equals check' };
   } else {
     return {
       passed: false,
-      message: `Minimum length of ${amount} not reached`,
+      message: `Values do not match`,
     };
   }
 };

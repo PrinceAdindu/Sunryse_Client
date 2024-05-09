@@ -1,4 +1,5 @@
 import axios from '../../api/axios';
+import config from '../../config';
 
 export async function sendOtp(email, toast) {
   try {
@@ -12,6 +13,11 @@ export async function sendOtp(email, toast) {
 
 export async function verifyOtp(email, code, callback, toast) {
   try {
+    if (config.nodeEnv === 'dev') {
+      callback();
+      return;
+    }
+
     const data = { email, code };
     const res = await axios.post('/otp/verify', { data });
     const isVerified = res.data.isVerified;

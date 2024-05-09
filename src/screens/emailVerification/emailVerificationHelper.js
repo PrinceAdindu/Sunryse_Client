@@ -14,7 +14,7 @@ async function verifyEmail(
 ) {
   const valid = validateEmail(email);
   if (valid) {
-    otpInstance.store('/resetPassword/email');
+    otpInstance.storeFrom('/resetPassword/email');
     otpInstance.storeEmail(email);
     otpInstance.storeCallback(() => navigate('/resetPassword'));
     try {

@@ -21,9 +21,9 @@ export default function EmailVerification() {
   const Header = () => (
     <div className={styles.headerContainer}>
       <img className={styles.logo} src={logo} />
-      <p className={styles.title}>Forgot your password ?</p>
+      <p className={styles.title}>Reset your password</p>
       <p className={styles.subtitle}>
-        Enter your Email Address to Reset Your password
+        Enter the email address for your account
       </p>
     </div>
   );

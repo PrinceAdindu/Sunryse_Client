@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -27,6 +27,10 @@ function ResetPassword() {
 
   const { email } = useSelector((state) => state.otp);
 
+  useEffect(() => {
+    if (!email) navigate('/login');
+  });
+
   const updateForm = (field, value) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -51,7 +55,7 @@ function ResetPassword() {
   const Header = () => (
     <div className={styles.headerContainer}>
       <img className={styles.logo} src={logo} />
-      <p className={styles.title}>Reset your Password</p>
+      <p className={styles.title}>Reset your password</p>
       <p className={styles.subtitle}>Please Enter a new password</p>
     </div>
   );

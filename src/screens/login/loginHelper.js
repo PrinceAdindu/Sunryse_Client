@@ -18,14 +18,12 @@ export async function onLogin(
     otpInstance.storeFrom('/login');
     otpInstance.storeEmail(sanitizedEmail);
     otpInstance.storeCallback(() => {
-      console.log('1');
       setAuth({ accessToken });
-      console.log('2');
-      const to = config.externalRoutes.includes(location.state.from)
-        ? '/home'
-        : location.state.from;
-      console.log('3', to);
-      navigate(to);
+      // TODO: add in last route return
+      // const to = config.externalRoutes.includes(location.pathname)
+      //   ? '/home'
+      //   : location.pathname;
+      navigate('/home');
     });
     navigate('/otp');
   } catch (error) {
