@@ -1,5 +1,4 @@
 import axios from '../../api/axios';
-import config from '../../config';
 
 export async function onLogin(
   email,
