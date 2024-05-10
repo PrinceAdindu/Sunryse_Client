@@ -102,7 +102,7 @@ function Register({ setLoading }) {
 
   return (
     <div className={styles.screen}>
-      <div className={styles.card}>
+      <div id="Register" className={styles.card}>
         <Header />
         <InputField
           inputId="email_input"
