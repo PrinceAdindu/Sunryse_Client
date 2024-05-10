@@ -27,8 +27,8 @@ function App() {
         <Route path="/otp" element={<OtpVerification />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/resetPassword/email" element={<EmailVerification />} />
-        <Route element={<PrivateRouteLayout />}>
-          <Route path="/home/*" element={<Home />} />
+        <Route path="/" element={<PrivateRouteLayout />}>
+          <Route index path="/home/*" element={<Home />} />
           <Route path="/hours/*" element={<BusinessHours />} />
           <Route path="/bookings/*" element={<Bookings />} />
           <Route path="/finances/*" element={<Finances />} />
