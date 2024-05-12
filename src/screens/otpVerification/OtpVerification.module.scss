@@ -10,6 +10,8 @@
   width: 100%;
   min-height: 100vh;
   background-image: url(../../assets/SunryseBackgroundImage.png);
+  background-size: cover !important;
+  background-attachment: fixed;
 }
 .card {
   display: flex;

@@ -2,7 +2,7 @@ import { NEW_SERVICE_FORM_RULES } from './newService/newServiceFormRules';
 
 export async function updateService(serviceData, axios, toast) {
   try {
-    const res = await axios.put('/clinic/service', { data: serviceData });
+    await axios.put('/clinic/service', { data: serviceData });
   } catch (error) {
     console.log(error);
     if (error?.response?.status === 400 || error?.response?.status === 500)
@@ -29,7 +29,7 @@ export async function getCurrentServices(axios, toast) {
 
 export async function deleteService(id, axios, toast) {
   try {
-    const res = await axios.delete('/clinic/service', { data: { id: id } });
+    await axios.delete('/clinic/service', { data: { id: id } });
   } catch (error) {
     console.log(error);
     if (error?.response?.status === 400 || error?.response?.status === 500)

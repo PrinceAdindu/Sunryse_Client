@@ -33,7 +33,7 @@ export function OtpVerification({ setLoading }) {
         const revertTo = from || '/login';
         navigate(revertTo);
       } else {
-        await sendOtp(email, toast);
+        // await sendOtp(email, toast);
       }
       setLoading(false);
     };
