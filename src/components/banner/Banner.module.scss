@@ -1,0 +1,16 @@
+@import '../../variables';
+.banner {
+  padding: 10px;
+  background-color: $LIGHT_BLUE;
+  border-radius: 5px;
+  box-shadow: $BOX_SHADOW;
+}
+.text {
+  font-size: 14px;
+  margin-left: 25px;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
