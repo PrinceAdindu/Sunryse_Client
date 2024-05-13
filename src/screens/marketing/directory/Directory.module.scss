@@ -1,0 +1,69 @@
+@import '../../../variables';
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+.screen {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+.card {
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: $BOX_SHADOW;
+}
+.profileContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.button {
+  min-width: 50px !important;
+  height: 30px !important;
+  padding: 0px;
+  margin-top: 10px !important;
+  background-color: $PINK !important;
+}
+
+.button:hover {
+  background-color: $DARK_PINK !important;
+}
+
+.profileDescription {
+  p {
+    font-size: 14px;
+    color: $MEDIUM_GRAY;
+    margin-left: 2px;
+  }
+}
+
+.profileDetail {
+  h4 {
+    margin: 10px 0;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+.status {
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  color: $ERROR_RED;
+}
+
+.published {
+  color: lightgreen;
+}
