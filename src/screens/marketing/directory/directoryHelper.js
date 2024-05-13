@@ -1,4 +1,4 @@
-export async function getDirectory(axios, toast, setDirectory) {
+export async function getDirectory(axios, toast) {
   try {
     const fields = ['directory'];
     const res = await axios.get('/clinic', {
@@ -6,8 +6,6 @@ export async function getDirectory(axios, toast, setDirectory) {
         fields,
       },
     });
-    setDirectory(res.data?.directory);
-
     return res.data?.directory;
   } catch (error) {
     console.log('res', error);

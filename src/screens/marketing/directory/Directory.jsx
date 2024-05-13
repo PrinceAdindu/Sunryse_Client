@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Avator from '../../../components/avator/Avator';
+import Avatar from '../../../components/avatar/Avatar';
 import Banner from '../../../components/banner/Banner';
 import Article from '../../../components/article/Article';
 import StyledButton from '../../../components/styledButton/StyledButton';
@@ -15,7 +15,7 @@ import articleImg from '../../../assets/directoryVideo.png';
 import styles from './Directory.module.scss';
 
 const Directory = () => {
-  const [directory, setDirectory] = useState({ url: '', status: 'off' });
+  const [directory, setDirectory] = useState({ url: '', status: false });
 
   const axios = useAxiosPrivate();
   const toast = useToast();
@@ -29,17 +29,18 @@ const Directory = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      getDirectory(axios, toast, setDirectory);
+      const directory = await getDirectory(axios, toast);
+      if (directory) setDirectory(directory);
     };
     fetch();
   }, []);
 
   const Profile = () => (
     <div className={styles.profile}>
-      <Avator imgUrl={profilePicture} size="large" />
+      <Avatar imgUrl={profilePicture} size="large" />
       <div className={styles.profileDescription}>
-        <h4>Terra Therapy</h4>
-        <p>Private Clinic</p>
+        <p className={styles.clinicName}>Terra Therapy</p>
+        <p className={styles.clinicType}>Private Clinic</p>
         <StyledButton text="Edit" className={styles.button} />
       </div>
     </div>
@@ -47,32 +48,32 @@ const Directory = () => {
 
   const ProfileDetail = () => (
     <div className={styles.profileDetail}>
-      <h4>Sunryse Directory</h4>
+      <p className={styles.directoryName}>Sunryse Directory</p>
       <a href={`${directory?.url || 'www.therapytoday/terratherapy'}`}>
         www.therapytoday/terratherapy
       </a>
-      <h4
-        className={`${styles.status} ${
-          directory?.status.toLowerCase() === 'on' && styles.published
-        }`}
+      <p
+        className={`${styles.status} ${directory?.status && styles.published}`}
       >
         Published
-      </h4>
+      </p>
     </div>
   );
 
   return (
     <div className={styles.screen}>
-      <Banner
-        title="Sunryse Directory Status"
-        text=" Your clinic is currently unavailable in the Sunryse Directory and not
+      {!directory?.status && (
+        <Banner
+          title="Sunryse Directory Status"
+          text=" Your clinic is currently unavailable in the Sunryse Directory and not
           accepting new clients"
-        checkbox
-        onChange={() => {}}
-        isOff={directory?.status}
-      />
+          checkbox
+          onChange={() => {}}
+          status={directory?.status}
+        />
+      )}
       <div className={styles.card}>
-        <h4>Profile</h4>
+        <p>Profile</p>
         <div className={styles.profileContainer}>
           <Profile />
           <ProfileDetail />

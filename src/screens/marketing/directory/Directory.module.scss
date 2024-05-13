@@ -17,6 +17,10 @@ h4 {
   background-color: white;
   border-radius: 5px;
   box-shadow: $BOX_SHADOW;
+  p {
+    font-size: 16px;
+    font-weight: 600;
+  }
 }
 .profileContainer {
   display: flex;
@@ -42,7 +46,11 @@ h4 {
 }
 
 .profileDescription {
-  p {
+  .clinicName {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .clinicType {
     font-size: 14px;
     color: $MEDIUM_GRAY;
     margin-left: 2px;
@@ -50,18 +58,23 @@ h4 {
 }
 
 .profileDetail {
-  h4 {
-    margin: 10px 0;
+  .directoryName {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0px;
   }
   a {
     text-decoration: none;
+    font-weight: 400;
   }
 }
 .status {
   text-transform: uppercase;
   letter-spacing: 0.2px;
-  font-weight: 600;
+  font-weight: 500;
   color: $ERROR_RED;
+  margin: 10px 0px;
+  font-size: 14px;
 }
 
 .published {
