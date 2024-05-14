@@ -11,6 +11,7 @@ import Home from './screens/home/Home';
 import BusinessHours from './screens/businessHours/BusinessHours';
 import Bookings from './screens/bookings/Bookings';
 import Finances from './screens/finances/Finances';
+import Marketing from './screens/marketing/Marketing';
 import Services from './screens/services/Services';
 import NewService from './screens/services/newService/NewService';
 import ToastMessage from './components/toastMessage/ToastMessage';
@@ -34,6 +35,7 @@ function App() {
           <Route path="/finances/*" element={<Finances />} />
           <Route path="/services/*" element={<Services />} />
           <Route path="/services/new" element={<NewService />} />
+          <Route path="/marketing/*" element={<Marketing />} />
         </Route>
         <Route path="unauthorized" element={<Unauthorized />} />
         <Route path="*" element={<Missing />} />
