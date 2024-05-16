@@ -9,7 +9,7 @@ import Unauthorized from './screens/Unauthorized';
 import Missing from './screens/Missing';
 import Home from './screens/home/Home';
 import BusinessHours from './screens/businessHours/BusinessHours';
-import Bookings from './screens/bookings/Bookings';
+import Calendar from './screens/calendar/Calendar';
 import Finances from './screens/finances/Finances';
 import Services from './screens/services/Services';
 import NewService from './screens/services/newService/NewService';
@@ -30,7 +30,7 @@ function App() {
         <Route path="/" element={<PrivateRouteLayout />}>
           <Route index path="/home/*" element={<Home />} />
           <Route path="/hours/*" element={<BusinessHours />} />
-          <Route path="/bookings/*" element={<Bookings />} />
+          <Route path="/calendar/*" element={<Calendar />} />
           <Route path="/finances/*" element={<Finances />} />
           <Route path="/services/*" element={<Services />} />
           <Route path="/services/new" element={<NewService />} />

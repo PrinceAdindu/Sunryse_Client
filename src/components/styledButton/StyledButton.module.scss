@@ -12,12 +12,12 @@
   text-transform: none;
 }
 
-.styled {
+.base {
   background-color: $BLUE_GREEN;
   color: white;
 }
 
-.styled:hover {
+.base:hover {
   background-color: $DARK_BLUE_GREEN;
   cursor: pointer;
 }

@@ -80,7 +80,7 @@ function Services({ setLoading }) {
             onStatusChange={onStatusChange}
           />
           <StyledButton
-            className={styles.button}
+            baseClassname={styles.button}
             text={'New Service +'}
             onClick={() => navigate('/services/new')}
           />

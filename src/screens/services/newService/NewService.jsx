@@ -92,7 +92,7 @@ export default function NewService() {
         updateErrors={updateErrors}
       />
       <StyledButton
-        className={styles.button}
+        baseClassname={styles.button}
         text="Create New Service"
         onClick={() => {
           save();

@@ -85,7 +85,11 @@ function ResetPassword() {
           error={errors.passwordConf}
           resetError={() => updateErrors('passwordConf', '')}
         />
-        <StyledButton className={styles.button} text="Reset" onClick={submit} />
+        <StyledButton
+          baseClassname={styles.button}
+          text="Reset"
+          onClick={submit}
+        />
       </div>
     </div>
   );

@@ -135,7 +135,7 @@ function Register({ setLoading }) {
           resetError={() => updateErrors('passwordConf', '')}
         />
         <StyledButton
-          className={styles.button}
+          baseClassname={styles.button}
           text="Create Terra ID"
           onClick={() => submit()}
         />

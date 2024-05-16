@@ -85,7 +85,7 @@ function BusinessHours({ setLoading }) {
         <WeeklyHours schedule={schedule} setSchedule={setSchedule} />
       </div>
       <StyledButton
-        className={styles.button}
+        baseClassname={styles.button}
         text="Save Business Hours"
         onClick={() => save()}
         disabled={checkForErrors() ? true : false}

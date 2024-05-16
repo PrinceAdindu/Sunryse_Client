@@ -78,7 +78,7 @@ export default function SetupMarketing({ expanded, expand, onStepCheck }) {
               <li>Explain Terra's marketing approach to bring you clients</li>
             </ul>
             <StyledButton
-              className={styles.button}
+              baseClassname={styles.button}
               text="Book Branding Session"
               onClick={() => openSchedule()}
             />

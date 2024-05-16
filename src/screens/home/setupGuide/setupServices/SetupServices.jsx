@@ -51,7 +51,7 @@ export default function SetupServices({ expanded, expand, onStepCheck }) {
               We have already created your 15 minute free consultation service.
             </p>
             <StyledButton
-              className={styles.button}
+              baseClassname={styles.button}
               text="Create A Service"
               onClick={() => {}}
             />

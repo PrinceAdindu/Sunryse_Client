@@ -68,7 +68,8 @@ export function OtpVerification({ setLoading }) {
             numInputs={6}
           />
           <StyledButton
-            className={isDisabled ? styles.disabledButton : styles.button}
+            baseClassname={styles.button}
+            disabledClassname={styles.disabledButton}
             text="Submit"
             onClick={() => submit()}
             disabled={isDisabled}
