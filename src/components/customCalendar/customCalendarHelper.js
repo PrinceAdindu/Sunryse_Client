@@ -77,15 +77,70 @@ export function getDummyEvents(dates) {
       status: true,
     },
     {
-      startTime: new Date('May 29, 2024, 19:00'),
-      endTime: new Date('May 29, 2024, 19:30'),
+      startTime: new Date('May 29, 2024, 10:00'),
+      endTime: new Date('May 29, 2024, 12:00'),
+      clientName: 'James Potter',
+      location: 'Virtual',
+      service: {
+        name: 'Individual Session',
+        duration: 120,
+      },
+      status: true,
+    },
+    {
+      startTime: new Date('May 29, 2024, 12:00'),
+      endTime: new Date('May 29, 2024, 13:00'),
+      clientName: 'Ginny Potter',
+      location: 'Virtual',
+      service: {
+        name: 'Individual Session',
+        duration: 60,
+      },
+      status: false,
+    },
+    {
+      startTime: new Date('May 26, 2024, 09:00'),
+      endTime: new Date('May 26, 2024, 12:00'),
+      clientName: 'Albus Potter',
+      location: 'Virtual',
+      service: {
+        name: 'Individual Session',
+        duration: 180,
+      },
+      status: true,
+    },
+    {
+      startTime: new Date('May 27, 2024, 10:00'),
+      endTime: new Date('May 27, 2024, 11:00'),
       clientName: 'Lily Potter',
+      location: 'Virtual',
+      service: {
+        name: 'Individual Session',
+        duration: 60,
+      },
+      status: true,
+    },
+    {
+      startTime: new Date('May 25, 2024, 11:00'),
+      endTime: new Date('May 25, 2024, 11:30'),
+      clientName: 'Sevrus Potter',
       location: 'Virtual',
       service: {
         name: 'Individual Session',
         duration: 30,
       },
       status: true,
+    },
+    {
+      startTime: new Date('May 31, 2024, 12:00'),
+      endTime: new Date('May 31, 2024, 12:45'),
+      clientName: 'Harry Potter',
+      location: 'Virtual',
+      service: {
+        name: 'Individual Session',
+        duration: 45,
+      },
+      status: false,
     },
     {
       startTime: new Date('Jun 1, 2024, 18:00'),
@@ -95,6 +150,17 @@ export function getDummyEvents(dates) {
       service: {
         name: 'Individual Session',
         duration: 45,
+      },
+      status: false,
+    },
+    {
+      startTime: new Date('Jun 1, 2024, 10:00'),
+      endTime: new Date('Jun 1, 2024, 12:45'),
+      clientName: 'Draco Malfoy',
+      location: 'Virtual',
+      service: {
+        name: 'Individual Session',
+        duration: 165,
       },
       status: false,
     },
