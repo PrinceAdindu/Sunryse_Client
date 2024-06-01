@@ -1,25 +1,27 @@
 @import '../../variables';
 
-.screen {
+.calendarScreen {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  min-height: calc(100vh - $NAV_HEIGHT);
-  background: $WHITE_GRAY;
-  padding: 25px;
+  height: calc(100vh - $NAV_HEIGHT);
+  padding: 20px;
   box-sizing: border-box;
+  background-color: $WHITE_GRAY;
 }
 
-.container {
+.calendarCard {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
-  min-height: 80vh;
+  height: 100%;
   border-radius: 10px;
+  padding: 30px;
+  box-sizing: border-box;
   background-color: white;
   -webkit-box-shadow: $BOX_SHADOW;
   -moz-box-shadow: $BOX_SHADOW;

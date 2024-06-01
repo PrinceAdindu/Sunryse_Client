@@ -1,0 +1,29 @@
+import PropTypes from 'prop-types';
+import { calendarHoursArray } from '../customCalendarHelper';
+
+import DayColumns from './DayColumns/DayColumns';
+
+import styles from './CalendarBody.module.scss';
+
+CalendarBody.propTypes = {
+  currWeekData: PropTypes.arrayOf(PropTypes.object),
+};
+
+export default function CalendarBody({ currWeekData }) {
+  const TimeColumn = () => (
+    <div className={styles.timeColumnContainer}>
+      {calendarHoursArray.map((hourString) => (
+        <div key={hourString} className={styles.timeContainer}>
+          <p className={styles.time}>{hourString}</p>
+        </div>
+      ))}
+    </div>
+  );
+
+  return (
+    <div className={styles.bodyContainer}>
+      <TimeColumn />
+      <DayColumns currWeekData={currWeekData} />
+    </div>
+  );
+}

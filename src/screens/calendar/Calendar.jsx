@@ -14,8 +14,8 @@ function Calendar({ setLoading }) {
   const [calendarData, setCalendarData] = useState([]);
 
   return (
-    <div id="Calendar" className={styles.screen}>
-      <div className={styles.container}>
+    <div id="Calendar" className={styles.calendarScreen}>
+      <div className={styles.calendarCard}>
         <CustomCalendar />
       </div>
     </div>
