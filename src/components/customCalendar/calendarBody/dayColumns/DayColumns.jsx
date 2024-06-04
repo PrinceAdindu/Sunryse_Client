@@ -7,10 +7,31 @@ import CalendarEvent from '../calendarEvent/CalendarEvent';
 import styles from './DayColumns.module.scss';
 
 DayColumns.propTypes = {
-  currWeekData: PropTypes.arrayOf(PropTypes.object),
+  currWeekData: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.instanceOf(Date),
+      events: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          title: PropTypes.string.isRequired,
+          startTime: PropTypes.instanceOf(Date).isRequired,
+          endTime: PropTypes.instanceOf(Date).isRequired,
+          subtitle: PropTypes.string,
+          classNames: PropTypes.object,
+        }),
+      ),
+    }),
+  ),
 };
 
 export default function DayColumns({ currWeekData }) {
+  const Column = ({ dayData, dayIndex }) => (
+    <div className={styles.columnContainer}>
+      <EmptySlots dayIndex={dayIndex} />
+      <DailyEvents dayData={dayData} />
+    </div>
+  );
+
   const EmptySlots = ({ dayIndex }) =>
     calendarHoursArray.map((hourString) => (
       <div
@@ -25,13 +46,6 @@ export default function DayColumns({ currWeekData }) {
     dayData.events.map((event) => (
       <CalendarEvent key={event.startTime} eventData={event} />
     ));
-
-  const Column = ({ dayData, dayIndex }) => (
-    <div className={styles.columnContainer}>
-      <EmptySlots dayIndex={dayIndex} />
-      <DailyEvents dayData={dayData} />
-    </div>
-  );
 
   return (
     <div className={styles.dayColumnsContainer}>

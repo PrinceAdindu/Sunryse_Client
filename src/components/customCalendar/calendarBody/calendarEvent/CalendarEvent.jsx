@@ -1,24 +1,24 @@
 import PropTypes from 'prop-types';
+import { eachMinuteOfInterval } from 'date-fns';
 
 CalendarEvent.propTypes = {
   eventData: PropTypes.shape({
-    service: PropTypes.shape({
-      name: PropTypes.string,
-      duration: PropTypes.number,
-    }).isRequired,
-    clientName: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
     startTime: PropTypes.instanceOf(Date).isRequired,
     endTime: PropTypes.instanceOf(Date).isRequired,
-    location: PropTypes.string.isRequired,
-    status: PropTypes.bool.isRequired,
+    subtitle: PropTypes.string,
+    classNames: PropTypes.object,
   }),
 };
 
 export default function CalendarEvent({ eventData }) {
   let todayMorning = new Date();
   todayMorning.setHours(7);
-  const durationInHours = eventData.service.duration / 60;
-  const backgroundColor = eventData.status === true ? '#e5f8eb' : '#ffebeb';
+  const durationInMinutes =
+    eachMinuteOfInterval({ start: eventData.startTime, end: eventData.endTime })
+      .length - 1;
+  const durationInHours = durationInMinutes / 60;
   const topDiff = eventData.startTime.getHours() - todayMorning.getHours();
   const heightCalculation = durationInHours * 50 - 5;
   const eventContainerStyles = {
@@ -34,17 +34,15 @@ export default function CalendarEvent({ eventData }) {
     marginRight: '5px',
     padding: '5px',
     boxSizing: 'border-box',
-    backgroundColor,
     border: 'solid',
     borderWidth: '0px 0px 0px 2px',
-    borderColor: eventData.status === true ? '#06ba34' : '#c5514f',
     borderRadius: '3px',
     cursor: 'pointer',
+    ...eventData.classNames,
   };
   const eventTextStyles = {
     fontSize: '11px',
     fontWeight: '500',
-    color: eventData.status === true ? '#06ba34' : '#c5514f',
   };
   const getTimeString = (dateObj) =>
     dateObj.toLocaleString('en-US', {
@@ -55,7 +53,7 @@ export default function CalendarEvent({ eventData }) {
 
   return (
     <div style={eventContainerStyles}>
-      <p style={eventTextStyles}>{eventData.clientName}</p>
+      <p style={eventTextStyles}>{eventData.title}</p>
       {heightCalculation > 20 && (
         <p style={{ ...eventTextStyles }}>
           {getTimeString(eventData.startTime)} -{' '}
@@ -63,7 +61,7 @@ export default function CalendarEvent({ eventData }) {
         </p>
       )}
       {heightCalculation > 40 && (
-        <p style={eventTextStyles}>{eventData.location}</p>
+        <p style={eventTextStyles}>{eventData.subtitle}</p>
       )}
     </div>
   );

@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   getCurrWeekDates,
-  getDatesInYear,
-  getDummyEvents,
   getNextWeekDates,
   getPrevWeekDates,
   getWeekData,
@@ -14,17 +13,30 @@ import styles from './CustomCalendar.module.scss';
 import CalendarDateRow from './calendarDateRow/CalendarDateRow';
 import CalendarBody from './calendarBody/calendarBody';
 
-export default function CustomCalendar() {
+CustomCalendar.propTypes = {
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      startTime: PropTypes.instanceOf(Date).isRequired,
+      endTime: PropTypes.instanceOf(Date).isRequired,
+      subtitle: PropTypes.string,
+      className: PropTypes.string,
+    }).isRequired,
+  ),
+};
+
+export default function CustomCalendar({ events }) {
   const [currWeekDates, setCurrWeekDates] = useState(getCurrWeekDates());
   const [currWeekData, setCurrWeekData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getWeekData(currWeekDates);
+      const data = getWeekData(currWeekDates, events);
       setCurrWeekData(data);
     };
     fetchData();
-  }, [currWeekDates]);
+  }, [currWeekDates, events]);
 
   const nextWeekClick = () => {
     const dates = getNextWeekDates(currWeekDates);

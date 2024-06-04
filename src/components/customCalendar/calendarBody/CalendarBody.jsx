@@ -6,7 +6,21 @@ import DayColumns from './DayColumns/DayColumns';
 import styles from './CalendarBody.module.scss';
 
 CalendarBody.propTypes = {
-  currWeekData: PropTypes.arrayOf(PropTypes.object),
+  currWeekData: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.instanceOf(Date).isRequired,
+      events: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          title: PropTypes.string.isRequired,
+          startTime: PropTypes.instanceOf(Date).isRequired,
+          endTime: PropTypes.instanceOf(Date).isRequired,
+          subtitle: PropTypes.string.isRequired,
+          classNames: PropTypes.object,
+        }),
+      ),
+    }),
+  ).isRequired,
 };
 
 export default function CalendarBody({ currWeekData }) {

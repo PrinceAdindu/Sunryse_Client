@@ -66,7 +66,7 @@ function BusinessHours({ setLoading }) {
   const TimeZonePicker = () => (
     <Dropdown
       id="time_zone_picker"
-      classNames={styles.dropdown}
+      className={styles.dropdown}
       options={timeZoneOptions}
       value={timeZone}
       onChange={setTimeZone}

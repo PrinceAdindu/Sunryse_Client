@@ -14,33 +14,10 @@ export function getCurrWeekDates(dateObj = new Date()) {
   return week;
 }
 
-export function getNextWeekDates(currWeekDates) {
-  const firstDayOfCurrWeek = currWeekDates[0];
-  let nextSunday = new Date(firstDayOfCurrWeek);
-  nextSunday.setDate(
-    firstDayOfCurrWeek.getDate() - firstDayOfCurrWeek.getDay() + 7,
-  );
-
-  // Use getCurrWeekDates to get the next week's dates
-  return getCurrWeekDates(nextSunday);
-}
-
-export function getPrevWeekDates(currWeekDates) {
-  const firstDayOfCurrWeek = currWeekDates[0];
-  let prevSunday = new Date(firstDayOfCurrWeek);
-  prevSunday.setDate(
-    firstDayOfCurrWeek.getDate() - firstDayOfCurrWeek.getDay() - 7,
-  );
-
-  // Use getCurrWeekDates to get the prev week's dates
-  return getCurrWeekDates(prevSunday);
-}
-
-export function getWeekData(currWeekDates) {
-  const currWeekEvents = getDummyEvents(currWeekDates); // TODO get from DB
+export function getWeekData(currWeekDates, eventData) {
   let weekData = [];
   currWeekDates.forEach((date) => {
-    const events = currWeekEvents.filter(
+    const events = eventData.filter(
       (event) => date.getDate() === event.startTime.getDate(),
     );
     const day = {
@@ -52,138 +29,22 @@ export function getWeekData(currWeekDates) {
   return weekData;
 }
 
-export function getDummyEvents(dates) {
-  return [
-    {
-      startTime: new Date('May 28, 2024, 07:00'),
-      endTime: new Date('May 28, 2024, 08:00'),
-      clientName: 'Harry Potter',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 60,
-      },
-      status: true,
-    },
-    {
-      startTime: new Date('May 29, 2024, 18:00'),
-      endTime: new Date('May 29, 2024, 19:00'),
-      clientName: 'Lily Potter',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 60,
-      },
-      status: true,
-    },
-    {
-      startTime: new Date('May 29, 2024, 10:00'),
-      endTime: new Date('May 29, 2024, 12:00'),
-      clientName: 'James Potter',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 120,
-      },
-      status: true,
-    },
-    {
-      startTime: new Date('May 29, 2024, 12:00'),
-      endTime: new Date('May 29, 2024, 13:00'),
-      clientName: 'Ginny Potter',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 60,
-      },
-      status: false,
-    },
-    {
-      startTime: new Date('May 26, 2024, 09:00'),
-      endTime: new Date('May 26, 2024, 12:00'),
-      clientName: 'Albus Potter',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 180,
-      },
-      status: true,
-    },
-    {
-      startTime: new Date('May 27, 2024, 10:00'),
-      endTime: new Date('May 27, 2024, 11:00'),
-      clientName: 'Lily Potter',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 60,
-      },
-      status: true,
-    },
-    {
-      startTime: new Date('May 25, 2024, 11:00'),
-      endTime: new Date('May 25, 2024, 11:30'),
-      clientName: 'Sevrus Potter',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 30,
-      },
-      status: true,
-    },
-    {
-      startTime: new Date('May 31, 2024, 12:00'),
-      endTime: new Date('May 31, 2024, 12:45'),
-      clientName: 'Harry Potter',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 45,
-      },
-      status: false,
-    },
-    {
-      startTime: new Date('Jun 1, 2024, 18:00'),
-      endTime: new Date('Jun 1, 2024, 18:45'),
-      clientName: 'Lily Potter',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 45,
-      },
-      status: false,
-    },
-    {
-      startTime: new Date('Jun 1, 2024, 10:00'),
-      endTime: new Date('Jun 1, 2024, 12:45'),
-      clientName: 'Draco Malfoy',
-      location: 'Virtual',
-      service: {
-        name: 'Individual Session',
-        duration: 165,
-      },
-      status: false,
-    },
-  ];
+export function getNextWeekDates(currWeekDates) {
+  const firstDayOfCurrWeek = currWeekDates[0];
+  let nextSunday = new Date(firstDayOfCurrWeek);
+  nextSunday.setDate(
+    firstDayOfCurrWeek.getDate() - firstDayOfCurrWeek.getDay() + 7,
+  );
+  return getCurrWeekDates(nextSunday);
 }
 
-export function getDatesInMonth(month, year) {
-  const date = new Date(year, month, 1);
-  const dates = [];
-  while (date.getMonth() === month) {
-    dates.push(new Date(date));
-    date.setDate(date.getDate() + 1);
-  }
-  return dates;
-}
-
-export function getDatesInYear(year) {
-  let yearDates = [];
-  for (let i = 0; i <= 11; i++) {
-    const monthDates = getDatesInMonth(i, year);
-    yearDates.push(monthDates);
-  }
-  return yearDates;
+export function getPrevWeekDates(currWeekDates) {
+  const firstDayOfCurrWeek = currWeekDates[0];
+  let prevSunday = new Date(firstDayOfCurrWeek);
+  prevSunday.setDate(
+    firstDayOfCurrWeek.getDate() - firstDayOfCurrWeek.getDay() - 7,
+  );
+  return getCurrWeekDates(prevSunday);
 }
 
 export const daysOfTheWeek = [
@@ -215,3 +76,22 @@ export const calendarHoursArray = [
   '9 PM',
 ];
 export const calendarHoursPerDay = calendarHoursArray.length;
+
+// export function getDatesInMonth(month, year) {
+//   const date = new Date(year, month, 1);
+//   const dates = [];
+//   while (date.getMonth() === month) {
+//     dates.push(new Date(date));
+//     date.setDate(date.getDate() + 1);
+//   }
+//   return dates;
+// }
+
+// export function getDatesInYear(year) {
+//   let yearDates = [];
+//   for (let i = 0; i <= 11; i++) {
+//     const monthDates = getDatesInMonth(i, year);
+//     yearDates.push(monthDates);
+//   }
+//   return yearDates;
+// }

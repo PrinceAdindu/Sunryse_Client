@@ -4,7 +4,7 @@ import { daysOfTheWeek } from '../customCalendarHelper';
 import styles from './CalendarDateRow.module.scss';
 
 CalendarDateRow.propTypes = {
-  currWeekDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+  currWeekDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)).isRequired,
 };
 
 export default function CalendarDateRow({ currWeekDates }) {
