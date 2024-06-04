@@ -66,7 +66,7 @@ function BusinessHours({ setLoading }) {
   const TimeZonePicker = () => (
     <Dropdown
       id="time_zone_picker"
-      classNames={styles.dropdown}
+      className={styles.dropdown}
       options={timeZoneOptions}
       value={timeZone}
       onChange={setTimeZone}
@@ -85,7 +85,7 @@ function BusinessHours({ setLoading }) {
         <WeeklyHours schedule={schedule} setSchedule={setSchedule} />
       </div>
       <StyledButton
-        className={styles.button}
+        baseClassname={styles.button}
         text="Save Business Hours"
         onClick={() => save()}
         disabled={checkForErrors() ? true : false}

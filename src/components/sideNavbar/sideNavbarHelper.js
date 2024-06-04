@@ -1,18 +1,18 @@
 import HomeIcon from '@mui/icons-material/Home';
-import ChairIcon from '@mui/icons-material/Chair';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import CalendarIcon from '@mui/icons-material/Today';
+import ClientsIcon from '@mui/icons-material/PeopleAlt';
+import Add from '@mui/icons-material/Add';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SellIcon from '@mui/icons-material/Sell';
 import CampaignIcon from '@mui/icons-material/Campaign';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import CreditCard from '@mui/icons-material/CreditCard';
 
 export const SIDE_NAV_OPTIONS = {
   HOME: { url: '/home', label: 'Home' },
-  BOOKINGS: { url: '/bookings', label: 'Bookings' },
-  BUSINESS_HOURS: { url: '/hours', label: 'Business Hours' },
+  CALENDAR: { url: '/calendar', label: 'Calendar' },
+  FINANCES: { url: '/finances', label: 'Billing' },
+  BUSINESS_HOURS: { url: '/hours', label: 'Clients' },
   SERVICES: { url: '/services', label: 'Services' },
-  FINANCES: { url: '/finances', label: 'Finances' },
   MARKETING: { url: '/marketing', label: 'Marketing' },
   SUPPORT: { url: '/support', label: 'Support' },
   SETTINGS: { url: '/settings', label: 'Settings' },
@@ -21,8 +21,8 @@ export const SIDE_NAV_OPTIONS = {
 export function getCurrentTab(currUrl) {
   if (currUrl.includes(SIDE_NAV_OPTIONS.HOME.url)) {
     return SIDE_NAV_OPTIONS.HOME;
-  } else if (currUrl.includes(SIDE_NAV_OPTIONS.BOOKINGS.url)) {
-    return SIDE_NAV_OPTIONS.BOOKINGS;
+  } else if (currUrl.includes(SIDE_NAV_OPTIONS.CALENDAR.url)) {
+    return SIDE_NAV_OPTIONS.CALENDAR;
   } else if (currUrl.includes(SIDE_NAV_OPTIONS.BUSINESS_HOURS.url)) {
     return SIDE_NAV_OPTIONS.BUSINESS_HOURS;
   } else if (currUrl.includes(SIDE_NAV_OPTIONS.SERVICES.url)) {
@@ -46,20 +46,20 @@ export const SIDE_NAV_DATA = [
     Icon: HomeIcon,
   },
   {
-    link: SIDE_NAV_OPTIONS.BOOKINGS,
-    Icon: ChairIcon,
+    link: SIDE_NAV_OPTIONS.CALENDAR,
+    Icon: CalendarIcon,
+  },
+  {
+    link: SIDE_NAV_OPTIONS.FINANCES,
+    Icon: CreditCard,
   },
   {
     link: SIDE_NAV_OPTIONS.BUSINESS_HOURS,
-    Icon: CalendarMonthIcon,
+    Icon: ClientsIcon,
   },
   {
     link: SIDE_NAV_OPTIONS.SERVICES,
     Icon: SellIcon,
-  },
-  {
-    link: SIDE_NAV_OPTIONS.FINANCES,
-    Icon: AccountBalanceIcon,
   },
   {
     link: SIDE_NAV_OPTIONS.MARKETING,
@@ -70,7 +70,10 @@ export const SIDE_NAV_DATA = [
   },
   {
     link: SIDE_NAV_OPTIONS.SUPPORT,
-    Icon: FavoriteBorderIcon,
+    Icon: Add,
+    IconProps: {
+      fontSize: 'medium',
+    },
   },
   {
     link: SIDE_NAV_OPTIONS.SETTINGS,

@@ -21,6 +21,7 @@
     "@vitejs/plugin-react": "^4.0.3",
     "axios": "^1.6.8",
     "chroma-js": "^2.4.2",
+    "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",

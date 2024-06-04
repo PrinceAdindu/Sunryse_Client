@@ -52,7 +52,11 @@ export default function EmailVerification() {
           setValue={setEmail}
           minValue={8}
         />
-        <StyledButton className={styles.button} text="Next" onClick={submit} />
+        <StyledButton
+          baseClassname={styles.button}
+          text="Next"
+          onClick={submit}
+        />
       </div>
     </div>
   );

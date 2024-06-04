@@ -26,7 +26,7 @@ export default function Navbar() {
   function Notifications() {
     return (
       <div className={styles.iconContainer}>
-        <NotificationsIcon className={styles.icon} />
+        <NotificationsIcon className={styles.icon} fontSize="medium" />
       </div>
     );
   }

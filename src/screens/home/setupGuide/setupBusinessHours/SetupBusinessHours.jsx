@@ -53,7 +53,7 @@ export default function SetupBusinessHours({ expanded, expand, onStepCheck }) {
               New clients will only see a maximum of 3 open slots a day.
             </p>
             <StyledButton
-              className={styles.button}
+              baseClassname={styles.button}
               text="Set Business Hours"
               onClick={() => {
                 navigate('/hours');

@@ -5,20 +5,20 @@
   border-radius: 4px;
   height: 35px;
   min-width: 125px;
-  padding: 10px;
+  padding: 5px 10px;
 
   font-weight: 700;
   font-size: 14px;
   text-transform: none;
 }
 
-.styled {
-  background-color: $BLUE_GREEN;
+.base {
+  background-color: #204149;
   color: white;
 }
 
-.styled:hover {
-  background-color: $DARK_BLUE_GREEN;
+.base:hover {
+  background-color: $DARK_BLUE;
   cursor: pointer;
 }
 

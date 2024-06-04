@@ -54,13 +54,13 @@ export default function StyledModal({
             {text}
           </Typography>
           <StyledButton
-            className={styles.closeButton}
+            baseClassname={styles.closeButton}
             onClick={() => onClose()}
             text={closeText || 'Cancel'}
           />
           {onContinue && (
             <StyledButton
-              className={styles.continueButton}
+              baseClassname={styles.continueButton}
               onClick={() => onContinue()}
               text={continueText || 'Continue'}
             />

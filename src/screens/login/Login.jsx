@@ -96,7 +96,7 @@ function Login({ setLoading }) {
           setValue={setPassword}
         />
         <StyledButton
-          className={styles.button}
+          baseClassname={styles.button}
           text="Log in"
           onClick={() => submit()}
         />

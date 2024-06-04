@@ -62,7 +62,7 @@ export default function SetupFinances({ expanded, expand, onStepCheck }) {
               software.
             </p>
             <StyledButton
-              className={styles.button}
+              baseClassname={styles.button}
               text="Set Up Payments"
               onClick={() => stripeAccountLinkRedirect()}
             />

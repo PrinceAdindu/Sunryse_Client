@@ -51,7 +51,7 @@ export default function SetupProfile({ expanded, expand, onStepCheck }) {
               always edit these later on.
             </p>
             <StyledButton
-              className={styles.button}
+              baseClassname={styles.button}
               text="Name My Practice"
               onClick={() => {
                 navigate('/settings');
