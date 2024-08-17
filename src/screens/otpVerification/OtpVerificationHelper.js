@@ -27,7 +27,7 @@ export async function verifyOtp(email, code, callback, toast) {
   } catch (error) {
     console.log(error);
     if (error?.response?.status === 401)
-      toast.error('Verification code is incorrect');
+      toast.error(error?.response?.data.message);
     else
       toast.error(
         'There was an error validating the verification code, please try again.',
