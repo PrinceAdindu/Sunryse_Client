@@ -40,7 +40,7 @@ export default function SetupProfile({ expanded, expand, onStepCheck }) {
             checked={isChecked === 'true'}
             onChange={() => onStepCheck('setupProfileCheck')}
           />
-          <p className={styles.title}>Practice Name And Details</p>
+          <h1 className={styles.title}>Practice Name And Details</h1>
         </div>
       </AccordionSummary>
       <AccordionDetails>

@@ -42,7 +42,7 @@ export default function ServicePolicy({
         error={errors.policy}
         resetError={() => updateErrors('policy', '')}
       />
-      {formData.policy === 'notice' && (
+      {formData.policy.value === 'notice' && (
         <div className={styles.noticeContainer}>
           <Dropdown
             id={'notice'}

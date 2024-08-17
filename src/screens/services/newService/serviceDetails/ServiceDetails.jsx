@@ -90,7 +90,7 @@ export default function ServiceDetails({
             error={errors.tax}
             resetError={() => updateErrors('tax', '')}
           />
-          {formData.tax !== 'none' && formData.tax !== '' && (
+          {formData.tax.value !== 'none' && formData.tax !== '' && (
             <InputField
               classname={styles.textField}
               value={formData.taxPercent}

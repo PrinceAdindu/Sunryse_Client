@@ -5,16 +5,22 @@ import CustomCalendar from '../../components/customCalendar/CustomCalendar';
 import LoadingHOC from '../../components/loading/LoadingHOC';
 
 import styles from './Calendar.module.scss';
-import { getDummyEvents } from './CalendarHelper';
+import {
+  getClinicOfferings,
+  getDummyAvailability,
+  getDummyEvents,
+} from './CalendarHelper';
+import AvailabilityCalendar from '../../components/customCalendar/availabilityCalendar/AvailabilityCalendar';
 
 Calendar.propTypes = {
   setLoading: PropTypes.func.isRequired,
 };
 
 function Calendar({ setLoading }) {
-  const [calendarData, setCalendarData] = useState([]);
   const [selectedTab, setSelectedTab] = useState('appointments');
-  const events = getDummyEvents();
+  const dummyEvents = getDummyEvents();
+  const dummyAvailability = getDummyAvailability();
+  const dummyClinic = getClinicOfferings();
 
   const selectCalendar = (choice) => {
     if (choice === 'availability') {
@@ -54,11 +60,15 @@ function Calendar({ setLoading }) {
       <CalendarTabs />
       {selectedTab === 'appointments' ? (
         <div className={styles.calendarCard}>
-          <CustomCalendar events={events} />
+          <CustomCalendar events={dummyEvents} />
         </div>
       ) : (
         <div className={styles.calendarCard}>
-          <CustomCalendar events={[]} />
+          <AvailabilityCalendar
+            availability={dummyAvailability}
+            clinicData={dummyClinic}
+            editAvailability={() => {}}
+          />
         </div>
       )}
     </div>

@@ -20,10 +20,15 @@ CustomCalendar.propTypes = {
       title: PropTypes.string.isRequired,
       startTime: PropTypes.instanceOf(Date).isRequired,
       endTime: PropTypes.instanceOf(Date).isRequired,
+      repeat: PropTypes.shape({
+        weekFreq: PropTypes.number.isRequired,
+        daysOfWeek: PropTypes.arrayOf(PropTypes.string).isRequired,
+        endDate: PropTypes.instanceOf(Date),
+      }),
       subtitle: PropTypes.string,
       className: PropTypes.string,
-    }).isRequired,
-  ),
+    }),
+  ).isRequired,
 };
 
 export default function CustomCalendar({ events }) {

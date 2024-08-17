@@ -6,11 +6,11 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 
 Dropdown.propTypes = {
   id: PropTypes.string.isRequired,
-  value: PropTypes.string || PropTypes.number.isRequired,
+  value: PropTypes.any.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string || PropTypes.number,
-      label: PropTypes.string,
+      value: PropTypes.any.isRequired,
+      label: PropTypes.string.isRequired,
     }).isRequired,
   ),
   onChange: PropTypes.func.isRequired,
@@ -18,6 +18,8 @@ Dropdown.propTypes = {
   resetError: PropTypes.func,
   title: PropTypes.string,
   indicator: PropTypes.bool,
+  placeholder: PropTypes.string,
+  isMulti: PropTypes.bool,
   classname: PropTypes.string,
   selectClassname: PropTypes.string,
 };
@@ -31,6 +33,8 @@ export default function Dropdown({
   resetError = () => {},
   title = '',
   indicator = false,
+  placeholder = 'Select',
+  isMulti = false,
   classname = '',
   selectClassname = '',
 }) {
@@ -51,16 +55,28 @@ export default function Dropdown({
         ? '#f1f1f1'
         : 'white',
       margin: '0px',
+      fontWeight: '400',
     }),
     control: (provided, state) => ({
       ...provided,
-      borderColor: '#B1B1B1',
+      borderColor: '#c7c7c7',
       borderWidth: '1.5px',
+      minHeight: '40px',
+      fontWeight: '400',
     }),
     menuList: (provided, state) => ({
       ...provided,
       padding: '0px',
       borderRadius: '5px',
+      maxHeight: '200px',
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      marginTop: '5px',
+    }),
+    placeholder: (provided, state) => ({
+      ...provided,
+      color: '#c7c7c7',
     }),
   };
 
@@ -78,13 +94,15 @@ export default function Dropdown({
         id={id}
         className={`${styles.customSelect} ${selectClassname}`}
         components={selectComponents}
-        value={options.find((option) => option.value === value) ?? ''}
+        value={value}
         options={options}
         onChange={(option) => {
           resetError();
-          onChange(option.value);
+          onChange(option);
         }}
+        placeholder={placeholder}
         styles={customStyles}
+        isMulti={isMulti}
       />
     </div>
   );

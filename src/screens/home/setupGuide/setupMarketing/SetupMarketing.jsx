@@ -23,25 +23,25 @@ export default function SetupMarketing({ expanded, expand, onStepCheck }) {
   const isChecked = localStorage.getItem('setupGuideMarketingCheck');
 
   function openSchedule() {
-    // window.open(
-    //   'https://calendly.com/tanrajdhillon/terra-marketing-call',
-    //   '_blank',
-    // );
+    window.open(
+      'https://calendly.com/tanrajdhillon/terra-marketing-call',
+      '_blank',
+    );
     setCalendlyOpen(true);
   }
 
-  function CalendlyPopup() {
-    return (
-      <div className={styles.calendlyPopup}>
-        <iframe
-          src="https://calendly.com/tanrajdhillon/terra-marketing-call"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-        ></iframe>
-      </div>
-    );
-  }
+  // function CalendlyPopup() {
+  //   return (
+  //     <div className={styles.calendlyPopup}>
+  //       <iframe
+  //         src="https://calendly.com/tanrajdhillon/terra-marketing-call"
+  //         width="100%"
+  //         height="100%"
+  //         frameBorder="0"
+  //       ></iframe>
+  //     </div>
+  //   );
+  // }
 
   return (
     <Accordion
@@ -75,7 +75,7 @@ export default function SetupMarketing({ expanded, expand, onStepCheck }) {
             <ul className={styles.bulletList}>
               <li>Identify your your unqiue value</li>
               <li>Gather more information for your custom website</li>
-              <li>Explain Terra's marketing approach to bring you clients</li>
+              <li>Explain Sunrye's marketing approach to bring you clients</li>
             </ul>
             <StyledButton
               baseClassname={styles.button}

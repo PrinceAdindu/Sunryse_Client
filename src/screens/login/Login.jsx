@@ -10,7 +10,7 @@ import useToast from '../../hooks/useToast';
 import useAuth from '../../hooks/useAuth';
 import useOtp from '../../hooks/useOtp';
 
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import logo from '../../assets/SunryseLogoWideFillBlue.png';
 import styles from './Login.module.scss';
 
 Login.propTypes = {
@@ -56,7 +56,7 @@ function Login({ setLoading }) {
     <div className={styles.headerContainer}>
       <img className={styles.logo} src={logo} />
       <p className={styles.title}>Log in</p>
-      <p className={styles.subtitle}>Continue to Terra account</p>
+      <p className={styles.subtitle}>Continue to Sunryse</p>
     </div>
   );
 

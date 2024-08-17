@@ -6,17 +6,24 @@ import { getWeekRangeText, getCurrYearText } from './calendarHeaderHelper';
 
 import styles from './CalendarHeader.module.scss';
 import MultiButton from '../../multiButton/MultiButton';
+import StyledButton from '../../styledButton/StyledButton';
 
 CalendarHeader.propTypes = {
   currWeekDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
   onForwardClick: PropTypes.func.isRequired,
   onBackClick: PropTypes.func.isRequired,
+  openNewEventModal: PropTypes.func,
+  newEventButton: PropTypes.bool,
+  newEventButtonText: PropTypes.string,
 };
 
 export default function CalendarHeader({
   currWeekDates,
   onForwardClick,
   onBackClick,
+  openNewEventModal = () => {},
+  newEventButton = false,
+  newEventButtonText = 'Create Event',
 }) {
   // const [selectedView, setSelectedView] = useState('week');
   // const buttons = [
@@ -55,9 +62,16 @@ export default function CalendarHeader({
     </div>
   );
 
+  const CreatEventButton = () => (
+    <StyledButton
+      text={newEventButtonText}
+      onClick={() => openNewEventModal()}
+    />
+  );
   return (
     <div className={styles.headerContainer}>
       <WeekRange />
+      {newEventButton && <CreatEventButton />}
       {/* <MultiButton buttons={buttons} initial={buttons[0]} /> */}
     </div>
   );

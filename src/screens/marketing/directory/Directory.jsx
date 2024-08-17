@@ -41,7 +41,7 @@ const Directory = () => {
       <div className={styles.profileDescription}>
         <p className={styles.clinicName}>Terra Therapy</p>
         <p className={styles.clinicType}>Private Clinic</p>
-        <StyledButton text="Edit" className={styles.button} />
+        <StyledButton text="Edit" baseClassname={styles.button} />
       </div>
     </div>
   );

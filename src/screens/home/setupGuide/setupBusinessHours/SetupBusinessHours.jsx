@@ -47,7 +47,8 @@ export default function SetupBusinessHours({ expanded, expand, onStepCheck }) {
         <div className={styles.details}>
           <div className={styles.detailsContent}>
             <p className={styles.subTitle}>
-              Submit the days and hours from which clients can book sessions.
+              Add the times from which clients can book sessions for specific
+              services on the calendar page.
             </p>
             <p className={styles.subTitle}>
               New clients will only see a maximum of 3 open slots a day.
@@ -56,7 +57,7 @@ export default function SetupBusinessHours({ expanded, expand, onStepCheck }) {
               baseClassname={styles.button}
               text="Set Business Hours"
               onClick={() => {
-                navigate('/hours');
+                navigate('/calendar');
               }}
             />
           </div>

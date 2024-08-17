@@ -13,38 +13,58 @@ MultiButton.propTypes = {
       selectedClassname: PropTypes.string,
     }),
   ).isRequired,
-  initial: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-    baseClassname: PropTypes.string,
-    selectedClassname: PropTypes.string,
-  }),
+  selected: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      onClick: PropTypes.func.isRequired,
+      baseClassname: PropTypes.string,
+      selectedClassname: PropTypes.string,
+    }),
+  ).isRequired,
+  setSelected: PropTypes.func,
+  multiSelect: PropTypes.bool,
+  connectedButtons: PropTypes.bool,
 };
 
-export default function MultiButton({ buttons, initial = '' }) {
-  const [selected, setSelected] = useState(
-    initial || {
-      text: '',
-      onClick: () => {},
-      baseClassname: '',
-      disabledClassname: '',
-    },
-  );
-
+export default function MultiButton({
+  buttons,
+  selected,
+  setSelected,
+  multiSelect = false,
+  connectedButtons = true,
+}) {
   const onButtonClick = (button) => {
-    setSelected(button);
-    button.onClick(button);
+    let newSelectedArray = selected;
+    if (multiSelect) {
+      const previouslySelected = selected.find((s) => s.text === button.text);
+      if (previouslySelected) {
+        newSelectedArray = selected.filter((s) => s.text !== button.text);
+      } else {
+        newSelectedArray.push(button);
+      }
+
+      setSelected(newSelectedArray);
+    } else setSelected([button]);
+    button.onClick();
+  };
+
+  const isSelected = (buttonText) => {
+    return selected.find((s) => s.text === buttonText);
   };
 
   return (
-    <div className={styles.buttonsContainer}>
+    <div
+      className={`${styles.buttonsContainer} ${
+        !connectedButtons && styles.spacedButtons
+      }`}
+    >
       {buttons.map((button) => (
         <StyledButton
           key={button.text}
           text={button.text}
           onClick={() => onButtonClick(button)}
           baseClassname={
-            button.text === selected.text
+            isSelected(button.text)
               ? button.selectedClassname
               : button.baseClassname
           }

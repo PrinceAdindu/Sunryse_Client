@@ -93,12 +93,12 @@ export default function StyledTable({
             <div className={styles.actionsContainer}>
               <EditIcon
                 className={styles.icon}
-                fontSize="small"
+                sx={{ fontSize: 30 }}
                 onClick={() => onEdit()}
               />
               <DeleteIcon
                 className={styles.icon}
-                fontSize="small"
+                sx={{ fontSize: 30 }}
                 onClick={() => handleOpen(row['id'])}
               />
             </div>

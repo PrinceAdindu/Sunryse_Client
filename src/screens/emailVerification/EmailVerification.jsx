@@ -8,7 +8,7 @@ import useToast from '../../hooks/useToast';
 import useOtp from '../../hooks/useOtp';
 import { verifyEmail } from './emailVerificationHelper';
 
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import logo from '../../assets/SunryseLogoWideFillBlue.png';
 import styles from './EmailVerification.module.scss';
 
 export default function EmailVerification() {

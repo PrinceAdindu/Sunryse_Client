@@ -9,7 +9,7 @@
   height: 70%;
   padding: 25px;
   margin-bottom: 25px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   -webkit-box-shadow: $BOX_SHADOW;
   -moz-box-shadow: $BOX_SHADOW;
@@ -19,7 +19,7 @@
 .header {
   font-size: 16px;
   font-weight: 700;
-  color: black;
+  color: $SOFT_BLACK;
   margin-bottom: 25px;
 }
 

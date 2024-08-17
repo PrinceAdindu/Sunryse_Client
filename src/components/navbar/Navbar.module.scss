@@ -10,9 +10,9 @@
   align-items: center;
   width: 100%;
   height: $NAV_HEIGHT;
-  z-index: 100;
+  z-index: $NAV_Z_INDEX;
   background-color: white;
-  box-shadow: $BOX_SHADOW;
+  box-shadow: $BOX_SHADOW_BOTTOM;
 }
 
 .navOptionsContainer {
@@ -45,7 +45,7 @@
 .clinicName {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: $DARK_BLUE;
   margin: 0px 0px 0px 25px;

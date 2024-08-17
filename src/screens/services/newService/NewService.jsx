@@ -4,12 +4,10 @@ import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import useToast from '../../../hooks/useToast';
 
 import ServiceDetails from './serviceDetails/ServiceDetails';
-import ServiceAvailability from './serviceAvailability/ServiceAvailability';
 import ServicePolicy from './servicePolicy/ServicePolicy';
 import StyledButton from '../../../components/styledButton/StyledButton';
 
 import { createService, sanitizeData, validateData } from './newServiceHelper';
-import { DEFAULT_SCHEDULE } from '../../businessHours/businessHoursHelper';
 
 import styles from './NewService.module.scss';
 
@@ -21,9 +19,6 @@ export default function NewService() {
     price: '',
     tax: '',
     taxPercent: '',
-    location: '',
-    availabilityType: '',
-    customAvailability: DEFAULT_SCHEDULE,
     policy: '',
     notice: '',
     lateFee: '',
@@ -35,9 +30,6 @@ export default function NewService() {
     price: '',
     tax: '',
     taxPercent: '',
-    location: '',
-    availabilityType: '',
-    customAvailability: '',
     policy: '',
     notice: '',
     lateFee: '',
@@ -74,12 +66,6 @@ export default function NewService() {
   return (
     <div className={styles.screen}>
       <ServiceDetails
-        formData={formData}
-        errors={errors}
-        updateForm={updateForm}
-        updateErrors={updateErrors}
-      />
-      <ServiceAvailability
         formData={formData}
         errors={errors}
         updateForm={updateForm}

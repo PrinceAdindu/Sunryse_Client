@@ -8,7 +8,7 @@ import LoadingHOC from '../../components/loading/LoadingHOC';
 import useToast from '../../hooks/useToast';
 import { validateData, onRegister } from './registerHelper';
 
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import logo from '../../assets/SunryseLogoWideFillBlue.png';
 
 import styles from './Register.module.scss';
 

@@ -12,57 +12,6 @@
   box-sizing: border-box;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 80%;
-  height: 70%;
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 10px;
-  background-color: white;
-  -webkit-box-shadow: $BOX_SHADOW;
-  -moz-box-shadow: $BOX_SHADOW;
-  box-shadow: $BOX_SHADOW;
-}
-
-.header {
-  font-size: 16px;
-  font-weight: 700;
-  color: black;
-  margin-bottom: 25px;
-}
-
-.textField {
-  margin-top: 15px !important;
-}
-
-.inputFieldContainer {
-  width: 400px;
-}
-
-.textFieldContainer {
-  width: 400px;
-  margin-top: 25px;
-}
-
-.noticeContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.policyDropdown {
-  margin-right: 20px !important;
-}
-
 .button {
-  height: 40px !important;
-  width: 85%;
-  margin: 0px 0px 0px 0px !important;
+  width: 80%;
 }

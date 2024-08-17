@@ -8,7 +8,7 @@ import StyledButton from '../../components/styledButton/StyledButton';
 import useToast from '../../hooks/useToast';
 import { onPasswordReset, validateData } from './resetPasswordHelper';
 
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import logo from '../../assets/SunryseLogoWideFillBlue.png';
 import styles from './ResetPassword.module.scss';
 import LoadingHOC from '../../components/loading/LoadingHOC';
 

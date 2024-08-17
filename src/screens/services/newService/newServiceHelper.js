@@ -16,18 +16,23 @@ export async function createService(data, axios, toast, navigate) {
 }
 export function sanitizeData(formData) {
   const sanitizedFormData = { ...formData };
-  if (formData.availabilityType !== 'custom') {
-    sanitizedFormData.customAvailability = '';
-  }
-  if (formData.policy !== 'notice') {
+  sanitizedFormData.policy = formData.policy.value;
+  sanitizedFormData.tax = formData.tax.value;
+  if (formData.policy.value !== 'notice') {
     sanitizedFormData.notice = '';
     sanitizedFormData.lateFee = '';
+  } else {
+    sanitizedFormData.notice = formData.notice.value;
+  }
+  if (formData.tax.value === 'none') {
+    sanitizedFormData.taxPercent = 0;
   }
   return sanitizedFormData;
 }
 
 export function validateData(formData, setErrors) {
   const newErrors = checkFormData(formData, NEW_SERVICE_FORM_RULES);
+  console.log(newErrors);
 
   if (Object.keys(newErrors).length > 0) {
     setErrors((prevState) => ({

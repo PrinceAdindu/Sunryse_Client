@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import SunryseLogo from '../../assets/NewSunryseLogoTallNameFill.png';
+import SunryseLogo from '../../assets/SunryseLogoTallFillWhite.png';
 import { getCurrentTab, SIDE_NAV_DATA } from './sideNavbarHelper';
 import styles from './SideNavbar.module.scss';
 
@@ -25,17 +25,17 @@ export default function SideNavbar() {
       return (
         <div
           key={label}
-          className={`${styles.iconContainer} ${selected && styles.selected}`}
+          className={`${styles.optionContainer} ${
+            selected && styles.optionContainerSelected
+          }`}
           onClick={() => navigate(url)}
         >
           <Icon
             fontSize="small"
             {...(sideBar.IconProps && sideBar.IconProps)}
-            className={selected ? styles.iconSelected : styles.icon}
+            className={styles.icon}
           />
-          <p className={selected ? styles.iconTextSelected : styles.iconText}>
-            {label}
-          </p>
+          <h1 className={styles.iconText}>{label}</h1>
         </div>
       );
     });

@@ -1,23 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;550;600;650;700;900&display=swap');
+/* Importing Nunito with different font weights */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
+/* Importing Nunito Sans with different font weights */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700;800&display=swap');
+/* Importing Open Sans with different font weights */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
 @import './variables';
 
 * {
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 0.5px;
-
   overscroll-behavior: none;
-
-  p {
-    margin: 0;
-    padding: 0;
-  }
 
   div {
     margin: 0;
     padding: 0;
   }
 
-  body {
-    background-color: white;
+  h1 {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    font-family: 'Nunito', sans-serif;
   }
 }

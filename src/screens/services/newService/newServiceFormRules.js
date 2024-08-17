@@ -55,44 +55,6 @@ export const NEW_SERVICE_FORM_RULES = {
       (formData) => FORM_RULES_FUNCS.minValueCheck(formData.taxPercent, 0),
     ],
   },
-  location: {
-    type: 'string',
-    required: true,
-    checks: [(formData) => FORM_RULES_FUNCS.requiredCheck(formData.location)],
-    options: [
-      { value: 'virtual', label: 'Virtual' },
-      { value: 'live', label: 'In Person' },
-      { value: 'hybrid', label: 'Virtual or In Person' },
-    ],
-  },
-  availabilityType: {
-    type: 'string',
-    required: true,
-    checks: [
-      (formData) => FORM_RULES_FUNCS.requiredCheck(formData.availabilityType),
-    ],
-    options: [
-      { value: 'all', label: 'Business Hours' },
-      { value: 'custom', label: 'Custom Times' },
-      { value: 'none', label: 'None' },
-    ],
-  },
-  customAvailability: {
-    type: 'array',
-    required: false,
-    checks: [
-      (formData) =>
-        FORM_RULES_FUNCS.requiredCheck(
-          formData.customAvailability,
-          formData.availabilityType,
-          'custom',
-        ),
-      (formData) =>
-        FORM_RULES_FUNCS.minLengthCheck(formData.customAvailability, 1),
-      (formData) =>
-        FORM_RULES_FUNCS.availabiltyCheck(formData.customAvailability),
-    ],
-  },
   policy: {
     type: 'string',
     required: true,

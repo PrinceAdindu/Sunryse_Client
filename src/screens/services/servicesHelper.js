@@ -1,5 +1,3 @@
-import { NEW_SERVICE_FORM_RULES } from './newService/newServiceFormRules';
-
 export async function updateService(serviceData, axios, toast) {
   try {
     await axios.put('/clinic/service', { data: serviceData });
@@ -43,15 +41,7 @@ export function sanitizeServices(services) {
     const dataObject = {};
     dataObject['id'] = sv['id'];
     TABLE_HEADERS.forEach((header) => {
-      if (header.value === 'availabilityType') {
-        const availabilityLabel = getLabelFromValue(
-          sv['availabilityType'],
-          NEW_SERVICE_FORM_RULES.availabilityType.options,
-        );
-        dataObject['availabilityType'] = availabilityLabel;
-      } else {
-        dataObject[header.value] = sv[header.value];
-      }
+      dataObject[header.value] = sv[header.value];
     });
     dataObject['status'] = sv['status'];
     return dataObject;
@@ -77,10 +67,6 @@ export const TABLE_HEADERS = [
   {
     value: 'duration',
     label: 'Duration',
-  },
-  {
-    value: 'availabilityType',
-    label: 'Availability',
   },
   {
     value: 'price',

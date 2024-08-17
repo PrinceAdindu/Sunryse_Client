@@ -10,7 +10,7 @@ import LoadingHOC from '../../components/loading/LoadingHOC';
 import useToast from '../../hooks/useToast';
 import { verifyOtp, sendOtp } from './otpVerificationHelper';
 
-import logo from '../../assets/NewSunryseLogoWideNameFill.png';
+import logo from '../../assets/SunryseLogoWideFillBlue.png';
 import styles from './OtpVerification.module.scss';
 
 OtpVerification.propTypes = {

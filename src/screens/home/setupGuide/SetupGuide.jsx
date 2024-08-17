@@ -64,7 +64,7 @@ export default function SetupGuide() {
     <div className={styles.setupLaunchContainer}>
       <p className={styles.launchTitle}>Ready to launch</p>
       <p className={styles.launchText}>
-        Your new practice will launch after your branding session on May 2nd
+        Your new practice will launch after your branding session on June 27th
       </p>
     </div>
   );

@@ -27,7 +27,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/otp" element={<OtpVerification />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route path="/resetPassword/email" element={<EmailVerification />} />
+        <Route path="/resetPassword/email" el ement={<EmailVerification />} />
         <Route path="/" element={<PrivateRouteLayout />}>
           <Route index path="/home/*" element={<Home />} />
           <Route path="/hours/*" element={<BusinessHours />} />

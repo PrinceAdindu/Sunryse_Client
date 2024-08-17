@@ -28,21 +28,20 @@
   gap: 20px;
 }
 .button {
-  min-width: 50px !important;
-  height: 30px !important;
+  width: 100px;
+  background-color: $DARK_BLUE;
   padding: 0px;
   margin-top: 10px !important;
-  background-color: $PINK !important;
 }
 
 .button:hover {
-  background-color: $DARK_PINK !important;
+  background-color: $SOFT_BLACK !important;
 }
 
 .profileDescription {
   .clinicName {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
   }
   .clinicType {
     font-size: 14px;
@@ -59,13 +58,13 @@
   }
   a {
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 600;
   }
 }
 .status {
   text-transform: uppercase;
   letter-spacing: 0.2px;
-  font-weight: 500;
+  font-weight: 600;
   color: $ERROR_RED;
   margin: 10px 0px;
   font-size: 14px;

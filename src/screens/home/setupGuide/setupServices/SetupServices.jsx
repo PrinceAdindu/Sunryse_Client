@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -18,6 +19,7 @@ SetupServices.propTypes = {
 
 export default function SetupServices({ expanded, expand, onStepCheck }) {
   const isChecked = localStorage.getItem('setupProductsCheck');
+  const navigate = useNavigate();
 
   return (
     <Accordion
@@ -44,16 +46,16 @@ export default function SetupServices({ expanded, expand, onStepCheck }) {
         <div className={styles.details}>
           <div className={styles.detailsContent}>
             <p className={styles.subTitle}>
-              Write a description, set a duration, add availability, and set
-              pricing for the seervices you plan to offer.
+              Write descriptions, set durations and pricing for the services you
+              will be offering.
             </p>
             <p className={styles.subTitle}>
-              We have already created your 15 minute free consultation service.
+              We have already created your 15 minute free consultation service!
             </p>
             <StyledButton
               baseClassname={styles.button}
               text="Create A Service"
-              onClick={() => {}}
+              onClick={() => navigate('/services')}
             />
           </div>
           <img className={styles.image} src={ServicesImage} />
