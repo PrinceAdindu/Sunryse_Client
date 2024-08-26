@@ -1,27 +1,26 @@
-import PropTypes from 'prop-types';
-import { useState, useEffect, useCallback } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import LoadingHOC from '../../components/loading/LoadingHOC';
-import InputField from '../../components/inputField/InputField';
-import StyledButton from '../../components/styledButton/StyledButton';
+import React, {useState, useEffect, useCallback} from "react";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import LoadingHOC from "../../components/loading/LoadingHOC";
+import InputField from "../../components/inputField/InputField";
+import StyledButton from "../../components/styledButton/StyledButton";
 
-import { onLogin } from './loginHelper';
-import useToast from '../../hooks/useToast';
-import useAuth from '../../hooks/useAuth';
-import useOtp from '../../hooks/useOtp';
+import {onLogin} from "./loginHelper";
+import useToast from "../../hooks/useToast";
+import useAuth from "../../hooks/useAuthContext";
+import useOtp from "../../hooks/useOtp";
 
-import logo from '../../assets/SunryseLogoWideFillBlue.png';
-import styles from './Login.module.scss';
+import logo from "../../assets/SunryseLogoWideFillBlue.png";
+import styles from "./Login.module.scss";
 
-Login.propTypes = {
-  setLoading: PropTypes.func.isRequired,
+type LoginProps = {
+  setLoading: (param: boolean) => void;
 };
 
-function Login({ setLoading }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function Login({setLoading}: LoginProps) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const { setAuth } = useAuth();
+  const {setAuth} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const toastInstance = useToast();
@@ -36,33 +35,33 @@ function Login({ setLoading }) {
       navigate,
       location,
       otpInstance,
-      toastInstance,
+      toastInstance
     );
     setLoading(false);
   }, [email, location, navigate, password, setAuth, toastInstance]);
 
   useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.key === 'Enter') submit();
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === "Enter") submit();
     };
-    document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener("keydown", handleKeyPress);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyPress);
+      document.removeEventListener("keydown", handleKeyPress);
     };
   }, [submit]);
 
   const Header = () => (
     <div className={styles.headerContainer}>
       <img className={styles.logo} src={logo} />
-      <p className={styles.title}>Log in</p>
+      <h2 className={styles.title}>Log in</h2>
       <p className={styles.subtitle}>Continue to Sunryse</p>
     </div>
   );
 
   const RegisterOption = () => (
     <span className={styles.span}>
-      New to Sunryse?{' '}
+      New to Sunryse?{" "}
       <Link className={styles.link} to="/register">
         Get started
       </Link>
@@ -71,7 +70,7 @@ function Login({ setLoading }) {
 
   const Help = () => (
     <span className={styles.span}>
-      Forgot your email or password?{' '}
+      Forgot your email or password?{" "}
       <Link to="/resetPassword/email" className={styles.link}>
         Reset
       </Link>
@@ -108,13 +107,13 @@ function Login({ setLoading }) {
 }
 
 const loaderStyles = {
-  color: 'white',
+  color: "white",
 };
 const containerStyles = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
 };
 
-export default LoadingHOC(Login, 'Login', false, loaderStyles, containerStyles);
+export default LoadingHOC(Login, "Login", false, loaderStyles, containerStyles);

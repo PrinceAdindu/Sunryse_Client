@@ -1,32 +1,32 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import {useState} from "react";
+import PropTypes from "prop-types";
 
-import CustomCalendar from '../../components/customCalendar/CustomCalendar';
-import LoadingHOC from '../../components/loading/LoadingHOC';
+import CustomCalendar from "../../components/customCalendar/CustomCalendar";
+import LoadingHOC from "../../components/loading/LoadingHOC";
 
-import styles from './Calendar.module.scss';
+import styles from "./Calendar.module.scss";
 import {
   getClinicOfferings,
   getDummyAvailability,
   getDummyEvents,
-} from './CalendarHelper';
-import AvailabilityCalendar from '../../components/customCalendar/availabilityCalendar/AvailabilityCalendar';
+} from "./calendarHelper";
+import AvailabilityCalendar from "../../components/customCalendar/availabilityCalendar/AvailabilityCalendar";
 
 Calendar.propTypes = {
   setLoading: PropTypes.func.isRequired,
 };
 
-function Calendar({ setLoading }) {
-  const [selectedTab, setSelectedTab] = useState('appointments');
+function Calendar({setLoading}) {
+  const [selectedTab, setSelectedTab] = useState("appointments");
   const dummyEvents = getDummyEvents();
   const dummyAvailability = getDummyAvailability();
   const dummyClinic = getClinicOfferings();
 
   const selectCalendar = (choice) => {
-    if (choice === 'availability') {
-      setSelectedTab('availability');
-    } else if (choice === 'appointments') {
-      setSelectedTab('appointments');
+    if (choice === "availability") {
+      setSelectedTab("availability");
+    } else if (choice === "appointments") {
+      setSelectedTab("appointments");
     }
   };
 
@@ -34,20 +34,20 @@ function Calendar({ setLoading }) {
     <div className={styles.calendarCardTabs}>
       <div
         className={`${styles.cardTab} ${
-          selectedTab === 'appointments' ? styles.selectedTab : ''
+          selectedTab === "appointments" ? styles.selectedTab : ""
         }`}
         onClick={() => {
-          selectCalendar('appointments');
+          selectCalendar("appointments");
         }}
       >
         <p className={styles.tabText}>Appointments</p>
       </div>
       <div
         className={`${styles.cardTab} ${
-          selectedTab === 'availability' ? styles.selectedTab : ''
+          selectedTab === "availability" ? styles.selectedTab : ""
         }`}
         onClick={() => {
-          selectCalendar('availability');
+          selectCalendar("availability");
         }}
       >
         <p className={styles.tabText}>Availability</p>
@@ -58,7 +58,7 @@ function Calendar({ setLoading }) {
   return (
     <div id="Calendar" className={styles.calendarScreen}>
       <CalendarTabs />
-      {selectedTab === 'appointments' ? (
+      {selectedTab === "appointments" ? (
         <div className={styles.calendarCard}>
           <CustomCalendar events={dummyEvents} />
         </div>
@@ -75,4 +75,4 @@ function Calendar({ setLoading }) {
   );
 }
 
-export default LoadingHOC(Calendar, 'Calendar', false);
+export default LoadingHOC(Calendar, "Calendar", false);

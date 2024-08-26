@@ -1,5 +1,9 @@
-import { useDispatch } from 'react-redux';
-import { setFrom, setEmail, setCallback } from '../redux/reducers/otpReducer';
+import {useDispatch} from "react-redux";
+import {
+  setFrom,
+  setEmail,
+  setCallback,
+} from "../services/redux/reducers/otpReducer";
 
 const useOtp = () => {
   const dispatch = useDispatch();
@@ -8,7 +12,7 @@ const useOtp = () => {
     dispatch(
       setFrom({
         from,
-      }),
+      })
     );
   };
 
@@ -16,7 +20,7 @@ const useOtp = () => {
     dispatch(
       setEmail({
         email,
-      }),
+      })
     );
   };
 
@@ -24,7 +28,7 @@ const useOtp = () => {
     dispatch(
       setCallback({
         callback,
-      }),
+      })
     );
   };
 

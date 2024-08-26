@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import { calendarHoursArray } from '../customCalendarHelper';
+import PropTypes from "prop-types";
+import {calendarHoursArray} from "../customCalendarHelper";
 
-import DayColumns from './DayColumns/DayColumns';
+import DayColumns from "./dayColumns/DayColumns";
 
-import styles from './CalendarBody.module.scss';
+import styles from "./CalendarBody.module.scss";
 
 CalendarBody.propTypes = {
   currWeekData: PropTypes.arrayOf(
@@ -17,13 +17,13 @@ CalendarBody.propTypes = {
           endTime: PropTypes.instanceOf(Date).isRequired,
           subtitle: PropTypes.string.isRequired,
           classNames: PropTypes.object,
-        }),
+        })
       ),
-    }),
+    })
   ).isRequired,
 };
 
-export default function CalendarBody({ currWeekData }) {
+export default function CalendarBody({currWeekData}) {
   const TimeColumn = () => (
     <div className={styles.timeColumnContainer}>
       {calendarHoursArray.map((hourString) => (

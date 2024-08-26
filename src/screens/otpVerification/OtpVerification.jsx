@@ -1,36 +1,36 @@
-import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import PropTypes from "prop-types";
+import {useState, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
-import StyledButton from '../../components/styledButton/StyledButton';
-import OTPInput from '../../components/otpInput/OtpInput';
-import LoadingHOC from '../../components/loading/LoadingHOC';
+import StyledButton from "../../components/styledButton/StyledButton";
+import OTPInput from "../../components/otpInput/OtpInput";
+import LoadingHOC from "../../components/loading/LoadingHOC";
 
-import useToast from '../../hooks/useToast';
-import { verifyOtp, sendOtp } from './otpVerificationHelper';
+import useToast from "../../hooks/useToast";
+import {verifyOtp, sendOtp} from "./otpVerificationHelper";
 
-import logo from '../../assets/SunryseLogoWideFillBlue.png';
-import styles from './OtpVerification.module.scss';
+import logo from "../../assets/SunryseLogoWideFillBlue.png";
+import styles from "./OtpVerification.module.scss";
 
 OtpVerification.propTypes = {
   setLoading: PropTypes.func.isRequired,
 };
 
-export function OtpVerification({ setLoading }) {
-  const [otpCode, setOtpCode] = useState('');
+export function OtpVerification({setLoading}) {
+  const [otpCode, setOtpCode] = useState("");
 
   const navigate = useNavigate();
   const toast = useToast();
 
   const isDisabled = otpCode.length < 6;
-  const { from, email, callback } = useSelector((state) => state.otp);
+  const {from, email, callback} = useSelector((state) => state.otp);
 
   useEffect(() => {
     const sendOtpOnMount = async () => {
       setLoading(true);
       if (!email) {
-        const revertTo = from || '/login';
+        const revertTo = from || "/login";
         navigate(revertTo);
       } else {
         // await sendOtp(email, toast);
@@ -77,8 +77,8 @@ export function OtpVerification({ setLoading }) {
           <p className={styles.text}>
             Did not receive code?
             <span className={styles.resendText} onClick={() => resendOtp()}>
-              {' '}
-              Resend{' '}
+              {" "}
+              Resend{" "}
             </span>
           </p>
         </div>
@@ -88,19 +88,19 @@ export function OtpVerification({ setLoading }) {
 }
 
 const loaderStyles = {
-  color: 'white',
+  color: "white",
 };
 const containerStyles = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
 };
 
 export default LoadingHOC(
   OtpVerification,
-  'Otp',
+  "Otp",
   false,
   loaderStyles,
-  containerStyles,
+  containerStyles
 );

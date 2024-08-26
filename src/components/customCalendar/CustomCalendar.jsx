@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import {useEffect, useState} from "react";
+import PropTypes from "prop-types";
 import {
   getCurrWeekDates,
   getNextWeekDates,
   getPrevWeekDates,
   getWeekData,
-} from './customCalendarHelper';
+} from "./customCalendarHelper";
 
-import CalendarHeader from './calendarHeader/CalendarHeader';
+import CalendarHeader from "./calendarHeader/CalendarHeader";
 
-import styles from './CustomCalendar.module.scss';
-import CalendarDateRow from './calendarDateRow/CalendarDateRow';
-import CalendarBody from './calendarBody/calendarBody';
+import styles from "./CustomCalendar.module.scss";
+import CalendarDateRow from "./calendarDateRow/CalendarDateRow";
+import CalendarBody from "./calendarBody/CalendarBody";
 
 CustomCalendar.propTypes = {
   events: PropTypes.arrayOf(
@@ -27,11 +27,11 @@ CustomCalendar.propTypes = {
       }),
       subtitle: PropTypes.string,
       className: PropTypes.string,
-    }),
+    })
   ).isRequired,
 };
 
-export default function CustomCalendar({ events }) {
+export default function CustomCalendar({events}) {
   const [currWeekDates, setCurrWeekDates] = useState(getCurrWeekDates());
   const [currWeekData, setCurrWeekData] = useState([]);
 

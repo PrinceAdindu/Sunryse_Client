@@ -1,24 +1,24 @@
-import { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { axiosPrivate } from '../api/axios';
-import useRefreshToken from './useRefreshToken';
-import useAuth from './useAuth';
+import {useEffect} from "react";
+import {useNavigate, useLocation} from "react-router-dom";
+import {axiosPrivate} from "..services/api/axios";
+import useRefreshToken from "./useRefreshToken";
+import useAuth from "./useAuthContext";
 
 const useAxiosPrivate = () => {
   const refresh = useRefreshToken();
   const location = useLocation();
   const navigate = useNavigate();
-  const { auth } = useAuth();
+  const {auth} = useAuth();
 
   useEffect(() => {
     const requestIntercept = axiosPrivate.interceptors.request.use(
       (config) => {
-        if (!config.headers['Authorization']) {
-          config.headers['Authorization'] = `Bearer ${auth?.accessToken}`;
+        if (!config.headers["Authorization"]) {
+          config.headers["Authorization"] = `Bearer ${auth?.accessToken}`;
         }
         return config;
       },
-      (error) => Promise.reject(error),
+      (error) => Promise.reject(error)
     );
 
     const responseIntercept = axiosPrivate.interceptors.response.use(
@@ -29,14 +29,14 @@ const useAxiosPrivate = () => {
           prevRequest.sent = true;
           try {
             const newAccessToken = await refresh();
-            prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+            prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
             return axiosPrivate(prevRequest); // Retry request
           } catch (error) {
             return Promise.reject(error); // Propogates error to be caught at source
           }
         }
         return Promise.reject(error); // Propogates error to be caught at source
-      },
+      }
     );
 
     return () => {

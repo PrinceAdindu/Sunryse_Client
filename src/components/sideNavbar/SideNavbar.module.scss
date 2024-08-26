@@ -1,4 +1,4 @@
-@import '../../variables';
+@import "../../variables";
 
 .sideNavcontainer {
   position: sticky;
@@ -55,11 +55,11 @@
 
 .optionContainer:hover {
   background-color: white;
+  cursor: pointer;
   .icon {
     color: $DARK_BLUE;
   }
   .iconText {
     color: $DARK_BLUE;
   }
-  cursor: pointer;
 }

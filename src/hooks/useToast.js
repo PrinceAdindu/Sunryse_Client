@@ -1,5 +1,5 @@
-import { useDispatch } from 'react-redux';
-import { closeToast, setToast } from '../redux/reducers/toastReducer';
+import {useDispatch} from "react-redux";
+import {closeToast, setToast} from "../services/redux/reducers/toastReducer";
 
 const useToast = () => {
   const dispatch = useDispatch();
@@ -8,8 +8,8 @@ const useToast = () => {
     dispatch(
       setToast({
         message,
-        type: 'error',
-      }),
+        type: "error",
+      })
     );
   };
 
@@ -17,8 +17,8 @@ const useToast = () => {
     dispatch(
       setToast({
         message,
-        type: 'success',
-      }),
+        type: "success",
+      })
     );
   };
 

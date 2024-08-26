@@ -1,4 +1,4 @@
-@import '../../variables';
+@import "../../variables";
 
 .screen {
   display: flex;
@@ -40,7 +40,6 @@
 
 .title {
   color: $SOFT_BLACK;
-  font-size: 25px;
   font-weight: 700;
   margin: 25px 0px 0px 0px;
 }

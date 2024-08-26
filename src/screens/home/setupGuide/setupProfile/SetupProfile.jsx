@@ -1,15 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CheckBox from '../../../../components/checkbox/Checkbox';
+import {useNavigate} from "react-router-dom";
+import PropTypes from "prop-types";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CheckBox from "../../../../components/checkbox/CheckBox";
 
-import StyledButton from '../../../../components/styledButton/StyledButton';
+import StyledButton from "../../../../components/styledButton/StyledButton";
 
-import ProfileSetupImage from '../../../../assets/ProfileSetupImage2.png';
-import styles from './SetupProfile.module.scss';
+import ProfileSetupImage from "../../../../assets/ProfileSetupImage2.png";
+import styles from "./SetupProfile.module.scss";
 
 SetupProfile.propTypes = {
   expanded: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -17,28 +17,28 @@ SetupProfile.propTypes = {
   onStepCheck: PropTypes.func.isRequired,
 };
 
-export default function SetupProfile({ expanded, expand, onStepCheck }) {
-  const isChecked = localStorage.getItem('setupProfileCheck');
+export default function SetupProfile({expanded, expand, onStepCheck}) {
+  const isChecked = localStorage.getItem("setupProfileCheck");
 
   const navigate = useNavigate();
 
   return (
     <Accordion
       className={`${styles.topAccordian} ${
-        expanded.includes('step1')
+        expanded.includes("step1")
           ? styles.selectedAccordian
           : styles.unselectedAccordian
       }`}
-      expanded={expanded.includes('step1')}
+      expanded={expanded.includes("step1")}
       disableGutters
-      onChange={() => expand('step1')}
+      onChange={() => expand("step1")}
       id="step1"
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <div className={styles.summary}>
           <CheckBox
-            checked={isChecked === 'true'}
-            onChange={() => onStepCheck('setupProfileCheck')}
+            checked={isChecked === "true"}
+            onChange={() => onStepCheck("setupProfileCheck")}
           />
           <h1 className={styles.title}>Practice Name And Details</h1>
         </div>
@@ -54,7 +54,7 @@ export default function SetupProfile({ expanded, expand, onStepCheck }) {
               baseClassname={styles.button}
               text="Name My Practice"
               onClick={() => {
-                navigate('/settings');
+                navigate("/settings");
               }}
             />
           </div>
