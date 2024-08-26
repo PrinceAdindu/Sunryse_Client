@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import Checkbox from "@mui/material/Checkbox";
 
-CheckBox.propTypes = {
+CustomCheckbox.propTypes = {
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func,
 };
 
-export default function CheckBox({checked, onChange = () => {}}) {
+export default function CustomCheckbox({checked, onChange = () => {}}) {
   return (
     <Checkbox
       checked={checked}

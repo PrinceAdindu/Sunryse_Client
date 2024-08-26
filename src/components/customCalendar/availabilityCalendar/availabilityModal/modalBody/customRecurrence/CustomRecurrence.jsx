@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export default function CustomRecurrence({ formData, updateForm }) {
+export default function CustomRecurrence({formData, updateForm}) {
   const [customRecChecked, setCustomRecChecked] = useState(false);
 
   const repeatOnButtons = getDaysOfWeekButtons(updateForm, styles);
@@ -12,7 +12,7 @@ export default function CustomRecurrence({ formData, updateForm }) {
   };
   return (
     <>
-      <CheckBox
+      <CustomCheckbox
         checked={customRecChecked}
         onChange={() => setCustomRecChecked(!customRecChecked)}
       />
@@ -21,25 +21,25 @@ export default function CustomRecurrence({ formData, updateForm }) {
           <div className={styles.formFieldContainer}>
             <p className={styles.recurrenceText}>Repeat every</p>
             <Dropdown
-              id={'availabiliy_rec_num'}
+              id={"availabiliy_rec_num"}
               classname={styles.recurrenceNumDropdown}
               options={recurrenceNumOptions}
               value={formData.recurrenceNum}
-              onChange={(value) => updateForm('recurrenceNum', value)}
+              onChange={(value) => updateForm("recurrenceNum", value)}
               placeholder="1"
               indicator
             />
             <Dropdown
-              id={'availabiliy_rec_freq'}
+              id={"availabiliy_rec_freq"}
               classname={styles.recurrenceFreqDropdown}
               options={recurrenceFreqOptions}
               value={formData.recurrenceFreq}
-              onChange={(value) => updateForm('recurrenceFreq', value)}
+              onChange={(value) => updateForm("recurrenceFreq", value)}
               placeholder="week"
               indicator
             />
           </div>
-          {formData.recurrenceFreq === 'week' && (
+          {formData.recurrenceFreq === "week" && (
             <div className={styles.formFieldColContainer}>
               <p className={styles.recurrenceText}>Repeat on</p>
               <MultiButton
@@ -48,7 +48,7 @@ export default function CustomRecurrence({ formData, updateForm }) {
                   ...formData.daysOfWeek,
                   getDefaultSelectedDayButton(),
                 ]}
-                setSelected={(value) => updateForm('daysOfWeek', value)}
+                setSelected={(value) => updateForm("daysOfWeek", value)}
                 multiSelect
                 connectedButtons={false}
               />
@@ -56,14 +56,11 @@ export default function CustomRecurrence({ formData, updateForm }) {
           )}
           <div className={styles.formFieldColContainer}>
             <p className={styles.recurrenceText}>Ends on</p>
-            <div
-              className={styles.formFieldContainer}
-              style={{ margin: '0px' }}
-            >
+            <div className={styles.formFieldContainer} style={{margin: "0px"}}>
               <CalendarIcon className={styles.formIcon} />
               <CustomDatePicker
                 value={formData.date}
-                setValue={(value) => updateForm('date', value)}
+                setValue={(value) => updateForm("date", value)}
               />
             </div>
           </div>

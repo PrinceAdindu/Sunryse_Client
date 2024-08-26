@@ -1,22 +1,22 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import TimeIcon from '@mui/icons-material/AccessTime';
-import CalendarIcon from '@mui/icons-material/CalendarToday';
+import {useState} from "react";
+import PropTypes from "prop-types";
+import TimeIcon from "@mui/icons-material/AccessTime";
+import CalendarIcon from "@mui/icons-material/CalendarToday";
 
-import CustomDatePicker from '../../../../customDatePicker/CustomDatePicker';
-import Dropdown from '../../../../dropdown/Dropdown';
-import TimeRangeSelector from '../../../../timeRangeSelector/TimeRangeSelector';
-import MultiButton from '../../../../multiButton/MultiButton';
-import StyledButton from '../../../../styledButton/StyledButton';
-import CheckBox from '../../../../checkbox/Checkbox';
+import CustomDatePicker from "../../../../customDatePicker/CustomDatePicker";
+import Dropdown from "../../../../dropdown/Dropdown";
+import TimeRangeSelector from "../../../../timeRangeSelector/TimeRangeSelector";
+import MultiButton from "../../../../multiButton/MultiButton";
+import StyledButton from "../../../../styledButton/StyledButton";
+import CustomCheckbox from "../../../../checkbox/Checkbox";
 
 import {
   recurrenceNumOptions,
   recurrenceFreqOptions,
   getDaysOfWeekButtons,
-} from '../availabilityHelper';
+} from "../availabilityHelper";
 
-import styles from './ModalBody.module.scss';
+import styles from "./ModalBody.module.scss";
 
 ModalBody.propTypes = {
   formData: PropTypes.shape({
@@ -55,7 +55,7 @@ export default function ModalBody({
         <CalendarIcon className={styles.formIcon} />
         <CustomDatePicker
           value={formData.date}
-          setValue={(value) => updateForm('date', value)}
+          setValue={(value) => updateForm("date", value)}
         />
       </div>
       <p className={styles.timeRangeError}>{errors.timeRange}</p>
@@ -64,31 +64,31 @@ export default function ModalBody({
         <TimeRangeSelector
           startTime={formData.startTime}
           endTime={formData.endTime}
-          setStartTime={(value) => updateForm('startTime', value)}
-          setEndTime={(value) => updateForm('endTime', value)}
+          setStartTime={(value) => updateForm("startTime", value)}
+          setEndTime={(value) => updateForm("endTime", value)}
           error={errors.timeRange}
-          setError={(e) => updateErrors('timeRange', e)}
+          setError={(e) => updateErrors("timeRange", e)}
         />
       </div>
       {/* <CustomRecurrence /> */}
       <p className={styles.recurrenceHeader}>Services Available</p>
       <Dropdown
-        id={'availabiliy_services'}
+        id={"availabiliy_services"}
         classname={styles.recurrenceFreqDropdown}
         options={clinicData.services}
         value={formData.services}
-        onChange={(value) => updateForm('services', value)}
+        onChange={(value) => updateForm("services", value)}
         placeholder="Individual Session"
         indicator
         isMulti
       />
       <p className={styles.recurrenceHeader}>Locations Available</p>
       <Dropdown
-        id={'availabiliy_locations'}
+        id={"availabiliy_locations"}
         classname={styles.recurrenceFreqDropdown}
         options={clinicData.locations}
         value={formData.locations}
-        onChange={(value) => updateForm('locations', value)}
+        onChange={(value) => updateForm("locations", value)}
         placeholder="Virtual"
         indicator
         isMulti

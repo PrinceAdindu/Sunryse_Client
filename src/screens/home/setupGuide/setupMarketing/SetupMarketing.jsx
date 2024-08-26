@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import CheckBox from '../../../../components/checkbox/Checkbox';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {useState} from "react";
+import PropTypes from "prop-types";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import CustomCheckbox from "../../../../components/checkbox/Checkbox";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import StyledButton from '../../../../components/styledButton/StyledButton';
+import StyledButton from "../../../../components/styledButton/StyledButton";
 
-import OneOnOneImage from '../../../../assets/OneOnOneImage.jpeg';
-import styles from './SetupMarketing.module.scss';
+import OneOnOneImage from "../../../../assets/OneOnOneImage.jpeg";
+import styles from "./SetupMarketing.module.scss";
 
 SetupMarketing.propTypes = {
   expanded: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -17,15 +17,15 @@ SetupMarketing.propTypes = {
   onStepCheck: PropTypes.func.isRequired,
 };
 
-export default function SetupMarketing({ expanded, expand, onStepCheck }) {
+export default function SetupMarketing({expanded, expand, onStepCheck}) {
   const [calendlyOpen, setCalendlyOpen] = useState(false);
 
-  const isChecked = localStorage.getItem('setupGuideMarketingCheck');
+  const isChecked = localStorage.getItem("setupGuideMarketingCheck");
 
   function openSchedule() {
     window.open(
-      'https://calendly.com/tanrajdhillon/terra-marketing-call',
-      '_blank',
+      "https://calendly.com/tanrajdhillon/terra-marketing-call",
+      "_blank"
     );
     setCalendlyOpen(true);
   }
@@ -46,20 +46,20 @@ export default function SetupMarketing({ expanded, expand, onStepCheck }) {
   return (
     <Accordion
       className={
-        expanded.includes('step2')
+        expanded.includes("step2")
           ? styles.selectedAccord
           : styles.unselectedAccordian
       }
-      expanded={expanded.includes('step2')}
+      expanded={expanded.includes("step2")}
       disableGutters
-      onChange={() => expand('step2')}
+      onChange={() => expand("step2")}
       id="step2"
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <div className={styles.summary}>
-          <CheckBox
-            checked={isChecked === 'true'}
-            onChange={() => onStepCheck('setupGuideMarketingCheck')}
+          <CustomCheckbox
+            checked={isChecked === "true"}
+            onChange={() => onStepCheck("setupGuideMarketingCheck")}
           />
           <p className={styles.title}>Personal Marketing Session</p>
         </div>

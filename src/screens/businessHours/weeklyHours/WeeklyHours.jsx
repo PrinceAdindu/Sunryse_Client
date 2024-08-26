@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import DeleteIcon from '@mui/icons-material/DeleteOutline';
-import AddIcon from '@mui/icons-material/Add';
-import CheckBox from '../../../components/checkbox/Checkbox';
+import PropTypes from "prop-types";
+import DeleteIcon from "@mui/icons-material/DeleteOutline";
+import AddIcon from "@mui/icons-material/Add";
+import CustomCheckbox from "../../../components/checkbox/Checkbox";
 
-import StartEndTimes from './startEndTimes/StartEndTimes';
-import { DAYS_OF_WEEK } from '../businessHoursHelper';
+import StartEndTimes from "./startEndTimes/StartEndTimes";
+import {DAYS_OF_WEEK} from "../businessHoursHelper";
 
-import styles from './WeeklyHours.module.scss';
+import styles from "./WeeklyHours.module.scss";
 
 WeeklyHours.propTypes = {
   schedule: PropTypes.arrayOf(
@@ -18,14 +18,14 @@ WeeklyHours.propTypes = {
           start: PropTypes.string,
           end: PropTypes.string,
           error: PropTypes.bool,
-        }),
+        })
       ),
-    }),
+    })
   ).isRequired,
   setSchedule: PropTypes.func.isRequired,
 };
 
-export default function WeeklyHours({ schedule, setSchedule }) {
+export default function WeeklyHours({schedule, setSchedule}) {
   const updateScheduleTimes = (dayOfWeek, blockIndex, startOrEnd, time) => {
     const newSchedule = [...schedule];
     newSchedule[dayOfWeek].times[blockIndex][startOrEnd] = time;
@@ -56,7 +56,7 @@ export default function WeeklyHours({ schedule, setSchedule }) {
 
   const addTimeBlock = (dayIndex) => {
     const newSchedule = [...schedule];
-    newSchedule[dayIndex].times.push({ start: '00:00', end: '00:00' });
+    newSchedule[dayIndex].times.push({start: "00:00", end: "00:00"});
     setSchedule(newSchedule);
   };
 
@@ -70,7 +70,7 @@ export default function WeeklyHours({ schedule, setSchedule }) {
     setSchedule(newSchedule);
   };
 
-  const TimeSection = ({ dayIndex }) =>
+  const TimeSection = ({dayIndex}) =>
     schedule[dayIndex].on ? (
       schedule[dayIndex].times.map((block, blockIndex) => (
         <div
@@ -98,11 +98,11 @@ export default function WeeklyHours({ schedule, setSchedule }) {
       <p className={styles.unavailableText}>Unavailable</p>
     );
 
-  const Day = ({ dayIndex, dayLabel }) => (
+  const Day = ({dayIndex, dayLabel}) => (
     <>
       <div className={styles.day}>
         <div className={styles.labelSection}>
-          <CheckBox
+          <CustomCheckbox
             checked={schedule[dayIndex].on}
             onChange={(event) => updateDayOnOff(dayIndex, event.target.checked)}
           />

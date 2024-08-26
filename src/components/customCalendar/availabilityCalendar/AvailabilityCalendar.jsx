@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import {useEffect, useState} from "react";
+import PropTypes from "prop-types";
 
-import CalendarDateRow from '../calendarDateRow/CalendarDateRow';
-import CalendarBody from '../calendarBody/calendarBody';
-import CalendarHeader from '../calendarHeader/CalendarHeader';
-import AvailabilityModal from './availabilityModal/AvailabilityModal';
+import CalendarDateRow from "../calendarDateRow/CalendarDateRow";
+import CalendarBody from "../calendarBody/CalendarBody";
+import CalendarHeader from "../calendarHeader/CalendarHeader";
+import AvailabilityModal from "./availabilityModal/AvailabilityModal";
 
 import {
   getCurrWeekDates,
   getNextWeekDates,
   getPrevWeekDates,
   getWeekData,
-} from '../customCalendarHelper';
+} from "../customCalendarHelper";
 
-import styles from './AvailabilityCalendar.module.scss';
+import styles from "./AvailabilityCalendar.module.scss";
 
 AvailabilityCalendar.propTypes = {
   availability: PropTypes.arrayOf(
@@ -29,20 +29,20 @@ AvailabilityCalendar.propTypes = {
       services: PropTypes.arrayOf(PropTypes.string).isRequired,
       locations: PropTypes.arrayOf(PropTypes.string).isRequired,
       className: PropTypes.string,
-    }),
+    })
   ).isRequired,
   clinicData: PropTypes.shape({
     services: PropTypes.arrayOf(
       PropTypes.shape({
         value: PropTypes.any,
         label: PropTypes.string,
-      }),
+      })
     ).isRequired,
     locations: PropTypes.arrayOf(
       PropTypes.shape({
         value: PropTypes.any,
         label: PropTypes.string,
-      }),
+      })
     ).isRequired,
   }).isRequired,
   editAvailability: PropTypes.func.isRequired,
@@ -87,7 +87,7 @@ export default function AvailabilityCalendar({
         onBackClick={prevWeekClick}
         openNewEventModal={openNewEventModal}
         newEventButton={true}
-        newEventButtonText={'Add Availability'}
+        newEventButtonText={"Add Availability"}
       />
       {currWeekData.length > 0 && (
         <div className={styles.dateBodyContainer}>

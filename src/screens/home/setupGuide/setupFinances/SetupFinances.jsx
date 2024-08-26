@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import PropTypes from "prop-types";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import CheckBox from '../../../../components/checkbox/Checkbox';
-import StyledButton from '../../../../components/styledButton/StyledButton';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-import useToast from '../../../../hooks/useToast';
-import createAccountLinkUrl from './setupFinancesHelper';
-import PaymentsImage from '../../../../assets/PaymentsImage.png';
+import CustomCheckbox from "../../../../components/checkbox/Checkbox";
+import StyledButton from "../../../../components/styledButton/StyledButton";
+import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
+import useToast from "../../../../hooks/useToast";
+import createAccountLinkUrl from "./setupFinancesHelper";
+import PaymentsImage from "../../../../assets/PaymentsImage.png";
 
-import styles from './SetupFinances.module.scss';
+import styles from "./SetupFinances.module.scss";
 
 SetupFinances.propTypes = {
   expanded: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -19,8 +19,8 @@ SetupFinances.propTypes = {
   onStepCheck: PropTypes.func.isRequired,
 };
 
-export default function SetupFinances({ expanded, expand, onStepCheck }) {
-  const isChecked = localStorage.getItem('setupGuideFinanceCheck');
+export default function SetupFinances({expanded, expand, onStepCheck}) {
+  const isChecked = localStorage.getItem("setupGuideFinanceCheck");
 
   const axios = useAxiosPrivate();
   const toast = useToast();
@@ -32,20 +32,20 @@ export default function SetupFinances({ expanded, expand, onStepCheck }) {
   return (
     <Accordion
       className={
-        expanded.includes('step5')
+        expanded.includes("step5")
           ? styles.selectedAccord
           : styles.unselectedAccordian
       }
-      expanded={expanded.includes('step5')}
+      expanded={expanded.includes("step5")}
       disableGutters
-      onChange={() => expand('step5')}
+      onChange={() => expand("step5")}
       id="step5"
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <div className={styles.summary}>
-          <CheckBox
-            checked={isChecked === 'true'}
-            onChange={() => onStepCheck('setupGuideFinanceCheck')}
+          <CustomCheckbox
+            checked={isChecked === "true"}
+            onChange={() => onStepCheck("setupGuideFinanceCheck")}
           />
           <p className={styles.title}>Set Up Payments</p>
         </div>

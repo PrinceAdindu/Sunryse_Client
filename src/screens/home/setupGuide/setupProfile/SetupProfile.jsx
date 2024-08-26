@@ -4,7 +4,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import CheckBox from "../../../../components/checkbox/CheckBox";
+import CustomCheckbox from "../../../../components/checkbox/CustomCheckbox";
 
 import StyledButton from "../../../../components/styledButton/StyledButton";
 
@@ -36,7 +36,7 @@ export default function SetupProfile({expanded, expand, onStepCheck}) {
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <div className={styles.summary}>
-          <CheckBox
+          <CustomCheckbox
             checked={isChecked === "true"}
             onChange={() => onStepCheck("setupProfileCheck")}
           />
