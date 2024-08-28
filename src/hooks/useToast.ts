@@ -4,7 +4,7 @@ import {closeToast, setToast} from "../services/redux/reducers/toastReducer";
 const useToast = () => {
   const dispatch = useDispatch();
 
-  const error = (message) => {
+  const error = (message: string) => {
     dispatch(
       setToast({
         message,
@@ -13,7 +13,7 @@ const useToast = () => {
     );
   };
 
-  const success = (message) => {
+  const success = (message: string) => {
     dispatch(
       setToast({
         message,

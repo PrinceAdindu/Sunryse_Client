@@ -8,7 +8,7 @@ import Dropdown from "../../../../dropdown/Dropdown";
 import TimeRangeSelector from "../../../../timeRangeSelector/TimeRangeSelector";
 import MultiButton from "../../../../multiButton/MultiButton";
 import StyledButton from "../../../../styledButton/StyledButton";
-import CustomCheckbox from "../../../../checkbox/Checkbox";
+import CustomCheckbox from "../../../../customCheckbox/CustomCheckbox";
 
 import {
   recurrenceNumOptions,

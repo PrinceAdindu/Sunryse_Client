@@ -1,15 +1,15 @@
-import axios from '../../api/axios';
-import { checkFormData } from '../../utilities/formChecks';
-import { RESET_PASSWORD_FORM_RULES } from './resetPasswordFormRules';
+import axios from "../../services/api/axios";
+import {checkFormData} from "../../utilities/formChecks";
+import {RESET_PASSWORD_FORM_RULES} from "./resetPasswordFormRules";
 
 export async function onPasswordReset(formData, email, navigate, toast) {
-  const data = { ...formData, email };
+  const data = {...formData, email};
   try {
-    const res = await axios.post('/resetPassword', {
+    const res = await axios.post("/resetPassword", {
       data,
     });
     toast.success(res.data.message);
-    navigate('/login');
+    navigate("/login");
   } catch (error) {
     if (error.response) {
       toast.error(error?.response?.data?.message);

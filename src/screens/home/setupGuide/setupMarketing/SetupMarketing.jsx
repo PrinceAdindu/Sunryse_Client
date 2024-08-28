@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import CustomCheckbox from "../../../../components/checkbox/Checkbox";
+import CustomCheckbox from "../../../../components/customCheckbox/CustomCheckbox";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import StyledButton from "../../../../components/styledButton/StyledButton";

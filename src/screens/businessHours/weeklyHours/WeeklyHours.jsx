@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import DeleteIcon from "@mui/icons-material/DeleteOutline";
 import AddIcon from "@mui/icons-material/Add";
-import CustomCheckbox from "../../../components/checkbox/Checkbox";
+import CustomCheckbox from "../../../components/customCheckbox/CustomCheckbox";
 
 import StartEndTimes from "./startEndTimes/StartEndTimes";
 import {DAYS_OF_WEEK} from "../businessHoursHelper";

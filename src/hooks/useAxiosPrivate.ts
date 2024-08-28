@@ -1,19 +1,17 @@
 import {useEffect} from "react";
-import {useNavigate, useLocation} from "react-router-dom";
-import {axiosPrivate} from "..services/api/axios";
+import {axiosPrivate} from "../services/api/axios";
 import useRefreshToken from "./useRefreshToken";
 import useAuth from "./useAuthContext";
+import {AxiosRequestConfig} from "axios";
 
 const useAxiosPrivate = () => {
   const refresh = useRefreshToken();
-  const location = useLocation();
-  const navigate = useNavigate();
   const {auth} = useAuth();
 
   useEffect(() => {
     const requestIntercept = axiosPrivate.interceptors.request.use(
       (config) => {
-        if (!config.headers["Authorization"]) {
+        if (config.headers && !config.headers["Authorization"]) {
           config.headers["Authorization"] = `Bearer ${auth?.accessToken}`;
         }
         return config;
@@ -24,15 +22,20 @@ const useAxiosPrivate = () => {
     const responseIntercept = axiosPrivate.interceptors.response.use(
       (response) => response,
       async (error) => {
-        const prevRequest = error?.config;
+        const prevRequest = error?.config as AxiosRequestConfig & {
+          sent?: Boolean;
+        };
         if (error?.response?.status === 403 && !prevRequest?.sent) {
           prevRequest.sent = true;
           try {
             const newAccessToken = await refresh();
-            prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+            prevRequest.headers = {
+              ...prevRequest.headers,
+              Authorization: `Bearer ${newAccessToken}`,
+            };
             return axiosPrivate(prevRequest); // Retry request
-          } catch (error) {
-            return Promise.reject(error); // Propogates error to be caught at source
+          } catch (refreshError) {
+            return Promise.reject(refreshError); // Propogates error to be caught at source
           }
         }
         return Promise.reject(error); // Propogates error to be caught at source
@@ -43,7 +46,7 @@ const useAxiosPrivate = () => {
       axiosPrivate.interceptors.request.eject(requestIntercept);
       axiosPrivate.interceptors.response.eject(responseIntercept);
     };
-  }, [auth, location, navigate, refresh]);
+  }, [auth, location, refresh]);
 
   return axiosPrivate;
 };

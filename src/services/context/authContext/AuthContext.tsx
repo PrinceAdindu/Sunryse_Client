@@ -1,11 +1,11 @@
 import React, {createContext, useState} from "react";
-import {AuthState, AuthContextType} from "./authContextTypes"; // Adjust import path as needed
+import {AuthState, AuthContextData} from "./authContextTypes"; // Adjust import path as needed
 
 type AuthProviderProps = {
   children: React.ReactNode;
 };
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextData | undefined>(undefined);
 
 export const AuthProvider = ({children}: AuthProviderProps) => {
   const [auth, setAuth] = useState<AuthState>({

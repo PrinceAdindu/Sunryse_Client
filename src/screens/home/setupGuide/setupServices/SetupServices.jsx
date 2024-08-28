@@ -5,7 +5,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import CustomCheckbox from "../../../../components/checkbox/Checkbox";
+import CustomCheckbox from "../../../../components/customCheckbox/CustomCheckbox";
 import StyledButton from "../../../../components/styledButton/StyledButton";
 import ServicesImage from "../../../../assets/ServicesImage.png";
 

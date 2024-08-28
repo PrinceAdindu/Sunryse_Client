@@ -1,14 +1,18 @@
 import {useNavigate} from "react-router-dom";
-import axios from "../api/axios";
+import axios from "../services/api/axios";
 import useAuth from "./useAuthContext";
+
+type RefreshTokenResponse = {
+  accessToken: string;
+};
 
 const useRefreshToken = () => {
   const {setAuth} = useAuth();
   const navigate = useNavigate();
 
-  async function refresh() {
+  async function refresh(): Promise<string | undefined> {
     try {
-      const res = await axios.post("/login/refresh");
+      const res = await axios.post<RefreshTokenResponse>("/login/refresh");
       if (res.status === 200) {
         const accessToken = res?.data?.accessToken;
         setAuth({accessToken});

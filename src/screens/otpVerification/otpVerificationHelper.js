@@ -1,4 +1,4 @@
-import axios from "../../api/axios";
+import axios from "../../services/api/axios";
 import config from "../../config";
 
 export async function sendOtp(email, toast) {

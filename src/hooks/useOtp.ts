@@ -8,7 +8,7 @@ import {
 const useOtp = () => {
   const dispatch = useDispatch();
 
-  const storeFrom = (from) => {
+  const storeFrom = (from: string) => {
     dispatch(
       setFrom({
         from,
@@ -16,7 +16,7 @@ const useOtp = () => {
     );
   };
 
-  const storeEmail = (email) => {
+  const storeEmail = (email: string) => {
     dispatch(
       setEmail({
         email,
@@ -24,7 +24,7 @@ const useOtp = () => {
     );
   };
 
-  const storeCallback = (callback) => {
+  const storeCallback = (callback: () => void) => {
     dispatch(
       setCallback({
         callback,
