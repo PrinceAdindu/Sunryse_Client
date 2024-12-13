@@ -1,7 +1,7 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .link {
-  color: $YELLOW;
+  color: var.$YELLOW;
   text-decoration: none;
 }
 

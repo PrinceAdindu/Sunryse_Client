@@ -1,16 +1,4 @@
-@import '../../variables';
-
-.screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  background-image: url(../../assets/SunryseBackgroundImage.png);
-  background-size: cover !important;
-  background-attachment: fixed;
-}
+@use "../../variables" as var;
 
 .card {
   display: flex;
@@ -20,7 +8,7 @@
   width: 500px;
   padding: 25px 50px 25px 50px;
   box-sizing: border-box;
-  box-shadow: $BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
   border-radius: 5px;
   background-color: white;
 }
@@ -39,16 +27,24 @@
 }
 
 .title {
-  color: $SOFT_BLACK;
-  font-size: 25px;
-  font-weight: 700;
+  color: var.$SOFT_BLACK;
+  font-weight: 500;
   margin: 25px 0px 0px 0px;
 }
 
 .subtitle {
-  color: $CHARCOAL;
-  font-size: 16px;
+  color: var.$DARK_GRAY;
+  font-weight: 500;
   margin: 5px 0px 10px 0px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .input {
@@ -72,26 +68,25 @@
   height: 50px !important;
   margin-top: 25px !important;
   font-size: 16px !important;
-  background-color: $PINK !important;
+  background-color: var.$PINK !important;
 }
 
 .button:hover {
-  background-color: $DARK_PINK !important;
+  background-color: var.$DARK_PINK !important;
 }
 
 .span {
-  color: $CHARCOAL;
-  font-size: 14px;
-  font-weight: 600;
+  color: var.$DARK_GRAY;
+  font-weight: 500;
   margin: 15px 0px 0px 0px;
 }
 
 .link {
-  color: $PINK;
+  color: var.$PINK;
   text-decoration: none;
 }
 
 .link:hover {
   text-decoration: underline;
-  color: $DARK_PINK;
+  color: var.$DARK_PINK;
 }

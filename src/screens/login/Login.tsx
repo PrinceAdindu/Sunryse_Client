@@ -1,48 +1,42 @@
-import React, {useState, useEffect, useCallback} from "react";
-import {Link, useLocation, useNavigate} from "react-router-dom";
-import LoadingHOC from "../../components/loading/LoadingHOC";
+import React, {useEffect} from "react";
+import {Link} from "react-router-dom";
+
 import InputField from "../../components/inputField/InputField";
 import StyledButton from "../../components/styledButton/StyledButton";
+import {Loader} from "../../components/loading/Loader";
 
-import {onLogin} from "./loginHelper";
-import useToast from "../../hooks/useToast";
-import useAuth from "../../hooks/useAuthContext";
-import useOtp from "../../hooks/useOtp";
+import {useLogin} from "../../services/api/auth/login/useLogin";
 
 import logo from "../../assets/SunryseLogoWideFillBlue.png";
 import styles from "./Login.module.scss";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {LoginFormData, loginFormSchema} from "./loginHelper";
+import {Controller, SubmitHandler, useForm} from "react-hook-form";
 
-type LoginProps = {
-  setLoading: (param: boolean) => void;
-};
+export default function Login() {
+  const {
+    handleSubmit,
+    control,
+    formState: {errors, isSubmitting},
+  } = useForm<LoginFormData>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: zodResolver(loginFormSchema),
+  });
 
-function Login({setLoading}: LoginProps) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const loginUser = useLogin();
+  const {isLoading} = loginUser;
 
-  const {setAuth} = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const toastInstance = useToast();
-  const otpInstance = useOtp();
-
-  const submit = useCallback(async () => {
-    setLoading(true);
-    await onLogin(
-      email,
-      password,
-      setAuth,
-      navigate,
-      location,
-      otpInstance,
-      toastInstance
-    );
-    setLoading(false);
-  }, [email, location, navigate, password, setAuth, toastInstance]);
+  const submit: SubmitHandler<LoginFormData> = async (formData) => {
+    const payload = {data: {...formData}};
+    await loginUser.mutateAsync(payload);
+  };
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === "Enter") submit();
+      if (event.key === "Enter") handleSubmit(submit);
     };
     document.addEventListener("keydown", handleKeyPress);
 
@@ -59,61 +53,69 @@ function Login({setLoading}: LoginProps) {
     </div>
   );
 
-  const RegisterOption = () => (
-    <span className={styles.span}>
-      New to Sunryse?{" "}
-      <Link className={styles.link} to="/register">
-        Get started
-      </Link>
-    </span>
-  );
-
   const Help = () => (
     <span className={styles.span}>
-      Forgot your email or password?{" "}
+      Forgot your password?{" "}
       <Link to="/resetPassword/email" className={styles.link}>
         Reset
       </Link>
     </span>
   );
 
+  const RegisterOption = () => (
+    <span className={styles.span}>
+      New to Sunryse?{" "}
+      <Link className={styles.link} to="/register">
+        Create an account
+      </Link>
+    </span>
+  );
+
+  if (isLoading) {
+    return <Loader type={"white"} />;
+  }
+
   return (
-    <div className={styles.screen}>
-      <div id="Login" className={styles.card}>
-        <Header />
-        <InputField
-          classname={styles.input}
-          title="Email"
-          value={email}
-          setValue={setEmail}
+    <div className={styles.card}>
+      <Header />
+      <form className={styles.form} onSubmit={handleSubmit(submit)}>
+        <Controller
+          name="email"
+          control={control}
+          render={({field: {onChange, value}}) => (
+            <InputField
+              classname={styles.input}
+              title="Email"
+              value={value}
+              setValue={onChange}
+              error={errors.email?.message}
+              type="text"
+            />
+          )}
         />
-        <InputField
-          classname={styles.input}
-          title="Password"
-          type="password"
-          value={password}
-          setValue={setPassword}
+        <Controller
+          name="password"
+          control={control}
+          render={({field: {onChange, value}}) => (
+            <InputField
+              classname={styles.input}
+              title="Password"
+              value={value}
+              setValue={onChange}
+              error={errors.password?.message}
+              type="password"
+            />
+          )}
         />
         <StyledButton
           baseClassname={styles.button}
           text="Log in"
-          onClick={() => submit()}
+          disabled={isSubmitting}
+          type={"submit"}
         />
-        <Help />
-        <RegisterOption />
-      </div>
+      </form>
+      <Help />
+      <RegisterOption />
     </div>
   );
 }
-
-const loaderStyles = {
-  color: "white",
-};
-const containerStyles = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-};
-
-export default LoadingHOC(Login, "Login", false, loaderStyles, containerStyles);

@@ -1,4 +1,4 @@
-@import '../../../variables';
+@use "../../../variables" as var;
 
 .setupHeaderContainer {
   display: flex;
@@ -11,9 +11,9 @@
   border-radius: 10px;
   box-sizing: border-box;
   background-color: white;
-  -webkit-box-shadow: $BOX_SHADOW;
-  -moz-box-shadow: $BOX_SHADOW;
-  box-shadow: $BOX_SHADOW;
+  -webkit-box-shadow: var.$BOX_SHADOW;
+  -moz-box-shadow: var.$BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
 }
 
 .setupAccordianContainer {
@@ -23,13 +23,13 @@
 .title {
   font-size: 16px;
   font-weight: 700;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
   margin-bottom: 15px;
 }
 
 .text {
   font-size: 14px;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 
 .progressContainer {
@@ -42,7 +42,7 @@
 
 .progressBarText {
   font-size: 14px;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 
 .progressBar {
@@ -60,21 +60,21 @@
   padding: 25px;
   border-radius: 10px;
   box-sizing: border-box;
-  background: $LIGHT_BLUE;
-  -webkit-box-shadow: $BOX_SHADOW;
-  -moz-box-shadow: $BOX_SHADOW;
-  box-shadow: $BOX_SHADOW;
+  background: var.$LIGHT_BLUE;
+  -webkit-box-shadow: var.$BOX_SHADOW;
+  -moz-box-shadow: var.$BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
 }
 
 .launchTitle {
   font-size: 16px;
   font-weight: 700;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
   margin-bottom: 15px;
 }
 
 .launchText {
   font-size: 14px;
   font-weight: 600;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }

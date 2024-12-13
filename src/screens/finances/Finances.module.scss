@@ -1,4 +1,4 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .screen {
   display: flex;
@@ -6,8 +6,8 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  min-height: calc(100vh - $NAV_HEIGHT);
-  background-color: $WHITE_GRAY;
+  min-height: calc(100vh - var.$NAV_HEIGHT);
+  background-color: var.$WHITE_GRAY;
   padding: 50px;
   box-sizing: border-box;
 }
@@ -22,9 +22,9 @@
   padding: 25px;
   border-radius: 10px;
   background-color: white;
-  -webkit-box-shadow: $BOX_SHADOW;
-  -moz-box-shadow: $BOX_SHADOW;
-  box-shadow: $BOX_SHADOW;
+  -webkit-box-shadow: var.$BOX_SHADOW;
+  -moz-box-shadow: var.$BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
 }
 
 .image {
@@ -36,13 +36,13 @@
 .title {
   font-size: 18px;
   font-weight: 600;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
   margin-bottom: 25px;
 }
 
 .text {
   font-size: 14px;
   font-weight: 600;
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
   margin-bottom: 25px;
 }

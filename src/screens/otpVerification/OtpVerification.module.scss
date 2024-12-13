@@ -1,18 +1,5 @@
-@import '../../variables';
-* {
-  box-sizing: border-box;
-}
-.screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  background-image: url(../../assets/SunryseBackgroundImage.png);
-  background-size: cover !important;
-  background-attachment: fixed;
-}
+@use "../../variables" as var;
+
 .card {
   display: flex;
   flex-direction: column;
@@ -21,7 +8,7 @@
   width: 500px;
   padding: 25px 50px 25px 50px;
   box-sizing: border-box;
-  box-shadow: $BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
   border-radius: 5px;
   background-color: white;
 }
@@ -33,14 +20,14 @@
 }
 
 .title {
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
   font-size: 18px;
   font-weight: 700;
   margin: 25px 0px 0px 20px;
 }
 
 .subtitle {
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
   font-size: 14px;
   margin: 10px 0px 10px 20px;
 }
@@ -61,11 +48,11 @@
   height: 38px;
   margin-top: 30px !important;
   font-size: 15px !important;
-  background-color: $PINK !important;
+  background-color: var.$PINK !important;
 }
 .button:hover {
   cursor: pointer;
-  background-color: $DARK_PINK !important;
+  background-color: var.$DARK_PINK !important;
 }
 .disabledButton {
   width: 100% !important;
@@ -79,13 +66,14 @@
   text-align: center;
   margin: 30px 0px;
   font-size: 14px;
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
   font-weight: 600;
 }
 .resendText {
-  color: $DARK_PINK;
+  color: var.$PINK;
 }
 .resendText:hover {
   cursor: pointer;
   text-decoration: underline;
+  color: var.$DARK_PINK;
 }

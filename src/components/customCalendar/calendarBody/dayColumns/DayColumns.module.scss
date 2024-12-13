@@ -1,4 +1,4 @@
-@import '../../../../variables';
+@use "../../../../variables" as var;
 
 .dayColumnsContainer {
   display: flex;
@@ -22,7 +22,7 @@
   height: 50px;
   border: solid;
   border-width: 0px 1px 1px 0px;
-  border-color: $LIGHT_GRAY;
+  border-color: var.$LIGHT_GRAY;
 }
 
 .firstColumnHourBlock {

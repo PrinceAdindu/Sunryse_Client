@@ -1,19 +1,32 @@
-import PropTypes from 'prop-types';
-import { useRef, useState, useEffect } from 'react';
-import styles from './OtpInput.module.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import {useRef, useState, useEffect} from "react";
+import styles from "./OtpInput.module.scss";
 
-OTPInput.propTypes = {
+OtpInput.propTypes = {
   numInputs: PropTypes.number,
   setValue: PropTypes.func.isRequired,
-  otpInputStyle: PropTypes.string,
+  className: PropTypes.string,
 };
-export default function OTPInput({
+
+type OtpInput = {
+  numInputs: number;
+  setValue: () => void;
+  classnames: string;
+};
+export default function OtpInput({
   numInputs = 6,
   setValue = () => {},
-  otpInputStyle = ' ',
+  classnames = "",
 }) {
-  const [otpValues, setOtpValues] = useState(Array(numInputs).fill(''));
-  const inputRefs = useRef([]);
+  const [otpValues, setOtpValues] = useState<string[]>(
+    Array(numInputs).fill("")
+  );
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  const focusInput = (index: number) => {
+    inputRefs.current[index]?.focus();
+  };
 
   // when initialy the component mounted focus the first input field
   useEffect(() => {
@@ -21,15 +34,15 @@ export default function OTPInput({
   }, []);
 
   const handleInputChange = (index, event) => {
-    const { value } = event.target;
+    const {value} = event.target;
     handleOtpChange(index, value);
     if (index < numInputs - 1) {
       focusInput(index + 1);
     }
   };
   const handleKeyDown = (index, event) => {
-    if (event.code === 'Backspace') {
-      handleOtpChange(index, '');
+    if (event.code === "Backspace") {
+      handleOtpChange(index, "");
       if (index > 0 && index < numInputs) {
         focusInput(index - 1);
       }
@@ -42,16 +55,16 @@ export default function OTPInput({
     newOtpValues[index] = value;
 
     setOtpValues(newOtpValues);
-    setValue(parseInt(newOtpValues.join('')));
+    setValue(parseInt(newOtpValues.join("")));
   };
 
   const handlePaste = (index, event) => {
     let activeInput;
     let otp = [...otpValues];
     const pastedData = event.clipboardData
-      .getData('text/plain')
+      .getData("text/plain")
       .slice(0, numInputs - index)
-      .split('');
+      .split("");
     pastedData.forEach((num, i) => {
       otp[index + i] = num;
     });
@@ -60,22 +73,17 @@ export default function OTPInput({
     focusInput(activeInput);
     setOtpValues(otp);
     // send to its parent component
-    setValue(parseInt(otp.join('')));
+    setValue(parseInt(otp.join("")));
 
     event.preventDefault();
-  };
-
-  const focusInput = (index) => {
-    inputRefs.current[index].focus();
-    inputRefs.current[index].select();
   };
 
   return (
     <div className={styles.container}>
       {otpValues.map((value, index) => (
         <input
-          className={`${styles.input} ${otpInputStyle}`}
           key={index}
+          className={`${styles.input} ${classnames}`}
           type="number"
           maxLength={1}
           max={9}

@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-type OtpState = {
+export type OtpState = {
   from: string;
   email: string;
   callback: () => void;

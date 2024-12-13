@@ -1,8 +1,6 @@
-// import { useNavigate } from 'react-router-dom';
-// import useAxiosPrivate from '../../hooks/useAxiosPrivate';
-import SetupGuide from './setupGuide/SetupGuide';
+import SetupGuide from "./setupGuide/SetupGuide";
 
-import styles from './Home.module.scss';
+import styles from "./Home.module.scss";
 
 export default function Home() {
   return (

@@ -1,4 +1,4 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .navBarContainer {
   position: sticky;
@@ -9,10 +9,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: $NAV_HEIGHT;
-  z-index: $NAV_Z_INDEX;
+  height: var.$NAV_HEIGHT;
+  z-index: var.$NAV_Z_INDEX;
   background-color: white;
-  box-shadow: $BOX_SHADOW_BOTTOM;
+  box-shadow: var.$BOX_SHADOW_BOTTOM;
 }
 
 .navOptionsContainer {
@@ -34,20 +34,20 @@
 }
 
 .iconContainer:hover {
-  background-color: $WHITE_GRAY_DARK;
+  background-color: var.$LIGHT_GRAY;
   cursor: pointer;
 }
 
 .icon {
-  color: $DARK_BLUE;
+  color: var.$DARK_BLUE;
 }
 
 .clinicName {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: $DARK_BLUE;
+  color: var.$DARK_BLUE;
   margin: 0px 0px 0px 25px;
 }
 

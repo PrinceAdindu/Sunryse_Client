@@ -1,23 +1,24 @@
 $DARK_BLUE: #00282e;
-$BLUE: #00859a;
+$BLUE: #016677;
 $BLUE_HOVER: #006a7b;
-$BLUE_GREEN: #297373;
-$DARK_BLUE_GREEN: #266969;
-$LIGHT_BLUE: #b5d6d6;
+$LIGHT_BLUE: #cce7eb;
+
+$DARK_PINK: #cc4a4c;
+$PINK: #ff5c5f;
 $LIGHT_PINK: #ffa9ab;
-$PINK: #ff7073;
-$DARK_PINK: #ff5c5f;
-$LIGHT_GREEN: #e5f8eb;
-$GREEN: #06ba34;
-$LIGHT_RED: #ffebeb;
+
+$DARK_GREEN: #41691b;
+$GREEN: #81d135;
+$LIGHT_GREEN: #e6f6d7;
+
 $ERROR_RED: #c5514f;
+
 $SOFT_BLACK: #303030;
-$CHARCOAL: #5e5e5e;
-$MEDIUM_GRAY: #b1b1b1;
-$GRAY: #c7c7c7;
+$DARK_GRAY: #5e5e5e;
+$GRAY: #b1b1b1;
 $LIGHT_GRAY: #e4e4e4;
-$WHITE_GRAY_DARK: #f1f1f1;
 $WHITE_GRAY: #f7f7f7;
+
 $PINK_GRAD: linear-gradient(
   90deg,
   hsla(120, 46%, 92%, 1) 0%,
@@ -44,6 +45,7 @@ $RAINBOW_PASTEL_GRAD: linear-gradient(
   rgb(248, 172, 171) 95%,
   rgb(254, 170, 212) 100%
 );
+
 $BOX_SHADOW: 0px 3px 8px rgba(0, 0, 0, 0.24);
 $BOX_SHADOW_BOTTOM: 0px 3px 8px 0px rgba(0, 0, 0, 0.24);
 

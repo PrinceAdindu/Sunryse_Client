@@ -1,4 +1,4 @@
-@import '../../../variables';
+@use "../../../variables" as var;
 
 .container {
   display: flex;
@@ -56,12 +56,12 @@
 .unavailableText {
   font-size: 14px;
   font-weight: 700;
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
   margin-top: 10px;
 }
 
 .errorText {
-  color: $ERROR_RED;
+  color: var.$ERROR_RED;
   font-size: 14px;
 }
 
@@ -75,10 +75,10 @@
 
 .icon:hover {
   cursor: pointer;
-  background-color: $WHITE_GRAY;
+  background-color: var.$WHITE_GRAY;
 }
 
 .line {
-  border-color: $WHITE_GRAY;
+  border-color: var.$WHITE_GRAY;
   width: 95%;
 }

@@ -1,4 +1,4 @@
-@import '../../../../variables';
+@use "../../../../variables" as var;
 
 .modalContainer {
   position: absolute;
@@ -14,9 +14,9 @@
   max-height: 100%;
   border-radius: 5px;
   background-color: white;
-  -webkit-box-shadow: $BOX_SHADOW;
-  -moz-box-shadow: $BOX_SHADOW;
-  box-shadow: $BOX_SHADOW;
+  -webkit-box-shadow: var.$BOX_SHADOW;
+  -moz-box-shadow: var.$BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
 }
 
 .modalNavbar {
@@ -26,7 +26,7 @@
   align-items: flex-start;
   border-radius: 5px 0px;
   padding: 5px 5px 5px 10px;
-  background-color: $WHITE_GRAY_DARK;
+  background-color: var.$LIGHT_GRAY;
   width: 100%;
   height: 30px;
   margin-bottom: 10px;
@@ -34,16 +34,16 @@
 .modalHeader {
   font-size: 14px;
   font-weight: 700;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 .closeIcon {
-  color: $CHARCOAL !important;
+  color: var.$DARK_GRAY !important;
   padding: 2px;
   box-sizing: border-box;
   border-radius: 50%;
 }
 .closeIcon:hover {
-  background-color: $LIGHT_GRAY;
+  background-color: var.$LIGHT_GRAY;
   cursor: pointer;
 }
 
@@ -75,13 +75,13 @@
   margin-bottom: 15px;
 }
 .formIcon {
-  color: $CHARCOAL !important;
+  color: var.$DARK_GRAY !important;
   margin-right: 20px;
 }
 .errorText {
   margin-bottom: 5px;
   font-size: 12px;
-  color: $ERROR_RED;
+  color: var.$ERROR_RED;
 }
 
 .recurrenceHeader {
@@ -89,13 +89,13 @@
   margin: 15px 0px 15px 0px;
   font-size: 14px;
   font-weight: 700;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 .recurrenceText {
   width: 100%;
   margin-bottom: 10px;
   font-size: 14px;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 .recurrenceNumDropdown {
   width: 100% !important;
@@ -110,11 +110,11 @@
   height: 45px;
   border-radius: 50%;
   font-size: 10px;
-  background-color: $WHITE_GRAY_DARK;
-  color: $SOFT_BLACK;
+  background-color: var.$LIGHT_GRAY;
+  color: var.$SOFT_BLACK;
 }
 .dayOfWeekButton:hover {
-  background-color: $PINK;
+  background-color: var.$PINK;
   color: white;
 }
 .dayOfWeekSelectedButton {
@@ -122,11 +122,11 @@
   height: 45px;
   border-radius: 50%;
   font-size: 10px;
-  background-color: $PINK;
+  background-color: var.$PINK;
   color: white;
 }
 .dayOfWeekSelectedButton:hover {
-  background-color: $PINK;
+  background-color: var.$PINK;
   color: white;
 }
 
@@ -137,10 +137,10 @@
   align-self: flex-end;
   width: 150px;
   margin-top: 15px;
-  background-color: $PINK;
+  background-color: var.$PINK;
 }
 .saveButton:hover {
-  background-color: $DARK_PINK;
+  background-color: var.$DARK_PINK;
 }
 
 /* For WebKit browsers (Chrome, Safari) */
@@ -149,7 +149,7 @@
 }
 
 .modalBody::-webkit-scrollbar-thumb {
-  background-color: $LIGHT_GRAY; /* Color of the scrollbar thumb */
+  background-color: var.$LIGHT_GRAY; /* Color of the scrollbar thumb */
 }
 
 .modalBody::-webkit-scrollbar-track {
@@ -159,11 +159,11 @@
 /* For Firefox */
 .modalBody {
   scrollbar-width: 15px; /* Width of the scrollbar */
-  scrollbar-color: $LIGHT_GRAY white; /* Color of the scrollbar thumb and track */
+  scrollbar-color: var.$LIGHT_GRAY white; /* Color of the scrollbar thumb and track */
 }
 
 .modalBody::-ms-scrollbar-thumb {
-  background-color: $LIGHT_GRAY; /* Color of the scrollbar thumb */
+  background-color: var.$LIGHT_GRAY; /* Color of the scrollbar thumb */
 }
 
 .modalBody::-ms-scrollbar-track {

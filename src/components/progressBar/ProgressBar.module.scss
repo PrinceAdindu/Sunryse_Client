@@ -1,8 +1,8 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .box {
   width: 100% !important;
-  color: $PINK;
+  color: var.$PINK;
 }
 
 .linearProgress {

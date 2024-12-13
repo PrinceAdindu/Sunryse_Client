@@ -1,4 +1,4 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .card {
   display: flex;
@@ -10,13 +10,13 @@
   padding: 25px;
   border-radius: 10px;
   background-color: white;
-  -webkit-box-shadow: $BOX_SHADOW;
-  -moz-box-shadow: $BOX_SHADOW;
-  box-shadow: $BOX_SHADOW;
+  -webkit-box-shadow: var.$BOX_SHADOW;
+  -moz-box-shadow: var.$BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
 }
 
 .image {
-  width: 300px;
+  width: 50%;
   height: 200px;
   margin: 70px 0px 25px 0px;
 }
@@ -24,13 +24,13 @@
 .title {
   font-size: 18px;
   font-weight: 600;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
   margin-bottom: 25px;
 }
 
 .text {
   font-size: 16px;
   font-weight: 600;
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
   margin-bottom: 25px;
 }

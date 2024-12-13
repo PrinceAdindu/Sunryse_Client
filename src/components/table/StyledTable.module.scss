@@ -1,4 +1,4 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .actionsContainer {
   display: flex;
@@ -11,10 +11,10 @@
   padding: 5px;
   box-sizing: border-box;
   border-radius: 50%;
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
 }
 
 .icon:hover {
   cursor: pointer;
-  background-color: $WHITE_GRAY;
+  background-color: var.$WHITE_GRAY;
 }

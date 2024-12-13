@@ -1,4 +1,4 @@
-@import "../../variables";
+@use "../../variables" as var;
 
 .sideNavcontainer {
   position: sticky;
@@ -8,10 +8,10 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: $SIDE_NAV_WIDTH;
+  width: var.$SIDE_NAV_WIDTH;
   height: 100vh;
-  z-index: $SIDE_NAV_Z_INDEX;
-  background-color: $DARK_BLUE;
+  z-index: var.$SIDE_NAV_Z_INDEX;
+  background-color: var.$DARK_BLUE;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -46,10 +46,10 @@
 .optionContainerSelected {
   background-color: white;
   .icon {
-    color: $DARK_BLUE;
+    color: var.$DARK_BLUE;
   }
   .iconText {
-    color: $DARK_BLUE;
+    color: var.$DARK_BLUE;
   }
 }
 
@@ -57,9 +57,9 @@
   background-color: white;
   cursor: pointer;
   .icon {
-    color: $DARK_BLUE;
+    color: var.$DARK_BLUE;
   }
   .iconText {
-    color: $DARK_BLUE;
+    color: var.$DARK_BLUE;
   }
 }

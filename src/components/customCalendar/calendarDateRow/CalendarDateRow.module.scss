@@ -1,4 +1,4 @@
-@import '../../../variables';
+@use "../../../variables" as var;
 
 .dateRowContainer {
   display: flex;
@@ -27,7 +27,7 @@
   box-sizing: border-box;
   border: solid;
   border-width: 1px 1px 1px 0px;
-  border-color: $LIGHT_GRAY;
+  border-color: var.$LIGHT_GRAY;
 }
 
 .firstDateContainer {
@@ -42,5 +42,5 @@
 .dateText {
   font-size: 12px;
   font-weight: 700;
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
 }

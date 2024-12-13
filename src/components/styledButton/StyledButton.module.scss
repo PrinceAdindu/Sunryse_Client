@@ -1,4 +1,4 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .button {
   border-style: none;
@@ -13,17 +13,17 @@
 }
 
 .base {
-  background-color: $BLUE;
+  background-color: var.$BLUE;
   color: white;
 }
 
 .base:hover {
-  background-color: $BLUE_HOVER;
+  background-color: var.$BLUE_HOVER;
   cursor: pointer;
 }
 
 .disabled {
-  background-color: $WHITE_GRAY;
-  color: $CHARCOAL;
+  background-color: var.$WHITE_GRAY;
+  color: var.$DARK_GRAY;
   cursor: not-allowed;
 }

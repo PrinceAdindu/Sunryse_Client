@@ -1,11 +1,11 @@
-@import '../../variables';
+@use "../../variables" as var;
 .banner {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: $LIGHT_BLUE;
+  background-color: var.$LIGHT_BLUE;
   border-radius: 5px;
-  box-shadow: $BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
 }
 .content {
   display: flex;

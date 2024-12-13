@@ -1,31 +1,4 @@
-@import '../../variables';
-
-.inputField {
-  width: 100%;
-  height: 50px;
-  padding: 9px 12px;
-
-  border: solid;
-  border-radius: 5px;
-  border-width: 1.5px;
-  box-sizing: border-box;
-  border-color: $MEDIUM_GRAY;
-
-  font-size: 14px;
-  font-weight: 600;
-  color: $SOFT_BLACK;
-  background-color: white;
-  outline: none;
-}
-
-.smallInput {
-  height: 40px !important;
-}
-
-::placeholder {
-  opacity: 1;
-  color: $MEDIUM_GRAY;
-}
+@use "../../variables" as var;
 
 .container {
   display: flex;
@@ -33,6 +6,34 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+}
+
+.inputField {
+  width: 100%;
+  height: 50px;
+  padding: 10px 12px;
+
+  border: solid;
+  border-radius: 5px;
+  border-width: 1.5px;
+  box-sizing: border-box;
+  border-color: var.$GRAY;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: var.$SOFT_BLACK;
+  background-color: white;
+  outline: none;
+}
+
+.smallInput {
+  font-size: 12px !important;
+  height: 25px !important;
+}
+
+::placeholder {
+  opacity: 1;
+  color: var.$GRAY;
 }
 
 .header {
@@ -49,14 +50,13 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 24px;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 
 .description {
   width: 100%;
   margin-top: 10px;
-  font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 20px;
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
 }

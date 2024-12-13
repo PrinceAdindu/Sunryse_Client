@@ -1,4 +1,4 @@
-@import '../../../../variables';
+@use "../../../../variables" as var;
 
 .modalContainer {
   display: flex;
@@ -11,7 +11,7 @@
   box-sizing: border-box;
   border-radius: 10px;
   background-color: white;
-  -webkit-box-shadow: $BOX_SHADOW;
-  -moz-box-shadow: $BOX_SHADOW;
-  box-shadow: $BOX_SHADOW;
+  -webkit-box-shadow: var.$BOX_SHADOW;
+  -moz-box-shadow: var.$BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
 }

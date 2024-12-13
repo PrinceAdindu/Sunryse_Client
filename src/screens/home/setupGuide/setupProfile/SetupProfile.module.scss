@@ -1,4 +1,4 @@
-@import '../../../../variables';
+@use "../../../../variables" as var;
 
 .topAccordian {
   border-radius: 10px 10px 0px 0px !important;
@@ -26,13 +26,13 @@
 .title {
   font-size: 16px;
   font-weight: 800;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 
 .subTitle {
   font-size: 14px;
   font-weight: 500;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
   line-height: 30px;
 }
 

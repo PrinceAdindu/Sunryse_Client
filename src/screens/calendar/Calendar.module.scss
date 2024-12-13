@@ -1,4 +1,4 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .calendarScreen {
   display: flex;
@@ -6,10 +6,10 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: calc(100vh - $NAV_HEIGHT);
+  height: calc(100vh - var.$NAV_HEIGHT);
   padding: 20px;
   box-sizing: border-box;
-  background-color: $WHITE_GRAY;
+  background-color: var.$WHITE_GRAY;
 }
 
 .calendarCard {
@@ -23,9 +23,9 @@
   padding: 30px;
   box-sizing: border-box;
   background-color: white;
-  -webkit-box-shadow: $BOX_SHADOW;
-  -moz-box-shadow: $BOX_SHADOW;
-  box-shadow: $BOX_SHADOW;
+  -webkit-box-shadow: var.$BOX_SHADOW;
+  -moz-box-shadow: var.$BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
 }
 
 .calendarCardTabs {
@@ -45,27 +45,27 @@
   padding: 10px 5px 5px 5px;
   box-sizing: border-box;
   background-color: white;
-  -webkit-box-shadow: $BOX_SHADOW;
-  -moz-box-shadow: $BOX_SHADOW;
-  box-shadow: $BOX_SHADOW;
+  -webkit-box-shadow: var.$BOX_SHADOW;
+  -moz-box-shadow: var.$BOX_SHADOW;
+  box-shadow: var.$BOX_SHADOW;
 }
 
 .cardTab:hover {
   cursor: pointer;
   .tabText {
-    color: $SOFT_BLACK;
+    color: var.$SOFT_BLACK;
   }
 }
 
 .tabText {
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
   font-size: 12px;
   font-weight: 700;
   text-align: center;
 }
 
 .selectedTab {
-  background-color: $PINK;
+  background-color: var.$PINK;
   .tabText {
     color: white !important;
   }

@@ -1,18 +1,49 @@
 import {useEffect} from "react";
 import {axiosPrivate} from "../services/api/axios";
-import useRefreshToken from "./useRefreshToken";
-import useAuth from "./useAuthContext";
-import {AxiosRequestConfig} from "axios";
+import useAuthContext from "./useAuthContext";
+import {AxiosError, InternalAxiosRequestConfig, isAxiosError} from "axios";
+import {useRefreshToken} from "../services/api/auth/refresh/useRefreshToken";
+import {useNavigate} from "react-router-dom";
+
+// Extend InternalAxiosRequestConfig to include 'retry flag'
+interface RetryAxiosRequestConfig extends InternalAxiosRequestConfig {
+  retry?: boolean;
+}
 
 const useAxiosPrivate = () => {
+  const navigate = useNavigate();
+
   const refresh = useRefreshToken();
-  const {auth} = useAuth();
+  const {auth} = useAuthContext();
+
+  const addAuthHeader = (
+    requestConfig: InternalAxiosRequestConfig,
+    accessToken?: string
+  ) => {
+    requestConfig.headers["Authorization"] = `Bearer ${accessToken}`;
+  };
+
+  const retryRequestWithRefresh = async (error: AxiosError) => {
+    if (error.config) {
+      const previousRequestConfig: RetryAxiosRequestConfig = {...error.config};
+
+      if (!previousRequestConfig.retry) {
+        previousRequestConfig.retry = true;
+
+        const newAccessToken = await refresh.mutateAsync();
+        addAuthHeader(previousRequestConfig, newAccessToken);
+
+        return axiosPrivate(previousRequestConfig);
+      } else throw error;
+    } else throw error;
+  };
 
   useEffect(() => {
     const requestIntercept = axiosPrivate.interceptors.request.use(
       (config) => {
-        if (config.headers && !config.headers["Authorization"]) {
-          config.headers["Authorization"] = `Bearer ${auth?.accessToken}`;
+        const isRetryRequest = "retry" in config && config.retry;
+        if (!isRetryRequest) {
+          addAuthHeader(config, auth.accessToken);
         }
         return config;
       },
@@ -22,23 +53,16 @@ const useAxiosPrivate = () => {
     const responseIntercept = axiosPrivate.interceptors.response.use(
       (response) => response,
       async (error) => {
-        const prevRequest = error?.config as AxiosRequestConfig & {
-          sent?: Boolean;
-        };
-        if (error?.response?.status === 403 && !prevRequest?.sent) {
-          prevRequest.sent = true;
-          try {
-            const newAccessToken = await refresh();
-            prevRequest.headers = {
-              ...prevRequest.headers,
-              Authorization: `Bearer ${newAccessToken}`,
-            };
-            return axiosPrivate(prevRequest); // Retry request
-          } catch (refreshError) {
-            return Promise.reject(refreshError); // Propogates error to be caught at source
-          }
+        if (isAxiosError(error)) {
+          const errorCode = error.response?.status;
+          if (errorCode == 401) {
+            try {
+              return await retryRequestWithRefresh(error);
+            } catch (error) {
+              navigate("/login");
+            }
+          } else return Promise.reject(error);
         }
-        return Promise.reject(error); // Propogates error to be caught at source
       }
     );
 

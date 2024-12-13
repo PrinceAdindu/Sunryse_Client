@@ -1,19 +1,21 @@
-import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import Navbar from '../../components/navbar/Navbar';
-import SideNavbar from '../../components/sideNavbar/SideNavbar';
+import {useEffect} from "react";
+import {Outlet} from "react-router-dom";
+import Navbar from "../../components/navbar/Navbar";
+import SideNavbar from "../../components/sideNavbar/SideNavbar";
 
-import useRefreshToken from '../../hooks/useRefreshToken';
-import styles from './PrivateRouteLayout.module.scss';
+import {useRefreshToken} from "../../services/api/auth/refresh/useRefreshToken";
+import styles from "./PrivateRouteLayout.module.scss";
+
 const PrivateRouteLayout = () => {
   const refresh = useRefreshToken();
 
-  useEffect(() => {
-    const onRefresh = async () => {
-      await refresh();
-    };
-    onRefresh();
-  }, []);
+  // TODO: Determine is this is a necessary check
+  // useEffect(() => {
+  //   const onRefresh = async () => {
+  //     await refresh.mutateAsync();
+  //   };
+  //   onRefresh();
+  // }, []);
 
   return (
     <div className={styles.app}>

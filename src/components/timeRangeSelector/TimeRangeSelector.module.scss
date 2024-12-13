@@ -1,4 +1,4 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .container {
   display: flex;
@@ -9,7 +9,7 @@
 }
 
 .errorText {
-  color: $ERROR_RED;
+  color: var.$ERROR_RED;
   font-size: 12px;
 }
 

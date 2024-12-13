@@ -1,4 +1,4 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .container {
   display: flex;
@@ -13,7 +13,7 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 22px;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 
 .textArea {
@@ -29,9 +29,9 @@
   border-radius: 5px;
   border-width: 1.5px;
   box-sizing: border-box;
-  border-color: $MEDIUM_GRAY;
+  border-color: var.$GRAY;
 
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
   background-color: white;
   outline: none;
   resize: none;
@@ -39,7 +39,7 @@
 
 ::placeholder {
   opacity: 1;
-  color: $MEDIUM_GRAY;
+  color: var.$GRAY;
 }
 
 .charLimit {
@@ -47,11 +47,11 @@
   font-weight: 600;
   font-size: 12px;
   margin-top: 5px;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 
 .subTitle {
   font-weight: 600;
   font-size: 12px;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }

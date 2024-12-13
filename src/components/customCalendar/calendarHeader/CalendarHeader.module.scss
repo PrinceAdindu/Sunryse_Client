@@ -1,4 +1,4 @@
-@import '../../../variables';
+@use "../../../variables" as var;
 
 .headerContainer {
   display: flex;
@@ -20,7 +20,7 @@
   padding: 0px 10px 0px 10px;
   font-size: 18px;
   font-weight: 700;
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
 }
 
 .iconContainer {
@@ -32,30 +32,30 @@
   border-radius: 100%;
 }
 .iconContainer:hover {
-  background-color: $WHITE_GRAY;
+  background-color: var.$WHITE_GRAY;
   cursor: pointer;
 }
 .icon {
-  color: $CHARCOAL;
+  color: var.$DARK_GRAY;
 }
 
 .selectedViewButton {
   font-size: 16px !important;
-  background-color: $LIGHT_GRAY !important;
-  color: $SOFT_BLACK !important;
+  background-color: var.$LIGHT_GRAY !important;
+  color: var.$SOFT_BLACK !important;
   border: solid !important;
-  border-color: $GRAY !important;
+  border-color: var.$GRAY !important;
 }
 
 .viewButton {
   font-size: 16px !important;
-  background-color: $WHITE_GRAY_DARK !important;
-  color: $CHARCOAL !important;
+  background-color: var.$LIGHT_GRAY !important;
+  color: var.$DARK_GRAY !important;
 }
 
 .viewButton:hover {
   font-size: 16px !important;
-  background-color: $WHITE_GRAY_DARK !important;
-  color: $SOFT_BLACK !important;
+  background-color: var.$LIGHT_GRAY !important;
+  color: var.$SOFT_BLACK !important;
   cursor: pointer;
 }

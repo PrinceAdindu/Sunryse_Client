@@ -1,4 +1,4 @@
-@import '../../variables';
+@use "../../variables" as var;
 
 .container {
   display: flex;
@@ -9,13 +9,13 @@
   width: 40px;
   height: 40px;
   text-align: center;
-  border: 2px solid $LIGHT_GRAY;
+  border: 2px solid var.$LIGHT_GRAY;
   border-radius: 5px;
   background-color: white;
-  color: $SOFT_BLACK;
+  color: var.$SOFT_BLACK;
 }
 .input:focus {
-  border: 2px solid $PINK !important;
+  border: 2px solid var.$PINK !important;
   outline: none;
 }
 
