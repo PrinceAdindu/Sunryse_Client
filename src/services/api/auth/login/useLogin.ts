@@ -8,7 +8,7 @@ import useAuthContext from "../../../../hooks/useAuthContext";
 import {useErrorLogger} from "../../../../hooks/useErrorLogger";
 
 import {loginUser} from "./loginService";
-import {LoginRequestData} from "./loginService";
+import {LoginRequestPayload} from "./loginService";
 
 export function useLogin() {
   const otpInstance = useOtp();
@@ -19,9 +19,9 @@ export function useLogin() {
   const navigate = useNavigate();
 
   return useMutation(
-    async (requestData: LoginRequestData) => {
-      const response = await loginUser(requestData);
-      return {response, email: requestData.data.email};
+    async (requestPayload: LoginRequestPayload) => {
+      const response = await loginUser(requestPayload);
+      return {response, email: requestPayload.data.email};
     },
     {
       // TODO: The usage of our OTP screen could probably be more intuitive

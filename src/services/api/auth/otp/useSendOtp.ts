@@ -2,7 +2,7 @@ import {useMutation} from "react-query";
 
 import useToast from "../../../../hooks/useToast";
 
-import {OtpSenderRequestData, sendOtp} from "./otpService";
+import {OtpSenderRequestPayload, sendOtp} from "./otpService";
 import {useErrorLogger} from "../../../../hooks/useErrorLogger";
 
 export function useSendOtp() {
@@ -10,8 +10,8 @@ export function useSendOtp() {
   const toastInstance = useToast();
 
   return useMutation(
-    async (requestData: OtpSenderRequestData) => {
-      await sendOtp(requestData);
+    async (requestPayload: OtpSenderRequestPayload) => {
+      await sendOtp(requestPayload);
     },
     {
       onSuccess: () => {

@@ -6,7 +6,7 @@ import useToast from "../../../../hooks/useToast";
 import {useErrorLogger} from "../../../../hooks/useErrorLogger";
 
 import {RootState} from "../../../redux/reducers/rootReducer";
-import {OtpVerifierRequestData, verifyOtp} from "./otpService";
+import {OtpVerifierRequestPayload, verifyOtp} from "./otpService";
 
 export function useVerifyOtp() {
   const logError = useErrorLogger();
@@ -15,7 +15,7 @@ export function useVerifyOtp() {
   const {callback} = useSelector((state: RootState) => state.otp);
 
   return useMutation(
-    async (requestData: OtpVerifierRequestData) => {
+    async (requestData: OtpVerifierRequestPayload) => {
       await verifyOtp(requestData);
     },
     {

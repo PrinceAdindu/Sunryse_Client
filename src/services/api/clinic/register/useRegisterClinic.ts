@@ -2,7 +2,7 @@ import {useMutation} from "react-query";
 import {useNavigate} from "react-router-dom";
 
 import useToast from "../../../../hooks/useToast";
-import {registerClinic, RegisterClinicRequestData} from "./registerClinic";
+import {registerClinic, RegisterClinicRequestPayload} from "./registerClinic";
 import {ApiError} from "../../ApiError";
 import {useAsyncError} from "../../../../hooks/useAsyncError";
 
@@ -12,7 +12,7 @@ export function useRegisterClinic() {
   const throwError = useAsyncError();
 
   return useMutation(
-    (requestData: RegisterClinicRequestData) => registerClinic(requestData),
+    (requestData: RegisterClinicRequestPayload) => registerClinic(requestData),
     {
       onSuccess: () => {
         navigate("/login");

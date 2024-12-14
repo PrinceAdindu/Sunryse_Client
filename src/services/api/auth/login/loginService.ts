@@ -8,7 +8,7 @@ export const loginRequestSchema = z.object({
   }),
 });
 
-export type LoginRequestData = z.infer<typeof loginRequestSchema>;
+export type LoginRequestPayload = z.infer<typeof loginRequestSchema>;
 
 export const loginResponseSchema = z.object({
   data: z.object({
@@ -16,12 +16,12 @@ export const loginResponseSchema = z.object({
   }),
 });
 
-export type LoginResponseData = z.infer<typeof loginResponseSchema>;
+export type LoginResponsePayload = z.infer<typeof loginResponseSchema>;
 
-export async function loginUser(data: LoginRequestData) {
+export async function loginUser(data: LoginRequestPayload) {
   loginRequestSchema.parse(data);
   const response = await axios.post("/auth/login", data);
-  const sanitizedResponse: LoginResponseData = loginResponseSchema.parse(
+  const sanitizedResponse: LoginResponsePayload = loginResponseSchema.parse(
     response.data
   );
   return sanitizedResponse;

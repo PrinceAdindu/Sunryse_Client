@@ -7,11 +7,11 @@ export const refreshResponseSchema = z.object({
   }),
 });
 
-export type RefreshResponseData = z.infer<typeof refreshResponseSchema>;
+export type RefreshResponsePayload = z.infer<typeof refreshResponseSchema>;
 
 export async function refreshAccessToken() {
   const response = await axios.post("/auth/login/refresh");
-  const sanitizedResponse: RefreshResponseData = refreshResponseSchema.parse(
+  const sanitizedResponse: RefreshResponsePayload = refreshResponseSchema.parse(
     response.data
   );
   return sanitizedResponse;

@@ -18,11 +18,11 @@ export const registerClinicRequestSchema = z
     }
   });
 
-export type RegisterClinicRequestData = z.infer<
+export type RegisterClinicRequestPayload = z.infer<
   typeof registerClinicRequestSchema
 >;
 
-export async function registerClinic(data: RegisterClinicRequestData) {
+export async function registerClinic(data: RegisterClinicRequestPayload) {
   registerClinicRequestSchema.parse(data);
   await axios.post("/clinic", data);
 }
