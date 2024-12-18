@@ -4,8 +4,9 @@ import {useState, useEffect} from "react";
 import NotificationsIcon from "@mui/icons-material/NotificationsNone";
 import LockIcon from "@mui/icons-material/Lock";
 
-import {useGetClinic} from "../../services/api/clinic/useGetClinic";
 import {GetClinicDataRequestPayload} from "../../services/api/clinic/clinicService";
+import {useGetClinic} from "../../services/api/clinic/useGetClinic";
+import {useLogout} from "../../services/api/auth/logout/useLogout";
 
 import styles from "./Navbar.module.scss";
 
@@ -18,25 +19,21 @@ type NavbarClinicDataResponsePayload = {
 export default function Navbar() {
   const [clinicName, setClinicName] = useState("");
 
-  const clinicData = useGetClinic();
+  const getClinicData = useGetClinic();
+  const logoutUser = useLogout();
 
   const getClinicName = useCallback(
     async (payload: GetClinicDataRequestPayload) => {
       const response: NavbarClinicDataResponsePayload =
-        await clinicData.mutateAsync(payload);
+        await getClinicData.mutateAsync(payload);
       setClinicName(response.data.account.email);
     },
-    [clinicData]
+    [getClinicData]
   );
 
-  // const logoutUser = useCallback(
-  //   async (payload: GetClinicDataRequestPayload) => {
-  //     const data: NavbarClinicDataResponsePayload =
-  //       await clinicData.mutateAsync(payload);
-  //     setClinicName(data.email);
-  //   },
-  //   [clinicData]
-  // );
+  const logout = useCallback(async () => {
+    await logoutUser.mutateAsync();
+  }, [logoutUser]);
 
   useEffect(() => {
     const payload = {data: {fields: ["account.email"]}};
@@ -53,7 +50,7 @@ export default function Navbar() {
   function Logout() {
     return (
       <div className={styles.iconContainer}>
-        <LockIcon className={styles.icon} onClick={() => logoutUser()} />{" "}
+        <LockIcon className={styles.icon} onClick={() => logout()} />{" "}
       </div>
     );
   }

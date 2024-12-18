@@ -20,10 +20,10 @@ export type GetClinicDataRequestPayload = z.infer<
 
 export async function getClinicData(
   requestPayload: GetClinicDataRequestPayload,
-  axiosInstance: Axios
+  priavteAxiosInstance: Axios
 ) {
   getClinicDataRequestSchema.parse(requestPayload);
-  const response = await axiosInstance.get("/clinic", {
+  const response = await priavteAxiosInstance.get("/clinic", {
     params: {fields: requestPayload.data.fields},
   });
   return response.data;
