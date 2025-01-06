@@ -1,11 +1,12 @@
 import React from "react";
-import {Routes, Route, Navigate} from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import PrivateRouteLayout from "./screens/layout/PrivateRouteLayout";
 import PublicRouteLayout from "./screens/layout/publicRouteLayout/PublicRouteLayout";
 
 import Login from "./screens/login/Login";
 import Register from "./screens/register/Register";
 import ResetPassword from "./screens/resetPassword/ResetPassword";
+import ResetPassword2 from "./screens/resetPassword/ResetPassword2";
 import OtpVerification from "./screens/otpVerification/OtpVerification";
 import EmailVerification from "./screens/emailVerification/EmailVerification";
 import Unauthorized from "./screens/Unauthorized";
@@ -22,11 +23,12 @@ import "./App.module.scss";
 
 const PublicRoutes = (
   <Route path="/" element={<PublicRouteLayout />}>
-    <Route index element={<Navigate to="/login" />} />{" "}
+    <Route index element={<Navigate to="/login" />} />
     <Route path="login" element={<Login />} />
     <Route path="register" element={<Register />} />
     <Route path="otp" element={<OtpVerification />} />
     <Route path="resetPassword" element={<ResetPassword />} />
+    <Route path="resetPassword/:resetToken" element={<ResetPassword2 />} />
     <Route path="resetPassword/email" element={<EmailVerification />} />
     <Route path="unauthorized" element={<Unauthorized />} />
     <Route path="*" element={<Missing />} />
