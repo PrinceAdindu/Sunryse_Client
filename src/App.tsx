@@ -5,8 +5,7 @@ import PublicRouteLayout from "./screens/layout/publicRouteLayout/PublicRouteLay
 
 import Login from "./screens/login/Login";
 import Register from "./screens/register/Register";
-import ResetPassword from "./screens/resetPassword/ResetPassword";
-import ResetPassword2 from "./screens/resetPassword/ResetPassword2";
+import ResetPassword from "./screens/resetPassword/ResetPassword";  // Import ResetPassword
 import OtpVerification from "./screens/otpVerification/OtpVerification";
 import EmailVerification from "./screens/emailVerification/EmailVerification";
 import Unauthorized from "./screens/Unauthorized";
@@ -27,9 +26,8 @@ const PublicRoutes = (
     <Route path="login" element={<Login />} />
     <Route path="register" element={<Register />} />
     <Route path="otp" element={<OtpVerification />} />
-    <Route path="resetPassword" element={<ResetPassword />} />
-    <Route path="resetPassword/:resetToken" element={<ResetPassword2 />} />
-    <Route path="resetPassword/email" element={<EmailVerification />} />
+    <Route path="resetPassword" element={<EmailVerification />} />
+    <Route path="login/reset" element={<ResetPassword />} />  {/* New route for ResetPassword */}
     <Route path="unauthorized" element={<Unauthorized />} />
     <Route path="*" element={<Missing />} />
   </Route>
@@ -55,3 +53,5 @@ export function App() {
     </Routes>
   );
 }
+
+export default App;
