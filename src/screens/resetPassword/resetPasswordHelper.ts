@@ -7,6 +7,7 @@ export const resetPasswordSchema = z
     passwordConfirmation: z
       .string()
       .min(8, 'Password must be at least 8 characters'),
+    resetToken: z.string(), // Add resetToken to the schema
   })
   .superRefine((data, ctx) => {
     if (data.newPassword !== data.confirmPassword) {

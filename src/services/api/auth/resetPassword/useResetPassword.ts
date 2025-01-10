@@ -2,13 +2,13 @@ import { isAxiosError } from "axios";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 
-import useToast from "./useToast";
-import useOtp from "./useOtp";
-import useAuthContext from "./useAuthContext";
-import { useErrorLogger } from "./useErrorLogger";
+import useToast from "../../../../hooks/useToast";
+import useOtp from "../../../../hooks/useOtp";
+import useAuthContext from "../../../../hooks/useAuthContext";
+import { useErrorLogger } from "../../../../hooks/useErrorLogger";
 
-import { resetPassword } from "../services/api/auth/resetPassword/resetPasswordService";
-import { ResetPasswordRequestPayload } from "../services/api/auth/resetPassword/resetPasswordService";
+import { resetPassword } from "./resetPasswordService";
+import { ResetPasswordRequestPayload } from "./resetPasswordService";
 
 export function useResetPassword() {
   const otpInstance = useOtp();

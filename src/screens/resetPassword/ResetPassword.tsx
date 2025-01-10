@@ -7,6 +7,7 @@ import { resetPasswordSchema, ResetPasswordFormData } from './resetPasswordHelpe
 import logo from '../../assets/SunryseLogoWideFillBlue.png';
 import styles from './ResetPassword.module.scss';
 import { useResetPassword } from '../../services/api/auth/resetPassword/useResetPassword';
+import { Loader } from '../../components/loading/Loader';
 
 export default function ResetPassword() {
   const {
@@ -18,6 +19,7 @@ export default function ResetPassword() {
       newPassword: '',
       confirmPassword: '',
       passwordConfirmation: '',
+      resetToken: 'your-reset-token-here', // Add resetToken to default values or fetch from URL
     },
     resolver: zodResolver(resetPasswordSchema),
   });
@@ -26,7 +28,12 @@ export default function ResetPassword() {
   const { isLoading } = resetPassword;
 
   const submit: SubmitHandler<ResetPasswordFormData> = async (formData) => {
-    const payload = { data: { ...formData } };
+    const payload = { 
+        data: { 
+            ...formData, 
+            resetToken: formData.resetToken // Ensure resetToken is included
+        } 
+    };
     await resetPassword.mutateAsync(payload);
   };
 
